@@ -23,7 +23,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-white text-dark shadow font-Noah fixed h-28">
+    <nav className="w-full bg-white text-dark shadow font-Noah fixed h-28 z-50">
       <div className="justify-around px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8 mt-4">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -82,22 +82,22 @@ export const Navbar = () => {
           >
             <ul className="flex flex-col justify-end items-center p-4 w-auto h-3/4 space-y-4 opacity-50 md:flex md:flex-row md:w-auto md:h-full md:space-x-6 md:space-y-0 md:p-0 md:opacity-100 mt-2 bg-white">
               <li className="text-dark hover:text-darkBlue font-bold md:font-medium text-base">
-                <Link href="#">Equipo</Link>
+                <Link href="/team">Equipo</Link>
               </li>
               <li className="text-dark hover:text-darkBlue font-bold md:font-medium text-base">
-                <Link href="#">Servicios</Link>
+                <Link href="/services">Servicios</Link>
               </li>
               <li className="text-dark hover:text-darkBlue font-bold md:font-medium text-base">
-                <Link href="#">Cursos & Capacitaciones</Link>
+                <Link href="/courses">Cursos & Capacitaciones</Link>
               </li>
               <li className="text-dark hover:text-darkBlue font-bold md:font-medium text-base">
-                <Link href="#">Comunidad</Link>
+                <Link href="/community">Comunidad</Link>
               </li>
               <li className="text-dark hover:text-darkBlue font-bold md:font-medium text-base">
-                <Link href="#">Blog</Link>
+                <Link href="/blog">Blog</Link>
               </li>
               <li className="text-dark hover:text-darkBlue font-bold md:font-medium text-base">
-                <Link href="#">Contacto</Link>
+                <Link href="/contact">Contacto</Link>
               </li>
               <li>
                 <div className="mt-3 space-x-4 lg:hidden flex flex-row w-full justify-center items-center">
