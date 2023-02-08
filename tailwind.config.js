@@ -8,6 +8,12 @@ module.exports = {
     fontFamily: {
       Noah: ['Noah Text', 'sans-serif'],
     },
+    container: {
+      padding: {
+        DEFAULT: '1rem',
+        lg: '0',
+      },
+    },
     screens: {
       sm: "640px",
       md: "1060px",
