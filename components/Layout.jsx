@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from "next/head";
 import { Navbar } from './layout/Navbar';
-import { Footer } from './layout/Footer';
 
 export const Layout = ({title, content, children}) => {
   return (
@@ -132,11 +131,12 @@ export const Layout = ({title, content, children}) => {
                 content="https://consultoraenlazar.com.ar/images/logo-enlazar-ogp.jpg"
             />
         </Head>
-        <Navbar/>
-            <div className='flex flex-col justify-center items-center w-screen h-full relative top-28'>
+        <div>
+            <Navbar/>
+            <main className="max-w-full bg-yellow mx-auto min-h-screen">
                 {children}
-            </div>
-        <Footer/>
+            </main>
+        </div>
   </>
   )
 }

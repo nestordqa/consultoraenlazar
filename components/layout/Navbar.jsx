@@ -34,6 +34,7 @@ export const Navbar = () => {
                   width: "200px",
                   height: "37.5px",
                 }}
+                alt='Consultora Enlazar Logo'
               />
             </Link>
             <div className="md:hidden">
