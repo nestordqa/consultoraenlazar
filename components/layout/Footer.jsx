@@ -24,14 +24,14 @@ export const Footer = () => {
     transition: "ease-in-out 0.2s",
   };
 
-  const clampedFontSize = {
+  const clampedPadding = {
     paddingLeft: "clamp(0.5rem, -8.7857rem + 11.4286vw, 2rem)",
   };
   return (
     <>
       <footer
         style={gradient}
-        className="flex flex-col items-center justify-center bottom-0 fixed w-full"
+        className="flex flex-col items-center justify-center bottom-0 w-full"
       >
         <div className="h-max flex justify-center items-center flex-col w-full px-4 py-14 xl:flex-row xsm:max-sm:pb-0 xsm:max-sm:px-0">
           <div className="flex flex-row xsm:max-lg:flex-col justify-center items-center xsm:max-sm:w-full">
@@ -88,7 +88,7 @@ export const Footer = () => {
               <ul className="flex flex-row border-r-0 justify-center items-center no-underline text-white list-none mb-0 xl:border-r-[1px] xl:border-solid xl:border-r-yellow py-2 xsm:max-sm:p-0 ">
                 <li
                   className="pr-8 xsm:max-sm:pb-6 xsm:max-sm:pr-0"
-                  style={clampedFontSize}
+                  style={clampedPadding}
                 >
                   <Link href="#" className="hover:font-bold">
                     <p>Cursos & Capacitaciones</p>
@@ -100,7 +100,7 @@ export const Footer = () => {
           <div className="flex flex-row justify-center items-center m-0 xsm:max-sm:w-full">
             <div className="flex flex-row justify-center items-center list-none text-white mb-0 ">
               <ul className="flex flex-row justify-center items-center no-underline text-white py-2 pr-0 xsm:max-sm:py-2 xsm:max-sm:px-0 ">
-                <li className="  xsm:max-sm:hidden" style={clampedFontSize}>
+                <li className="  xsm:max-sm:hidden" style={clampedPadding}>
                   {/* py-0 pr-2 */}
                   Descubrí nuestra comunidad
                 </li>
