@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 import { useState } from "react";
 import {
   FaFacebookF,
@@ -11,10 +12,13 @@ import {
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import logo from "public/images/logo-enlazar-web.png";
+import birrete from "public/images/birrete-web.png";
 
 export const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
-
+  const router = useRouter();
+  const route = router.pathname;
+  const path = route === '/courses' ? birrete : logo;
   const icon = {
     fontSize: "24px",
     color: "#043959",
@@ -29,7 +33,7 @@ export const Navbar = () => {
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <Link href="/">
               <Image
-                src={logo}
+                src={path}
                 style={{
                   width: "200px",
                   height: "37.5px",
