@@ -50,23 +50,23 @@ export const Footer = () => {
               <div className="flex flex-row justify-center items-center m-0 list-none md:max-sm:w-full md:max-sm:pt-12 xsm:max-sm:flex-col">
                 <ul className="flex flex-row border-r-0 justify-center items-center self-center no-underline text-white list-none xsm:max-sm:flex-col xl:border-r-[1px] xl:border-solid xl:border-r-yellow py-2 px-2 xsm:max-sm:p-0 ">
                   <li className="sm:border-r sm:border-solid sm:border-r-white px-2 py-0 xsm:max-sm:pb-3">
-                    <Link href="#" className="hover:font-bold">
-                      <p className="">Nosotros</p>
+                    <Link href="/team" className="hover:font-bold">
+                      Equipo
                     </Link>
                   </li>
                   <li className="sm:border-r sm:border-solid sm:border-r-white px-2 py-0 xsm:max-sm:pb-3">
-                    <Link href="#" className="hover:font-bold">
-                      <p className="">Servicios</p>
+                    <Link href="/services" className="hover:font-bold">
+                      Servicios
                     </Link>
                   </li>
                   <li className="sm:border-r sm:border-solid sm:border-r-white px-2 py-0 xsm:max-sm:pb-3">
-                    <Link href="#" className="hover:font-bold">
-                      <p className="">Comunidad</p>
+                    <Link href="/community" className="hover:font-bold">
+                      Comunidad
                     </Link>
                   </li>
                   <li className="sm:border-r sm:border-solid sm:border-r-white px-2 py-0 xsm:max-sm:pb-3">
-                    <Link href="#" className="hover:font-bold">
-                      <p className="">Blog</p>
+                    <Link href="/blog" className="hover:font-bold">
+                      Blog
                     </Link>
                   </li>
                   <li className="sm:border-r sm:border-solid sm:border-r-white px-2 py-0 xsm:max-sm:pb-3">
@@ -77,8 +77,8 @@ export const Footer = () => {
                     </Link>
                   </li>
                   <li className="pl-2 pr-2 xsm:max-sm:pb-3">
-                    <Link href="#" className="hover:font-bold">
-                      <p className="">Contacto</p>
+                    <Link href="/contact" className="hover:font-bold">
+                      Contacto
                     </Link>
                   </li>
                 </ul>
@@ -90,8 +90,8 @@ export const Footer = () => {
                   className="pr-8 xsm:max-sm:pb-6 xsm:max-sm:pr-0"
                   style={clampedPadding}
                 >
-                  <Link href="#" className="hover:font-bold">
-                    <p>Cursos & Capacitaciones</p>
+                  <Link href="/courses" className="hover:font-bold">
+                    Cursos & Capacitaciones
                   </Link>
                 </li>
               </ul>
@@ -101,7 +101,6 @@ export const Footer = () => {
             <div className="flex flex-row justify-center items-center list-none text-white mb-0 ">
               <ul className="flex flex-row justify-center items-center no-underline text-white py-2 pr-0 xsm:max-sm:py-2 xsm:max-sm:px-0 ">
                 <li className="  xsm:max-sm:hidden" style={clampedPadding}>
-                  {/* py-0 pr-2 */}
                   Descubrí nuestra comunidad
                 </li>
                 <li className="hover:scale-y-105 hover:scale-x-105 py-0 px-[0.6rem]">
