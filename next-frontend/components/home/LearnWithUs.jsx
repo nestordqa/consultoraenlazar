@@ -1,5 +1,5 @@
 import Link from "next/link";
-import CourseCard from "../Card/CourseCard";
+import CourseCard from "../card/CourseCard";
 
 export const LearnWithUs = ({ courses }) => {
   console.log(courses, "LEARN");
