@@ -48,14 +48,12 @@ const CourseCard = ({ course }) => {
             <strong>{title}</strong>
           </h2>
           <p className="text-center text-ellipsis pb-4 px-6">{description}</p>
-          <Link href={`/detail/${slug.current}`}>
             <button
               className="bg-yellow rounded-2xl py-1 px-8 font-bold uppercase mb-5"
               onClick={(e) => handleDetails(e, course)}
             >
               Ver detalles
             </button>
-          </Link>
         </div>
       </div>
       {/* Cards responsive */}
