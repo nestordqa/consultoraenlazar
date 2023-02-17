@@ -31,7 +31,7 @@ export const Footer = () => {
     <>
       <footer
         style={gradient}
-        className="flex flex-col items-center justify-center bottom-0 w-full "
+        className="flex flex-col items-center justify-center w-full "
       >
         <div className="h-max flex justify-center items-center flex-col w-full px-4 py-14 xl:flex-row xsm:max-sm:pb-0 xsm:max-sm:px-0">
           <div className="flex flex-row xsm:max-lg:flex-col justify-center items-center xsm:max-sm:w-full">
