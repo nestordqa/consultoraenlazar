@@ -105,13 +105,13 @@ export const Layout = ({ title, content, children }) => {
           content="https://consultoraenlazar.com.ar/images/logo-enlazar-ogp.jpg"
         />
       </Head>
-      <div>
+      <>
         <Navbar />
-        <main className="w-full flex flex-wrap justify-center items-center bg-blue mx-auto max-h-screen relative top-28">
+        <main className="w-full flex flex-1 flex-wrap justify-center items-center bg-blue mx-auto h-auto relative pt-28">
           {children}
         </main>
         <Footer />
-      </div>
+      </>
     </>
   );
 };

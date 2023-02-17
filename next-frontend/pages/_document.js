@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <script
+        {/*  <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-4FDTGJRDSN"
         ></script>
@@ -18,7 +18,7 @@ export default function Document() {
                 gtag('config', 'G-4FDTGJRDSN');
               `,
           }}
-        />
+        /> */}
       </Head>
       <body>
         <Main />
