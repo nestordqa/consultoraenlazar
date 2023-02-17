@@ -20,9 +20,9 @@ const Courses = ({ courses }) => {
   );
 };
 
-export async function getStaticProps({ preview = false }) {
-  const courses = await getClient(preview)
-    .fetch(groq`*[_type == "course"] | order(title desc){
+export async function getStaticProps() {
+  const courses = await getClient()
+    .fetch(groq`*[_type == "course"] | order(title asc){
     _id,
     title,
       description,

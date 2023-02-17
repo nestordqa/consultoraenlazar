@@ -107,7 +107,7 @@ export const Layout = ({ title, content, children }) => {
       </Head>
       <>
         <Navbar />
-        <main className="w-full flex flex-1 flex-wrap justify-center items-center bg-blue mx-auto h-auto relative pt-28">
+        <main className="w-full flex flex-1 flex-wrap justify-center items-center  mx-auto h-auto relative pt-28">
           {children}
         </main>
         <Footer />

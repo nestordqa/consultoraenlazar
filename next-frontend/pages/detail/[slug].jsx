@@ -51,8 +51,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const course = await getClient(preview).fetch(query, { slug: params.slug });
+export async function getStaticProps({ params }) {
+  const course = await getClient().fetch(query, { slug: params.slug });
 
   return {
     props: { course },
