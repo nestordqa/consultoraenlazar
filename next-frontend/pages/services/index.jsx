@@ -1,4 +1,6 @@
 import { Layout } from "@/components/Layout";
+import logoIndividuos from 'public/images/card-individuos-grupos.webp'
+import Image from "next/image";
 
 
 const Services = () => {
@@ -8,42 +10,35 @@ const Services = () => {
         title={"Servicios"}
         content={"Servicios de Consultora Enlazar para empresas e individuos."}
       >
-        <div className="border-red-600 border-4">
-          <h1 >hollaaa</h1>
 
-        </div>
-        <div className="">
-          <div className="flex justify-center">
-            <div className="rounded-lg shadow-lg bg-white max-w-sm">
-              <a href="#!">
-                <img className="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="" />
-              </a>
-              <div className="p-6">
-                <h5 className="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                <p className="text-gray-700 text-base mb-4">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <button type="button" className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
+          <div className="flex text-center justify-center gap-10 p-8 max-h-[450px] ">
+            <div className="flex justify-center ">
+              <div className="rounded-2xl shadow-lg bg-blue w-72 ">
+                <a href="#!" className="flex justify-center">
+                  <Image className="rounded-t-lg w-52 " src={logoIndividuos} alt="individuos" width={200} height={200}/>
+                </a>
+                <div className="p-6 ">
+                  <p className="text-white  mb-4 text-lg">
+                    Para individuos o grupos
+                  </p>
+                  <button className="rounded-full  bg-yellow p-2 px-10">QUIERO SABER +</button>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center ">
+              <div className="rounded-2xl shadow-lg bg-blue w-72 ">
+                <a href="#!" className="flex justify-center">
+                  <Image className="rounded-t-lg w-52 " src={logoIndividuos} alt="individuos" width={200} height={200}/>
+                </a>
+                <div className="p-6 ">
+                  <p className="text-white  mb-4 text-lg">
+                  Para organizaciones
+                  </p>
+                  <button className="rounded-full  bg-yellow p-2 px-10">QUIERO SABER +</button>
+                </div>
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
-            <div className="rounded-lg shadow-lg bg-white max-w-sm">
-              <a href="#!">
-                <img className="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="" />
-              </a>
-              <div className="p-6">
-                <h5 className="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                <p className="text-gray-700 text-base mb-4">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <button type="button" className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </Layout>
     </>
   );
