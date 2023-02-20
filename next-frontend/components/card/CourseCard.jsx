@@ -1,65 +1,60 @@
 import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+import styles from "./CourseCard.module.css";
+import Details from "./CourseDetail";
+import ScrollDialog, { Coursedetail } from "./CourseDetail";
 
 const CourseCard = ({ course }) => {
-  const { title, description, mainImage, price, slug } = course;
+  const { title, description, mainImage } = course;
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState("paper");
 
-  const hoverEffect = {
-    position: "relative",
-    top: 0,
-    left: 0,
-    width: "100%",
-    ":hover": {
-      width: "150px",
-      height: "150px",
-      left: "-55px",
-      top: "calc(50% - 55px)",
-      transition: "05s ease-in-out",
-    },
+  const handleClickOpen = () => {
+    setOpen(true);
   };
 
-  const handleDetails = (e, course) => {
-    e.preventDefault();
-    /*return modal de detalle */
+  const handleClose = () => {
+    setOpen(false);
   };
 
+  console.log(course.body);
   return (
     <>
+      {open ? (
+        <Details
+          handleClickOpen={handleClickOpen}
+          open={open}
+          course={course}
+          scroll={scroll}
+          handleClose={handleClose}
+        />
+      ) : null}
       {/* Cards a partir de 1024px */}
-      <div className=" hidden lg:flex flex-row justify-center items-center h-64 w-[45%] transition-all bg-white  mx-2 my-2 flex-wrap relative rounded-2xl ">
+      <div className={styles.card}>
         {/* card */}
-        <div
-          style={hoverEffect[":hover"]}
-          className="bg-blue flex justify-center items-center absolute top-0 left-0 w-full h-full z-[1] overflow-hidden transition-all rounded-2xl"
-        >
+        <div className={styles.imgBox}>
           {/* imgBx */}
-          <img
-            className="max-w-[150px]"
-            alt={title + " image"}
-            src={urlFor(mainImage)}
-          />
+          <img alt={title + " image"} src={urlFor(mainImage)} />
         </div>
-        <hr />
         {/* content */}
-
-        <div className="flex flex-col flex-wrap justify-evenly items-center ">
-          <h2 className="pt-4 pb-4 text-lg">
-            <strong>{title}</strong>
-          </h2>
-          <p className="text-center text-ellipsis pb-4 px-6">{description}</p>
-          <Link href={`/detail/${slug.current}`}>
+        <div className={styles.content}>
+          <div className={styles.info}>
+            <h2 className="pt-4 pb-4 px-2 text-lg text-center text-ellipsis">
+              <strong>{title}</strong>
+            </h2>
+            <p className="text-center text-clip px-3">{description}</p>
             <button
-              className="bg-yellow rounded-2xl py-1 px-8 font-bold uppercase mb-5"
-              onClick={(e) => handleDetails(e, course)}
+              className="bg-yellow rounded-2xl m-2 py-1 px-8 font-bold uppercase self-center"
+              onClick={handleClickOpen}
             >
               Ver detalles
             </button>
-          </Link>
+          </div>
         </div>
       </div>
       {/* Cards responsive */}
-      <div className=" lg:hidden flex flex-col justify-center items-center ease-in-out bg-white max-w-xs relative rounded-xl hover:shadow-2xl hover:outline-offset-8">
+      <div className=" lg:hidden flex flex-col justify-evenly items-start ease-in-out bg-white max-w-xs relative rounded-2xl shadow-2xl outline-offset-8">
         {/* card */}
         <div className="bg-blue flex justify-center items-center w-full rounded-t-xl rounded-b-none">
           {/* imgBx */}
@@ -72,13 +67,15 @@ const CourseCard = ({ course }) => {
         <hr />
         <div className="flex flex-col flex-wrap justify-evenly items-center ">
           {/* content */}
-          <h2 className="pt-4 pb-4 text-lg">
+          <h2 className="pt-4 pb-4 px-2 text-lg">
             <strong>{title}</strong>
           </h2>
-          <p className="text-center text-ellipsis pb-4 px-6">{description}</p>
+          <p className="text-center text-ellipsis pt-2 pb-4 px-2">
+            {description}
+          </p>
           <button
-            className="bg-yellow rounded-2xl py-1 px-8 font-bold uppercase mb-5"
-            onClick={(e) => handleDetails(e, course)}
+            className="bg-yellow rounded-2xl py-1 px-8 font-bold uppercase mb-2"
+            onClick={handleClickOpen}
           >
             Ver detalles
           </button>

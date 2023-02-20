@@ -33,7 +33,7 @@ export default {
       name: 'commissions',
       type: 'array',
       title: 'Comisiones',
-      of: [{type: 'commission'}],
+      of: [{type: 'reference', to: {type: 'commission'}}],
     },
     {
       name: 'description',
@@ -44,6 +44,12 @@ export default {
       name: 'body',
       type: 'blockContent',
       title: 'Detalle',
+    },
+    {
+      name: 'provider',
+      type: 'reference',
+      title: 'Proveedor',
+      to: {type: 'provider'},
     },
     {
       name: 'publishedAt',
