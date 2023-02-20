@@ -25,9 +25,6 @@ export default function Details({ handleClose, open, scroll, course }) {
         </Button>
         <DialogTitle id="scroll-dialog-title">{course.title}</DialogTitle>
         <DialogContent dividers={scroll === "paper"}>
-          {/* <DialogContentText id="scroll-dialog-description" tabIndex={-1}>
-           
-          </DialogContentText> */}
           <PortableText value={course.body} />
         </DialogContent>
         <DialogActions>
