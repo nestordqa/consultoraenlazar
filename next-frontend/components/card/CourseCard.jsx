@@ -18,7 +18,6 @@ const CourseCard = ({ course }) => {
     setOpen(false);
   };
 
-  console.log(course.body);
   return (
     <>
       {open ? (
@@ -32,12 +31,14 @@ const CourseCard = ({ course }) => {
       ) : null}
       {/* Cards a partir de 1024px */}
       <div className={styles.card}>
-        {/* card */}
         <div className={styles.imgBox}>
-          {/* imgBx */}
-          <img alt={title + " image"} src={urlFor(mainImage)} />
+          <Image
+            alt={title + " image"}
+            src={urlFor(mainImage).url()}
+            width={150}
+            height={150}
+          />
         </div>
-        {/* content */}
         <div className={styles.content}>
           <div className={styles.info}>
             <h2 className="pt-4 pb-4 px-2 text-lg text-center text-ellipsis">
@@ -58,11 +59,15 @@ const CourseCard = ({ course }) => {
         {/* card */}
         <div className="bg-blue flex justify-center items-center w-full rounded-t-xl rounded-b-none">
           {/* imgBx */}
-          <img
-            className="max-w-[150px]"
-            alt={title + " image"}
-            src={urlFor(mainImage)}
-          />
+          {
+            <Image
+              className="max-w-[150px]"
+              alt={title + " image"}
+              src={urlFor(mainImage).url()}
+              width={150}
+              height={150}
+            />
+          }
         </div>
         <hr />
         <div className="flex flex-col flex-wrap justify-evenly items-center ">

@@ -6,7 +6,6 @@ import groq from "groq";
 import Link from "next/link";
 
 const Courses = ({ courses, benefits }) => {
-  console.log(benefits, "COURSES");
   return (
     <>
       <Layout
@@ -23,14 +22,15 @@ const Courses = ({ courses, benefits }) => {
 
 export async function getStaticProps() {
   const courses = await getClient()
-    .fetch(groq`*[_type == "course"] | order(title asc){
+    .fetch(groq`*[_type == "course"] | order(order asc){
     _id,
+    order,
     title,
+    mainImage,
       description,
       price,
-    commissions,
+    "commissions": commissions[]->{_id,commissionName,duration,dates, modality},
       body,
-      mainImage,
       slug
   }`);
 
@@ -38,9 +38,11 @@ export async function getStaticProps() {
     groq`*[_type == "benefit"] | order(title asc){
       _id,
       title,
+      mainImage,
       description
     }`
   );
+
   return {
     props: {
       courses,

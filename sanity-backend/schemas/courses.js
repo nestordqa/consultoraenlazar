@@ -24,6 +24,12 @@ export default {
       validation: (Rule) => Rule.required().positive(),
     },
     {
+      name: 'order',
+      type: 'number',
+      title: 'Orden de importancia',
+      validation: (Rule) => Rule.required().positive(),
+    },
+    {
       name: 'mainImage',
       type: 'image',
       title: 'Imagen',

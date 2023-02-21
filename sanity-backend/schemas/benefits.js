@@ -13,12 +13,12 @@ export default {
         maxLength: 96,
       },
     },
-    /* {
+    {
       name: 'mainImage',
       type: 'image',
       title: 'Imagen',
       options: {hotspot: true},
-    }, */
+    },
     {name: 'description', type: 'text', title: 'Descripción'},
   ],
 }
