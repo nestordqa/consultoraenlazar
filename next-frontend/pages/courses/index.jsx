@@ -1,11 +1,11 @@
 import { LearnWithUs } from "@/components/home/LearnWithUs";
 import { Layout } from "@/components/Layout";
+import { urlFor } from "@/lib/sanity";
 import { getClient } from "@/lib/sanity.server";
 import groq from "groq";
 import Link from "next/link";
 
-const Courses = ({ courses }) => {
-  console.log(courses, "COURSES");
+const Courses = ({ courses, benefits }) => {
   return (
     <>
       <Layout
@@ -14,7 +14,7 @@ const Courses = ({ courses }) => {
           "Cursos y capcitaciones de Consultora Enlazar para empresas e individuos"
         }
       >
-        <LearnWithUs courses={courses} />
+        <LearnWithUs courses={courses} benefits={benefits} />
       </Layout>
     </>
   );
@@ -22,21 +22,33 @@ const Courses = ({ courses }) => {
 
 export async function getStaticProps() {
   const courses = await getClient()
-    .fetch(groq`*[_type == "course"] | order(title asc){
+    .fetch(groq`*[_type == "course"] | order(order asc){
     _id,
+    order,
     title,
+    mainImage,
       description,
       price,
-    commissions,
+    "commissions": commissions[]->{_id,commissionName,duration,dates, modality},
       body,
-      mainImage,
       slug
   }`);
+
+  const benefits = await getClient().fetch(
+    groq`*[_type == "benefit"] | order(title asc){
+      _id,
+      title,
+      mainImage,
+      description
+    }`
+  );
 
   return {
     props: {
       courses,
+      benefits,
     },
   };
 }
+
 export default Courses;
