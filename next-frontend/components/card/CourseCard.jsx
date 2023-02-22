@@ -55,7 +55,7 @@ const CourseCard = ({ course }) => {
         </div>
       </div>
       {/* Cards responsive */}
-      <div className=" lg:hidden flex flex-col justify-evenly items-start ease-in-out bg-white max-w-xs relative rounded-2xl shadow-2xl outline-offset-8">
+      <div className="lg:hidden flex flex-col justify-evenly items-start ease-in-out bg-white max-w-xs relative rounded-2xl shadow-2xl outline-offset-8">
         {/* card */}
         <div className="bg-blue flex justify-center items-center w-full rounded-t-xl rounded-b-none">
           {/* imgBx */}

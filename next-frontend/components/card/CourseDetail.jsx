@@ -67,11 +67,32 @@ const StyledTitle = styled(DialogTitle)({
 
 const DetailsComponents = {
   block: {
+    h2: ({ children }) => {
+      return (
+        <h2 className="py-4 px-2 text-2xl text-darkBlue border-y-[1px]">
+          {children}
+        </h2>
+      );
+    },
     h3: ({ children }) => {
       return (
         <h3 className="py-4 px-2 text-xl text-darkBlue border-y-[1px]">
           {children}
         </h3>
+      );
+    },
+    h4: ({ children }) => {
+      return (
+        <h4 className="py-4 px-2 text-lg text-darkBlue border-y-[1px]">
+          {children}
+        </h4>
+      );
+    },
+    h5: ({ children }) => {
+      return (
+        <h5 className="py-4 px-2 text-base text-darkBlue border-y-[1px]">
+          {children}
+        </h5>
       );
     },
     p: ({ children }) => {
