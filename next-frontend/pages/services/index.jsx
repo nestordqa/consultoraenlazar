@@ -1,16 +1,21 @@
 import { Layout } from "@/components/Layout";
 import logoIndividuos from 'public/images/card-individuos-grupos.webp'
 import Image from "next/image";
+import { getClient } from "@/lib/sanity.server";
+import groq from "groq";
+import ServicesCard from "@/components/card/ServicesCard";
 
 
-const Services = () => {
+
+const Services = ({services}) => {
+  console.log(services)
   return (
     <>
       <Layout
         title={"Servicios"}
         content={"Servicios de Consultora Enlazar para empresas e individuos."}
       >
-
+        <div className="">
           <div className="flex text-center justify-center gap-10 p-8 max-h-[450px] ">
             <div className="flex justify-center ">
               <div className="rounded-2xl shadow-lg bg-blue w-72 ">
@@ -39,8 +44,33 @@ const Services = () => {
               </div>
             </div>
           </div>
+
+        <ServicesCard services={services}/>
+        </div>
+
+        
+          
       </Layout>
     </>
   );
 };
+export async function getStaticProps() {
+  const services = await getClient()
+    .fetch(groq`*[_type == "services"] | order(title desc){
+    _id,
+    title,
+    mainImage,
+      description,
+      mainImage,
+      slug,
+      "categories": categories[]->{categoryName, description},
+      "provider": provider->{providerName}
+  }`);
+
+  return {
+    props: {
+      services,
+    },
+  };
+}
 export default Services;

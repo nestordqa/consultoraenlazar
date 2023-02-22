@@ -1,7 +1,7 @@
 export default {
-    name: 'course',
+    name: 'services',
     type: 'document',
-    title: 'Courses',
+    title: 'Servicios',
     fields: [
       {
         name: 'title',
@@ -18,32 +18,27 @@ export default {
         },
       },
       {
-        name: 'price',
-        type: 'number',
-        title: 'Precio',
-        validation: (Rule) => Rule.required().positive(),
-      },
-      {
         name: 'mainImage',
         type: 'image',
         title: 'Imagen',
         options: {hotspot: true},
       },
       {
-        name: 'commissions',
+        name: 'provider',
+        type: 'reference',
+        title: 'Proveedor',
+        to: {type: 'provider'},
+      },
+      {
+        name: 'categories',
         type: 'array',
-        title: 'Comisiones',
-        of: [{type: 'commission'}],
+        title: 'Categorias',
+        of: [{type: 'reference', to: {type: 'category'}}],
       },
       {
         name: 'description',
         type: 'text',
-        title: 'Sinopsis',
-      },
-      {
-        name: 'body',
-        type: 'blockContent',
-        title: 'Detalle',
+        title: 'Descripción',
       },
       {
         name: 'publishedAt',
