@@ -14,4 +14,10 @@ export default {
       },
     },
   ],
+  /*   preview: {
+      select: {
+        title: 'username',
+        media: 'avatar',
+      },
+    }, */
 }
