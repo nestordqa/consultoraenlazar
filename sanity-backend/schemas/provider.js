@@ -6,19 +6,12 @@ export default {
     {name: 'providerName', type: 'string', title: 'Nombre del proveedor, ej. Consultora Enlazar'},
     {
       name: 'slug',
-      title: 'Slug',
+      title: 'Identificador',
       type: 'slug',
       options: {
-        source: 'username',
+        source: 'providerName',
         maxLength: 96,
       },
     },
-    /* {name: 'bio', type: 'text', title: 'Bio'}, */
   ],
-  /*   preview: {
-      select: {
-        title: 'username',
-        media: 'avatar',
-      },
-    }, */
 }
