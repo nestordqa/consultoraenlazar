@@ -41,7 +41,7 @@ export const Footer = () => {
                   <Image
                     className="min-w-[60px]"
                     width={60}
-                    height={60}
+                    height={"auto"}
                     src={logo}
                     alt="Logo Consultora Enlazar"
                   />
