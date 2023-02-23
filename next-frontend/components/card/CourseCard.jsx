@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "./CourseCard.module.css";
 import Details from "./CourseDetail";
-import ScrollDialog, { Coursedetail } from "./CourseDetail";
 
 const CourseCard = ({ course }) => {
   const { title, description, mainImage } = course;
@@ -55,7 +54,7 @@ const CourseCard = ({ course }) => {
         </div>
       </div>
       {/* Cards responsive */}
-      <div className="lg:hidden flex flex-col justify-evenly items-start ease-in-out bg-white max-w-xs relative rounded-2xl shadow-2xl outline-offset-8">
+      <div className="lg:hidden flex flex-col justify-start items-start ease-in-out bg-white max-w-xs h-[480px] relative rounded-2xl shadow-2xl outline-offset-8">
         {/* card */}
         <div className="bg-blue flex justify-center items-center w-full rounded-t-xl rounded-b-none">
           {/* imgBx */}
@@ -75,7 +74,7 @@ const CourseCard = ({ course }) => {
           <h2 className="pt-4 pb-4 px-2 text-lg">
             <strong>{title}</strong>
           </h2>
-          <p className="text-center text-ellipsis pt-2 pb-4 px-2">
+          <p className="text-center text-ellipsis pt-2 pb-6 px-2">
             {description}
           </p>
           <button
