@@ -116,11 +116,11 @@ export default function PrivacyPolicy({ handleClose, open, scroll }) {
           <p>
             El contenido de este Sitio Web, incluyendo, pero no limitado a,
             textos, imágenes, gráficos, diseños, logotipos, software y cualquier
-            otro material (en adelante, el "Contenido"), está protegido por
-            derechos de propiedad intelectual, incluyendo derechos de autor,
-            marcas registradas y otros derechos similares. El uso no autorizado
-            del Contenido está estrictamente prohibido y puede dar lugar a
-            responsabilidad civil o penal.
+            otro material (en adelante, el &quot;Contenido&quot;), está
+            protegido por derechos de propiedad intelectual, incluyendo derechos
+            de autor, marcas registradas y otros derechos similares. El uso no
+            autorizado del Contenido está estrictamente prohibido y puede dar
+            lugar a responsabilidad civil o penal.
           </p>
           <br />
           <h3>
@@ -176,7 +176,8 @@ export default function PrivacyPolicy({ handleClose, open, scroll }) {
           </h3>
           <p>
             La empresa responsable del tratamiento de los datos personales es
-            Enlazar (en adelante, "nosotros" o "la empresa").
+            Enlazar (en adelante, &quot;nosotros&quot; o &quot;la
+            empresa&quot;).
           </p>
           <br />
           <h3>
