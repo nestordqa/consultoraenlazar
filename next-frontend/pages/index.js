@@ -10,12 +10,12 @@ import { WeAre } from "@/components/home/WeAre";
 const Home = () => {
   return (
     <>
-      <Layout 
+      <Layout
         title={"Inicio"}
         content={"Consultora Enlazar - Se parte del futuro del capital Humano"}
       >
         <>
-          <Landing/>
+          <Landing />
           {/*<WeAre/>
           <Goal/>
           <OurServices/>

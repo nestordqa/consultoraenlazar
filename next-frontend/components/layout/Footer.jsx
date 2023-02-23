@@ -9,8 +9,21 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import logo from "public/images/isotipo-enlazar-blanco.png";
+import { useState } from "react";
+import PrivacyPolicy from "../privacyPolitics/PrivacyPolicy";
 
 export const Footer = () => {
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState("paper");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const gradient = {
     background: "linear-gradient(180deg, #043959 0%, #34668a 100%) ",
   };
@@ -29,6 +42,9 @@ export const Footer = () => {
   };
   return (
     <>
+      {open ? (
+        <PrivacyPolicy handleClose={handleClose} scroll={scroll} open={open} />
+      ) : null}
       <footer
         style={gradient}
         className="flex flex-col items-center justify-center w-full "
@@ -70,11 +86,12 @@ export const Footer = () => {
                     </Link>
                   </li>
                   <li className="sm:border-r sm:border-solid sm:border-r-white px-2 py-0 xsm:max-sm:pb-3">
-                    <Link href="#" className="hover:font-bold">
-                      <p className="whitespace-nowrap">
-                        Politica de Privacidad
-                      </p>
-                    </Link>
+                    <button
+                      onClick={handleClickOpen}
+                      className="hover:font-bold whitespace-nowrap"
+                    >
+                      Politica de Privacidad
+                    </button>
                   </li>
                   <li className="pl-2 pr-2 xsm:max-sm:pb-3">
                     <Link href="/contact" className="hover:font-bold">
