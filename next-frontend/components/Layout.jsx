@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { Navbar } from "./layout/Navbar";
 import { Footer } from "./layout/Footer";
+import Link from "next/link";
 
 export const Layout = ({ title, content, children }) => {
   return (
@@ -19,77 +20,77 @@ export const Layout = ({ title, content, children }) => {
           content="Recursos humanos, psicologia, psicología laboral, consultora enlazar, enlazar, consultoría, relaciones laborales, trabajo, educación, capital humano, talento, cursos, cursos online, capacitaciones, webinars gratuitos, curriculum, revisión de cv, empleabilidad, orientación vocacional, calidad de trabajo, comunidad, encontrar empleo, desarrollo profesional, reclutamiento, selección de personal, recruiting, coaching, acompañamiento personalizado, asesorías, recursos gratis, consultas, cosching, experiencia laboral,"
         />
         <title>{title} - Consultora Enlazar.</title>
-        <link rel="icon" href="/images/favicon/favicon.ico" />
-        <link
+        <Link rel="icon" href="/images/favicon/favicon.ico" />
+        <Link
           rel="apple-touch-icon"
           sizes="57x57"
           href="/images/favicon/apple-icon-57x57.png"
         />
-        <link
+        <Link
           rel="apple-touch-icon"
           sizes="60x60"
           href="/images/favicon/apple-icon-60x60.png"
         />
-        <link
+        <Link
           rel="apple-touch-icon"
           sizes="72x72"
           href="/images/favicon/apple-icon-72x72.png"
         />
-        <link
+        <Link
           rel="apple-touch-icon"
           sizes="76x76"
           href="/images/favicon/apple-icon-76x76.png"
         />
-        <link
+        <Link
           rel="apple-touch-icon"
           sizes="114x114"
           href="/images/favicon/apple-icon-114x114.png"
         />
-        <link
+        <Link
           rel="apple-touch-icon"
           sizes="120x120"
           href="/images/favicon/apple-icon-120x120.png"
         />
-        <link
+        <Link
           rel="apple-touch-icon"
           sizes="144x144"
           href="/images/favicon/apple-icon-144x144.png"
         />
-        <link
+        <Link
           rel="apple-touch-icon"
           sizes="152x152"
           href="/images/favicon/apple-icon-152x152.png"
         />
-        <link
+        <Link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/images/favicon/apple-icon-180x180.png"
         />
-        <link
+        <Link
           rel="icon"
           type="image/png"
           sizes="192x192"
           href="/images/favicon/android-icon-192x192.png"
         />
-        <link
+        <Link
           rel="icon"
           type="image/png"
           sizes="32x32"
           href="/images/favicon/favicon-32x32.png?v=2"
         />
-        <link
+        <Link
           rel="icon"
           type="image/png"
           sizes="96x96"
           href="/images/favicon/favicon-96x96.png?v=2"
         />
-        <link
+        <Link
           rel="icon"
           type="image/png"
           sizes="16x16"
           href="/images/favicon/favicon-16x16.png?v=2"
         />
-        <link rel="manifest" href="/images/favicon/manifest.json" />
+        <Link rel="manifest" href="/images/favicon/manifest.json" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta
           name="msapplication-TileImage"

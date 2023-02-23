@@ -40,6 +40,7 @@ export const Navbar = () => {
                 width: "200px",
                 height: "37.5px",
               }}
+              priority={true}
               alt="Consultora Enlazar Logo"
             />
           </Link>
