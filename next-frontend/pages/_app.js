@@ -7,7 +7,7 @@ import PrivacyPolicy from "@/components/privacyPolitics/PrivacyPolicy";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-
+  /* 
   useEffect(() => {
     const handleRouteChange = (url) => {
       window.gtag("config", process.env.NEXT_PUBLIC_ID_GOOGLE_ANALYTICS, {
@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
-
+ */
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
 
@@ -36,10 +36,9 @@ export default function App({ Component, pageProps }) {
       {open ? (
         <PrivacyPolicy handleClose={handleClose} scroll={scroll} open={open} />
       ) : null}
-      <CookieConsent
+      {/*      <CookieConsent
         location="bottom"
         buttonText="Sí, utilizar cookies"
-        onAccept={() => location.reload()}
         cookieName="CookieConsent"
         expires={150}
         enableDeclineButton="true"
@@ -82,7 +81,7 @@ export default function App({ Component, pageProps }) {
         >
           <strong>Política de Protección de Datos</strong>
         </Link>
-      </CookieConsent>
+      </CookieConsent> */}
     </>
   );
 }
