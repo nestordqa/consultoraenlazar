@@ -44,48 +44,44 @@ export default function App({ Component, pageProps }) {
         expires={150}
         enableDeclineButton="true"
         declineButtonText="No, no utilizar cookies"
+        contentStyle={{ flex: "1 0 150px" }}
         style={{
           right: 0,
           left: "auto",
-          justifyContent: "center",
           backgroundColor: "#34668b",
-          display: "flex",
           flexDirection: "column",
         }}
       >
-        <div className="flex flex-col items-start justify-center">
-          <p>
-            Utilizamos cookies propias y de terceros para obtener datos
-            estadísticos de la navegación de nuestros usuarios y mejorar
-            nuestros servicios. Si acepta o continúa navegando, consideramos que
-            acepta su uso. Puede cambiar la configuración ingresa{" "}
-            <Link
-              href={
-                "https://support.google.com/accounts/answer/61416?hl=es-419&co=GENIE.Platform%3DDesktop"
-              }
-              target="_blank"
-              className="font-bold"
-            >
-              aquí
-            </Link>
-            , para obtener más información{" "}
-            <button onClick={handleClickOpen} className="font-bold">
-              aquí
-            </button>
-          </p>
-          <br />
-          <p className="mb-3">
-            Respetamos la política de protección de datos, para saber más
-            visita:
-          </p>
+        <p>
+          Utilizamos cookies propias y de terceros para obtener datos
+          estadísticos de la navegación de nuestros usuarios y mejorar nuestros
+          servicios. Si acepta o continúa navegando, consideramos que acepta su
+          uso. Puede cambiar la configuración ingresa{" "}
           <Link
-            href="http://servicios.infoleg.gob.ar/infolegInternet/anexos/60000-64999/64790/norma.htm"
+            href={
+              "https://support.google.com/accounts/answer/61416?hl=es-419&co=GENIE.Platform%3DDesktop"
+            }
             target="_blank"
-            className="border p-2 w-64"
+            className="font-bold"
           >
-            <strong>Política de Protección de Datos</strong>
+            aquí
           </Link>
-        </div>
+          , puedes obtener más información sobre nuestros términos y condiciones{" "}
+          <button onClick={handleClickOpen} className="font-bold">
+            aquí
+          </button>
+        </p>
+        <br />
+        <p className="mb-3">
+          Respetamos la política de protección de datos, para saber más visita:
+        </p>
+        <Link
+          href="http://servicios.infoleg.gob.ar/infolegInternet/anexos/60000-64999/64790/norma.htm"
+          target="_blank"
+          className="border p-2 w-64"
+        >
+          <strong>Política de Protección de Datos</strong>
+        </Link>
       </CookieConsent>
     </>
   );
