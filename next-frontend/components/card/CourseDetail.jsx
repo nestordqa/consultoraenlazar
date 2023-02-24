@@ -7,6 +7,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { PortableText } from "@portabletext/react";
 import { styled } from "@mui/system";
+import closeIcon from "public/images/x-cerrar.svg";
+import Image from "next/image";
 
 const StyledDialog = styled(Dialog)({
   "& .MuiDialog-paper": {
@@ -40,13 +42,12 @@ const StyledCloseButton = styled(Button)({
   backgroundColor: "white",
   color: "black",
   fontWeight: "bold",
-  fontSize: "18px",
   fontFamily: "Noah Text",
   borderRadius: "5rem",
-  padding: "2px",
+  padding: "0",
   marginTop: "10px",
   marginRight: "10px",
-  border: "2px solid #323232",
+  minWidth: "40px",
   alignSelf: "flex-end",
   "&:hover": {
     backgroundColor: "white",
@@ -101,7 +102,13 @@ const DetailsComponents = {
   },
 };
 
-export default function Details({ handleClose, open, scroll, course }) {
+export default function Details({
+  handleOpenForm,
+  handleClose,
+  open,
+  scroll,
+  course,
+}) {
   return (
     <div>
       <StyledDialog
@@ -112,7 +119,13 @@ export default function Details({ handleClose, open, scroll, course }) {
         aria-describedby="scroll-dialog-description"
       >
         <StyledCloseButton variant="contained" onClick={handleClose}>
-          X
+          <Image
+            src={closeIcon}
+            alt="Logo cerrar detalles"
+            priority={true}
+            width={40}
+            height={40}
+          />
         </StyledCloseButton>
         <StyledTitle id="scroll-dialog-title">{course.title}</StyledTitle>
         <StyledDialogContent dividers={scroll === "paper"}>
@@ -141,7 +154,7 @@ export default function Details({ handleClose, open, scroll, course }) {
           ) : null}
         </StyledDialogContent>
         <StyledDialogActions>
-          <StyledButton variant="contained" onClick={handleClose}>
+          <StyledButton variant="contained" onClick={handleOpenForm}>
             Consultar
           </StyledButton>
           <StyledButton variant="contained" onClick={handleClose}>

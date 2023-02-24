@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import CourseCard from "../card/CourseCard";
 import diploma from "public/images/Diploma.png";
-import { urlFor } from "@/lib/sanity";
-import styles from "./Benefits.module.css";
+
+import BenefitCard from "../card/BenefitCard";
 
 export const LearnWithUs = ({ courses, benefits }) => {
   return (
@@ -15,8 +15,8 @@ export const LearnWithUs = ({ courses, benefits }) => {
       </div>
       <div className="flex flex-row flex-wrap justify-center items-center h-auto gap-6 px-6 py-10 max-w-full lg:relative lg:flex-row lg:flex-wrap lg:justify-around lg:items-center lg:px-4 lg:py-14 bg-grey">
         {courses &&
-          courses.map((course) => (
-            <CourseCard key={course._id} course={course} />
+          courses.map((course, index) => (
+            <CourseCard key={index} course={course} />
           ))}
       </div>
       <div className="flex flex-col justify-center items-center p-8 md:p-20">
@@ -40,22 +40,7 @@ export const LearnWithUs = ({ courses, benefits }) => {
         </h2>
         <div className="flex flex-col p-5 md:flex-row flex-wrap justify-evenly items-center mb-8">
           {benefits?.map((benefit) => {
-            return (
-              <div key={benefit._id} className={styles.card}>
-                <div className={styles.cardImg}>
-                  <Image
-                    alt={benefit.title + " image"}
-                    src={urlFor(benefit.mainImage).url()}
-                    width={90}
-                    height={90}
-                    className="rounded-[50%] flex self-center translate-y-2 translate-x-2 shadow-2xl"
-                  />
-                </div>
-                <div className={styles.cardInfo}>
-                  <p className={styles.textBody}>{benefit.description}</p>
-                </div>
-              </div>
-            );
+            return <BenefitCard key={benefit._id} benefit={benefit} />;
           })}
         </div>
       </div>

@@ -1,20 +1,49 @@
 import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 import { useState } from "react";
+import ConsultationForm from "../forms/ConsultationForm";
 import styles from "./CourseCard.module.css";
 import Details from "./CourseDetail";
 
 const CourseCard = ({ course }) => {
   const { title, description, mainImage } = course;
+
+  //Detail component functions
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
-
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  //Form component functions
+  const [openForm, setOpenForm] = useState(false);
+
+  const handleOpenForm = () => {
+    setOpenForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setOpenForm(false);
+  };
+  let [input, setInput] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    consultation: "",
+  });
+  let [error, setError] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    consultation: "",
+  });
+
+  const handleInputChange = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -26,6 +55,14 @@ const CourseCard = ({ course }) => {
           course={course}
           scroll={scroll}
           handleClose={handleClose}
+          handleOpenForm={handleOpenForm}
+        />
+      ) : null}
+      {openForm ? (
+        <ConsultationForm
+          handleCloseForm={handleCloseForm}
+          input={input}
+          handleInputChange={handleInputChange}
         />
       ) : null}
       {/* Cards a partir de 1024px */}
