@@ -9,7 +9,7 @@ export default {
             title: 'Nombre'
         },
         {
-            name: 'profilePic',
+            name: 'photo',
             type: 'image',
             title: 'Foto',
         },
