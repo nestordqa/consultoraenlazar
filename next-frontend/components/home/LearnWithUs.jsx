@@ -15,8 +15,8 @@ export const LearnWithUs = ({ courses, benefits }) => {
       </div>
       <div className="flex flex-row flex-wrap justify-center items-center h-auto gap-6 px-6 py-10 max-w-full lg:relative lg:flex-row lg:flex-wrap lg:justify-around lg:items-center lg:px-4 lg:py-14 bg-grey">
         {courses &&
-          courses.map((course, index) => (
-            <CourseCard key={index} course={course} />
+          courses.map((course) => (
+            <CourseCard key={course._id} course={course} />
           ))}
       </div>
       <div className="flex flex-col justify-center items-center p-8 md:p-20">
