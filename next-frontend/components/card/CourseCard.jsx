@@ -113,14 +113,14 @@ const CourseCard = ({ course, handleOpenForm }) => {
         <hr />
         <div className="flex flex-col flex-wrap justify-evenly items-center ">
           {/* content */}
-          <h2 className="pt-4 pb-4 px-2 text-lg">
+          <h2 className="pt-4 pb-2 px-2 text-lg text-center">
             <strong>{title}</strong>
           </h2>
-          <p className="text-center text-ellipsis pt-2 pb-6 px-2">
+          <p className="text-center text-ellipsis pt-2 pb-2 px-2 overflow-y-auto max-h-56">
             {description}
           </p>
           <button
-            className="bg-yellow rounded-2xl py-1 px-8 font-bold uppercase mb-2"
+            className="bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-2 "
             onClick={handleClickOpen}
           >
             Ver detalles

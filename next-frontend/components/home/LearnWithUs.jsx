@@ -53,7 +53,7 @@ export const LearnWithUs = ({ courses, benefits }) => {
             Todo lo que vas a encontrar:
           </h3>
         </div>
-        <div className="flex flex-row flex-wrap justify-center items-center h-auto gap-6 px-6 py-10 max-w-full lg:relative lg:flex-row lg:flex-wrap lg:justify-around lg:items-center lg:px-4 lg:py-14 bg-grey">
+        <div className="flex flex-col flex-wrap justify-center items-center h-auto gap-6 px-6 py-10 w-full lg:relative lg:flex-row lg:flex-wrap lg:justify-around lg:items-center lg:px-4 lg:py-14 bg-grey">
           {courses &&
             courses.map((course) => (
               <CourseCard
@@ -62,8 +62,14 @@ export const LearnWithUs = ({ courses, benefits }) => {
                 handleOpenForm={handleOpenForm}
               />
             ))}
+
+          <div className="flex justify-center items-center w-full py-6">
+            <p className="font-semibold text-center text-xl w-2/4 text-ellipsis lg:w-1/4">
+              Actualizamos el contenido y brindamos más cursos cada año.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col justify-center items-center p-8 md:p-20">
+        <div className="flex flex-col justify-center items-center p-8 md:p-20 flex-wrap">
           <h2 className=" p-14 font-bold text-2xl text-center text-ellipsis md:text-3xl md:pb-10 border-t-2">
             ¡Este será tu certificado!
           </h2>
