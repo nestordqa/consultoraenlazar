@@ -1,21 +1,55 @@
 import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 import { useState } from "react";
+import ConsultationForm from "../forms/ConsultationForm";
 import styles from "./CourseCard.module.css";
 import Details from "./CourseDetail";
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, handleOpenForm }) => {
   const { title, description, mainImage } = course;
+
+  //Detail component functions
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
-
-  const handleClickOpen = () => {
+  const handleClickOpen = (e) => {
+    e.preventDefault();
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.preventDefault();
     setOpen(false);
   };
+
+  //Form component functions
+  /* const [openForm, setOpenForm] = useState(false);
+
+  const handleOpenForm = (e) => {
+    e.preventDefault();
+    setOpenForm(true);
+  };
+
+  const handleCloseForm = (e) => {
+    e.preventDefault();
+    setOpenForm(false);
+  };
+  let [input, setInput] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    consultation: "",
+  });
+  let [error, setError] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    consultation: "",
+  });
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }; */
 
   return (
     <>
@@ -26,8 +60,16 @@ const CourseCard = ({ course }) => {
           course={course}
           scroll={scroll}
           handleClose={handleClose}
+          handleOpenForm={handleOpenForm}
         />
       ) : null}
+      {/* {openForm ? (
+        <ConsultationForm
+          handleCloseForm={handleCloseForm}
+          input={input}
+          handleInputChange={handleInputChange}
+        />
+      ) : null} */}
       {/* Cards a partir de 1024px */}
       <div className={styles.card}>
         <div className={styles.imgBox}>
