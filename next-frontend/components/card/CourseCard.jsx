@@ -6,7 +6,6 @@ import Details from "./CourseDetail";
 
 const CourseCard = ({ course, handleOpenForm }) => {
   const { title, description, mainImage } = course;
-
   //Detail component functions
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
