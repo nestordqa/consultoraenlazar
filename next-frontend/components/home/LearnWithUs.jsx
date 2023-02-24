@@ -19,33 +19,10 @@ export const LearnWithUs = ({ courses, benefits }) => {
     e.preventDefault();
     setOpenForm(false);
   };
-  let [input, setInput] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    consultation: "",
-  });
-  let [error, setError] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    consultation: "",
-  });
-
-  const handleInputChange = (e) => {
-    e.preventDefault();
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
 
   return (
     <>
-      {openForm ? (
-        <ConsultationForm
-          handleCloseForm={handleCloseForm}
-          input={input}
-          handleInputChange={handleInputChange}
-        />
-      ) : null}
+      {openForm ? <ConsultationForm handleCloseForm={handleCloseForm} /> : null}
 
       <div className="bg-white w-full h-auto lg:min-h-screen flex flex-col justify-center items-center">
         <div className="flex justify-center items-center w-full h-auto pb-6 md:pb-12 bg-grey">

@@ -109,7 +109,7 @@ export default function Details({
   course,
 }) {
   return (
-    <div>
+    <>
       <StyledDialog
         open={open}
         onClose={handleClose}
@@ -161,6 +161,6 @@ export default function Details({
           </StyledButton>
         </StyledDialogActions>
       </StyledDialog>
-    </div>
+    </>
   );
 }
