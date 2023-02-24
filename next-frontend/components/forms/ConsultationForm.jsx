@@ -14,8 +14,8 @@ const styledLogo = {
 const ConsultationForm = ({ handleCloseForm, input, handleInputChange }) => {
   return (
     <>
-      <div className="fixed top-0 bottom-0 right-0 left-0 w-full h-full z-[2000] flex justify-center items-start bg-opacity-20 bg-black py-28 px-5 md:pb-0">
-        <div className="bg-white flex flex-col justify-center items-start w-full h-full md:h-[600px] md:w-2/4 rounded-2xl m-4">
+      <div className="fixed top-0 bottom-0 right-0 left-0 w-full h-full z-[2000] flex justify-center items-center bg-opacity-20 bg-black py-8 md:py-8 px-5 md:pb-0">
+        <div className="bg-white flex flex-col justify-center items-start w-full md:max-h-[600px] lg:w-3/4 lg:h-[600px] rounded-2xl m-4">
           <button
             className="flex justify-start self-end right-0 top-0 relative"
             onClick={handleCloseForm}
@@ -83,7 +83,7 @@ const ConsultationForm = ({ handleCloseForm, input, handleInputChange }) => {
                 value={input.consultation}
                 onChange={handleInputChange}
                 placeholder="Escribí tu consulta aqui"
-                className="flex w-full h-3/4 py-2 px-4 border border-solid border-grey rounded-xl text-lg placeholder:text-start "
+                className="flex w-full h-3/4 py-4 px-4 border border-solid border-grey rounded-xl text-lg placeholder:text-start "
                 required
                 disabled={false}
               />

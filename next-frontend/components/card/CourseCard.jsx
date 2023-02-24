@@ -1,7 +1,6 @@
 import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 import { useState } from "react";
-import ConsultationForm from "../forms/ConsultationForm";
 import styles from "./CourseCard.module.css";
 import Details from "./CourseDetail";
 
@@ -21,36 +20,6 @@ const CourseCard = ({ course, handleOpenForm }) => {
     setOpen(false);
   };
 
-  //Form component functions
-  /* const [openForm, setOpenForm] = useState(false);
-
-  const handleOpenForm = (e) => {
-    e.preventDefault();
-    setOpenForm(true);
-  };
-
-  const handleCloseForm = (e) => {
-    e.preventDefault();
-    setOpenForm(false);
-  };
-  let [input, setInput] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    consultation: "",
-  });
-  let [error, setError] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    consultation: "",
-  });
-
-  const handleInputChange = (e) => {
-    e.preventDefault();
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }; */
-
   return (
     <>
       {open ? (
@@ -63,13 +32,7 @@ const CourseCard = ({ course, handleOpenForm }) => {
           handleOpenForm={handleOpenForm}
         />
       ) : null}
-      {/* {openForm ? (
-        <ConsultationForm
-          handleCloseForm={handleCloseForm}
-          input={input}
-          handleInputChange={handleInputChange}
-        />
-      ) : null} */}
+
       {/* Cards a partir de 1024px */}
       <div className={styles.card}>
         <div className={styles.imgBox}>
@@ -97,22 +60,17 @@ const CourseCard = ({ course, handleOpenForm }) => {
       </div>
       {/* Cards responsive */}
       <div className="lg:hidden flex flex-col justify-start items-start ease-in-out bg-white max-w-xs h-[480px] relative rounded-2xl shadow-2xl outline-offset-8">
-        {/* card */}
         <div className="bg-blue flex justify-center items-center w-full rounded-t-xl rounded-b-none">
-          {/* imgBx */}
-          {
-            <Image
-              className="max-w-[150px]"
-              alt={title + " image"}
-              src={urlFor(mainImage).url()}
-              width={150}
-              height={150}
-            />
-          }
+          <Image
+            className="max-w-[150px]"
+            alt={title + " image"}
+            src={urlFor(mainImage).url()}
+            width={150}
+            height={150}
+          />
         </div>
         <hr />
         <div className="flex flex-col flex-wrap justify-evenly items-center ">
-          {/* content */}
           <h2 className="pt-4 pb-2 px-2 text-lg text-center">
             <strong>{title}</strong>
           </h2>
