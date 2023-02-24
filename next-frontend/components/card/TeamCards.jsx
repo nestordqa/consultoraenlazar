@@ -1,9 +1,8 @@
-import MemberCard from "./MemberCards"
+import MemberCard from "./MemberCard"
 
 const TeamCards = ({ team }) => {
-    console.log(team);
     return (
-        <div>
+        <div class='flex flex-wrap justify-start w-4/5'>
             {
                 team && team.map((member, index) => (
                     <MemberCard 
