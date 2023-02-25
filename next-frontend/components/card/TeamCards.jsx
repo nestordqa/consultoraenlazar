@@ -2,11 +2,11 @@ import MemberCard from "./MemberCard"
 
 const TeamCards = ({ team }) => {
     return (
-        <div class='flex flex-wrap justify-start w-4/5'>
+        <div className='flex flex-wrap w-9/12 justify-center sm:justify-between'>
             {
                 team && team.map((member, index) => (
                     <MemberCard 
-                        id={index}
+                        key={index}
                         image={member.photo}
                         name={member.name}
                         jobTitle={member.jobTitle}
