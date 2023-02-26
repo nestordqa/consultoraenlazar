@@ -1,6 +1,6 @@
 import TeamCards from "@/components/card/TeamCards";
 import { Layout } from "@/components/Layout";
-import { getClient } from "@/lib/sanity.server";
+import { loadTeam } from "@/lib/loadTeamMembers";
 
 const Team = ({ team }) => {
   return (
@@ -25,7 +25,7 @@ const Team = ({ team }) => {
 };
 
 export async function getStaticProps() {
-  const team = await getClient().fetch(`*[_type == 'team']`)
+  const team = await loadTeam()
   return {
     props: {
       team
