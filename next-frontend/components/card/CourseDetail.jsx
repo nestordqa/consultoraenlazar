@@ -43,8 +43,8 @@ const DetailsComponents = {
 export default function Details({ handleOpenForm, handleClose, open, course }) {
   return (
     <>
-      <div className="fixed z-[300] inset-0 font-Noah">
-        <div className="flex items-center justify-center min-h-screen pt-30 px-4 pb-5 md:pb-20 text-center sm:block sm:p-0">
+      <div className="fixed z-[300] inset-0 font-Noah overflow-y-auto">
+        <div className="flex items-center justify-center max-h-screen pt-30 px-4 pb-5 md:pb-20 text-center sm:block sm:p-0">
           <div className="fixed inset-0 transition-opacity" aria-hidden="true">
             <div className="absolute inset-0 bg-black opacity-50"></div>
           </div>
@@ -56,7 +56,7 @@ export default function Details({ handleOpenForm, handleClose, open, course }) {
             &#8203;
           </span>
 
-          <div className="inline-block align-bottom  overflow-y-auto rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle sm:max-w-2xl sm:w-full">
+          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle sm:max-w-2xl sm:w-full">
             <div className="bg-blue px-4 py-3 rounded-t-lg">
               <button
                 className="float-right transition duration-150 ease-in-out bg-white rounded-full ml-4 mb-4 top-0 h-8 md:h-10"
