@@ -24,11 +24,9 @@ const ConsultationForm = ({ handleCloseForm }) => {
     email: "",
     consultation: "",
   });
-  console.log("soy el input", input);
 
   const handleInputChange = (e) => {
     e.preventDefault();
-    console.log("soy el evento", e);
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
