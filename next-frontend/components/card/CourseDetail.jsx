@@ -1,82 +1,21 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import { PortableText } from "@portabletext/react";
-import { styled } from "@mui/system";
 import closeIcon from "public/images/x-cerrar.svg";
 import Image from "next/image";
-
-const StyledDialog = styled(Dialog)({
-  "& .MuiDialog-paper": {
-    backgroundColor: "#34668b",
-    fontFamily: "Noah Text",
-  },
-});
-
-const StyledDialogContent = styled(DialogContent)({
-  backgroundColor: "white",
-  padding: "1rem",
-});
-const StyledDialogActions = styled(DialogActions)({
-  backgroundColor: "white",
-});
-
-const StyledButton = styled(Button)({
-  backgroundColor: "#ecbf48",
-  color: "black",
-  fontWeight: "bold",
-  borderRadius: "1rem",
-  padding: "0.25rem 2rem 0.25rem 2rem",
-  "&:hover": {
-    opacity: "0.8",
-    backgroundColor: "#ecbf48",
-  },
-});
-
-const StyledCloseButton = styled(Button)({
-  display: "flex",
-  backgroundColor: "white",
-  color: "black",
-  fontWeight: "bold",
-  fontFamily: "Noah Text",
-  borderRadius: "5rem",
-  padding: "0",
-  marginTop: "10px",
-  marginRight: "10px",
-  minWidth: "40px",
-  alignSelf: "flex-end",
-  "&:hover": {
-    backgroundColor: "white",
-  },
-});
-const StyledTitle = styled(DialogTitle)({
-  backgroundColor: "#34668b",
-  color: "white",
-  fontSize: "2rem",
-  fontFamily: "Noah Text",
-  "&:hover": {
-    backgroundColor: "#34668b",
-  },
-  "@media (max-width: 768px)": {
-    fontSize: "1.5rem",
-  },
-});
+import styles from "./CourseDetail.module.css";
 
 const DetailsComponents = {
   block: {
     h2: ({ children }) => {
       return (
-        <h2 className="py-4 px-2 text-2xl text-darkBlue border-y-[1px]">
+        <h2 className="py-4 px-2 text-2xl sm:text-3xl text-darkBlue border-y-[1px]">
           {children}
         </h2>
       );
     },
     h3: ({ children }) => {
       return (
-        <h3 className="py-4 px-2 text-xl text-darkBlue border-y-[1px]">
+        <h3 className="py-4 px-2 text-xl sm:text-2xl text-darkBlue border-y-[1px]">
           {children}
         </h3>
       );
@@ -101,66 +40,69 @@ const DetailsComponents = {
   },
 };
 
-export default function Details({
-  handleOpenForm,
-  handleClose,
-  open,
-  scroll,
-  course,
-}) {
+export default function Details({ handleOpenForm, handleClose, open, course }) {
   return (
     <>
-      <StyledDialog
-        open={open}
-        onClose={handleClose}
-        scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <StyledCloseButton variant="contained" onClick={handleClose}>
-          <Image
-            src={closeIcon}
-            alt="Logo cerrar detalles"
-            priority={true}
-            width={40}
-            height={40}
-          />
-        </StyledCloseButton>
-        <StyledTitle id="scroll-dialog-title">{course.title}</StyledTitle>
-        <StyledDialogContent dividers={scroll === "paper"}>
-          <PortableText value={course.body} components={DetailsComponents} />
-          {course.commissions !== null && course.commissions.length >= 1 ? (
-            <>
-              <h3 className="py-4 px-2 text-xl text-darkBlue border-y-[1px]">
-                <strong>Próximas comisiones:</strong>
+      <div className="fixed z-[300] inset-0 font-Noah overflow-scroll">
+        <div className="flex items-center justify-center min-h-screen pt-30 px-4 pb-5 md:pb-20 text-center sm:block sm:p-0">
+          <div className="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div className="absolute inset-0 bg-black opacity-50"></div>
+          </div>
+
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
+            &#8203;
+          </span>
+
+          <div className="inline-block align-bottom rounded-lg text-left overflow-scroll shadow-2xl transform transition-all my-2 sm:align-middle sm:max-w-2xl sm:w-full">
+            <div className="bg-blue px-4 py-3 rounded-t-lg">
+              <button
+                className="float-right transition duration-150 ease-in-out bg-white rounded-full ml-4 mb-4 top-0 h-8 md:h-10"
+                onClick={handleClose}
+              >
+                <Image
+                  src={closeIcon}
+                  alt="Logo cerrar detalles"
+                  priority={true}
+                  width={32}
+                  height={32}
+                  className="md:w-10 md:h-10"
+                />
+              </button>
+              <h3 className="text-2xl font-medium text-white transition duration-150 ease-in-out md:text-3xl sm:pt-12 pl-2 pr-6 pb-2 pt-4">
+                {course.title}
               </h3>
-              {course.commissions.map((item) => (
-                <ul key={item._id} className="py-4 px-6">
-                  <li className="list-disc py-2">
-                    <strong>{item.duration}</strong>
-                  </li>
-                  <li className="pl-4 py-1">
-                    <strong>Duración: </strong>
-                    {item.dates}
-                  </li>
-                  <li className="pl-4 py-1">
-                    <strong>Modalidad de cursada: </strong>
-                    {item.modality}
-                  </li>
-                </ul>
-              ))}
-            </>
-          ) : null}
-        </StyledDialogContent>
-        <StyledDialogActions>
-          <StyledButton variant="contained" onClick={handleOpenForm}>
-            Consultar
-          </StyledButton>
-          <StyledButton variant="contained" onClick={handleClose}>
-            Inscribirse
-          </StyledButton>
-        </StyledDialogActions>
-      </StyledDialog>
+            </div>
+
+            <div className={styles.contentScroll}>
+              <PortableText
+                value={course.body}
+                components={DetailsComponents}
+              />
+            </div>
+
+            <div className="bg-white border-t rounded-b-lg px-4 py-1 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button
+                type="button"
+                className="w-full inline-flex justify-center items-center border border-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 h-8 text-sm sm:ml-3 sm:w-auto sm:text-base bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-1"
+                onClick={() => setIsOpen(false)}
+              >
+                Inscribirse
+              </button>
+
+              <button
+                type="button"
+                className="w-full inline-flex justify-center items-center border border-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 h-8 text-sm sm:ml-3 sm:w-auto sm:text-base bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-1"
+                onClick={handleOpenForm}
+              >
+                Consultar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
