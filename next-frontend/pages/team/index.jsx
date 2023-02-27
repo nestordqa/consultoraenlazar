@@ -1,6 +1,6 @@
 import TeamCards from "@/components/card/TeamCards";
 import { Layout } from "@/components/Layout";
-import Values from "@/components/values/values";
+import Values from "@/components/values/Values";
 import { loadTeam } from "@/lib/loadTeamMembers";
 
 const Team = ({ team }) => {
