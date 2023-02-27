@@ -6,6 +6,7 @@ import { Landing } from "@/components/home/Landing";
 import { LearnWithUs } from "@/components/home/LearnWithUs";
 import { OurServices } from "@/components/home/OurServices";
 import { WeAre } from "@/components/home/WeAre";
+import { CompaniesThatTrust } from "@/components/home/CompaniesThatTrust";
 
 const Home = () => {
   return (
@@ -16,11 +17,13 @@ const Home = () => {
       >
         <>
           <Landing />
+          <CompaniesThatTrust />
           {/*<WeAre/>
           <Goal/>
           <OurServices/>
           <LearnWithUs/>
           <Feedback/>
+          <CompaniesThatTrust/>
           <ContactUs/>*/}
         </>
       </Layout>
