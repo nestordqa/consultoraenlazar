@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from "./Benefits.module.css";
 import Image from "next/image";
 
 
