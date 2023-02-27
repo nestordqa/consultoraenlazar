@@ -33,7 +33,7 @@ const ConsultationForm = ({ handleCloseForm }) => {
   return (
     <>
       <div className="fixed z-[500] inset-0 font-Noah">
-        <div className="flex items-center justify-center min-h-screen pt-30 px-4 pb-5 md:pb-20 text-center sm:block sm:p-0">
+        <div className="flex items-center justify-center min-h-screen pt-5 px-4 pb-5 md:pb-20 text-center sm:block sm:p-0">
           <div className="fixed inset-0 transition-opacity" aria-hidden="true">
             <div className="absolute inset-0 bg-black opacity-40"></div>
           </div>
@@ -45,7 +45,7 @@ const ConsultationForm = ({ handleCloseForm }) => {
             &#8203;
           </span>
           <div className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-opacity-20 bg-black py-8 md:py-12 px-5">
-            <div className="bg-white flex flex-col justify-center items-center w-full md:w-2/4 rounded-2xl m-4">
+            <div className="bg-white flex flex-col justify-center items-center w-full md:w-2/4 rounded-2xl m-2">
               <div className="flex flex-col justify-center items-center w-full">
                 <button
                   className="flex justify-start self-end "
