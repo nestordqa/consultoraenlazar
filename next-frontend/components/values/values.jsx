@@ -5,7 +5,7 @@ const Values = () => {
     console.log(values);
     return (
         <div>
-            <h2  className="text-2xl md:text-3xl font-bold text-ellipsis opacity-90">
+            <h2 className="text-2xl md:text-3xl font-bold text-ellipsis opacity-90">
                 Nuestros valores
             </h2>
             <div>
