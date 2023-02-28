@@ -38,7 +38,7 @@ const DetailsComponents = {
       return <p className="px-2 pt-2 pb-4">{children}</p>;
     },
   },
-  marks: {
+    marks: {
     em: ({ children }) => (
       <em className="text-dark font-semibold">{children}</em>
     ),
@@ -99,7 +99,7 @@ export default function Details({ handleOpenForm, handleClose, open, course }) {
               </h3>
             </div>
 
-            <div className={styles.contentScroll}>
+             <div className={styles.contentScroll}>
               <PortableText
                 value={course.body}
                 components={DetailsComponents}
