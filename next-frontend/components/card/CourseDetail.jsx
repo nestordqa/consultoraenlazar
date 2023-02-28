@@ -79,7 +79,7 @@ export default function Details({ handleOpenForm, handleClose, open, course }) {
             &#8203;
           </span>
 
-          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle sm:max-w-2xl sm:w-full">
+          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle sm:max-w-2xl sm:w-full bg-white">
             <div className="bg-blue px-4 py-3 rounded-t-lg">
               <button
                 className="float-right transition duration-150 ease-in-out bg-white rounded-full ml-4 mb-4 top-0 h-8 md:h-10"

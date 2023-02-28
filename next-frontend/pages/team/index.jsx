@@ -7,9 +7,9 @@ import { loadTeam } from "@/lib/loadTeamMembers";
 const Team = ({ team }) => {
   return (
     <>
-      <Layout 
+      <Layout
         title={"Equipo"}
-        content={"Equipo de trabajo de Consultora Enlazar."}
+        content={"Equipo de trabajo de Consultora Enlazar"}
       >
       <div className="flex flex-col content-center">
         <section>
