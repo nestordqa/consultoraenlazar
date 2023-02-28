@@ -6,6 +6,7 @@ const MemberCard = ({ name, image, jobTitle}) => {
             <img 
                 src={urlFor(image).url()}
                 className="w-56"
+                alt='Foto de perfil'
             />
             <strong>{name}</strong>
             <p>{jobTitle}</p>
