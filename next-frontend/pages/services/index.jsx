@@ -9,14 +9,8 @@ import ServicesCard from "@/components/card/ServicesCard";
 
 
 const Services = ({ services }) => {
-  // console.log(services.filter(item => item.categories[0].categoryName.toLowerCase() === "organizaciones"))
-
-
-
   const organizaciones = services.filter(item => item.categories[0].categoryName.toLowerCase() === "organizaciones")
   const individuos = services.filter(item => item.categories[0].categoryName.toLowerCase() === "individuos")
-
-  // console.log("individuos", individuos, "organizaciones", organizaciones)
 
   return (
     <>
@@ -90,9 +84,6 @@ const Services = ({ services }) => {
 
         
         </div>
-
-
-
 
       </Layout>
       
