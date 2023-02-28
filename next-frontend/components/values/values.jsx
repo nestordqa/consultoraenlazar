@@ -4,12 +4,16 @@ import Image from "next/image";
 const Values = () => {
     console.log(values);
     return (
-        <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-ellipsis opacity-90">
-                Nuestros valores
-            </h2>
-            <div>
-                <Image src={values}></Image>
+        <div className='flex justify-center bg-white py-16'>
+            <div className='flex flex-wrap w-9/12 justify-center sm:justify-between'>
+                <section className="flex w-full h-4">
+                    <h3 className="text-2xl md:text-3xl font-bold text-left text-ellipsis opacity-90 text-darkBlue">
+                        Nuestros Valores
+                    </h3>
+                </section>
+                <div>
+                    <Image src={values}></Image>
+                </div>
             </div>
         </div>
     )
