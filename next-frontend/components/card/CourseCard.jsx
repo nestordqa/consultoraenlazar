@@ -45,7 +45,7 @@ const CourseCard = ({ course, handleOpenForm }) => {
         <div className={styles.content}>
           <div className={styles.info}>
             <h2 className="pt-4 pb-4 px-2 text-lg text-center text-ellipsis">
-              <strong>{title}</strong>
+              <strong className="text-dark opacity-90">{title}</strong>
             </h2>
             <p className="text-center text-clip px-3">{description}</p>
             <button
@@ -58,7 +58,7 @@ const CourseCard = ({ course, handleOpenForm }) => {
         </div>
       </div>
       {/* Cards responsive */}
-      <div className="lg:hidden flex flex-col justify-start items-start ease-in-out bg-white max-w-xs h-[480px] relative rounded-2xl shadow-2xl outline-offset-8">
+      <div className="lg:hidden flex flex-col justify-start items-start ease-in-out bg-white max-w-xs h-[480px] relative rounded-2xl shadow-2xl outline-offset-8 text-dark">
         <div className="bg-blue flex justify-center items-center w-full rounded-t-xl rounded-b-none">
           <Image
             className="max-w-[150px]"
@@ -71,7 +71,7 @@ const CourseCard = ({ course, handleOpenForm }) => {
         <hr />
         <div className="flex flex-col flex-wrap justify-evenly items-center ">
           <h2 className="pt-4 pb-2 px-2 text-lg text-center">
-            <strong>{title}</strong>
+            <strong className="text-dark opacity-90">{title}</strong>
           </h2>
           <p className="text-center text-ellipsis pt-2 pb-2 px-2 overflow-y-auto max-h-56">
             {description}

@@ -38,6 +38,29 @@ const DetailsComponents = {
       return <p className="px-2 pt-2 pb-4">{children}</p>;
     },
   },
+  marks: {
+    em: ({ children }) => (
+      <em className="text-dark font-semibold">{children}</em>
+    ),
+    strong: ({ children }) => (
+      <strong className="text-blue font-semibold">{children}</strong>
+    ),
+    link: ({ children, value }) => {
+      const target = (value?.href || "").startsWith("http")
+        ? "_blank"
+        : undefined;
+      return (
+        <a
+          href={value?.href}
+          target={target}
+          rel={target === "_blank" && "noindex nofollow"}
+          className="underline text-blue font-semibold"
+        >
+          {children}
+        </a>
+      );
+    },
+  },
 };
 
 export default function Details({ handleOpenForm, handleClose, open, course }) {
@@ -56,7 +79,7 @@ export default function Details({ handleOpenForm, handleClose, open, course }) {
             &#8203;
           </span>
 
-          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle sm:max-w-2xl sm:w-full">
+          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle sm:max-w-2xl sm:w-full bg-white">
             <div className="bg-blue px-4 py-3 rounded-t-lg">
               <button
                 className="float-right transition duration-150 ease-in-out bg-white rounded-full ml-4 mb-4 top-0 h-8 md:h-10"
@@ -81,6 +104,34 @@ export default function Details({ handleOpenForm, handleClose, open, course }) {
                 value={course.body}
                 components={DetailsComponents}
               />
+              {course.commissions !== null && course.commissions.length >= 1 ? (
+                <>
+                  <h3 className="py-4 px-2 text-2xl text-blue border-y-[1px]">
+                    <strong>Próximas comisiones:</strong>
+                  </h3>
+                  {course.commissions.map((item) => (
+                    <ul key={item._id} className="py-4 px-6">
+                      <li className="list-disc py-2">
+                        <strong className="text-blue font-semibold">
+                          {item.duration}
+                        </strong>
+                      </li>
+                      <li className="pl-4 py-1">
+                        <strong className="text-blue font-semibold">
+                          Duración:{" "}
+                        </strong>
+                        {item.dates}
+                      </li>
+                      <li className="pl-4 py-1">
+                        <strong className="text-blue font-semibold">
+                          Modalidad de cursada:{" "}
+                        </strong>
+                        {item.modality}
+                      </li>
+                    </ul>
+                  ))}
+                </>
+              ) : null}
             </div>
 
             <div className="bg-white border-t rounded-b-lg px-4 py-1 sm:px-6 sm:flex sm:flex-row-reverse">
