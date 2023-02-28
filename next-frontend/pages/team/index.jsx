@@ -1,6 +1,6 @@
 import TeamCards from "@/components/card/TeamCards";
 import { Layout } from "@/components/Layout";
-import Values from "@/components/values/Values";
+import Values from "@/components/values/values";
 import WorkWithUs from "@/components/workWithUs/WorkWithUs";
 import { loadTeam } from "@/lib/loadTeamMembers";
 
