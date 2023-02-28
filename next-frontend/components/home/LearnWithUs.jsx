@@ -26,6 +26,7 @@ export const LearnWithUs = ({ courses, benefits }) => {
         <Image
           className="shadow-2xl outline-offset-8 m-2 "
           src={diploma}
+          priority={true}
           style={{
             width: "800px",
             height: "auto",
