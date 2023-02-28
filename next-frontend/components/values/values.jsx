@@ -12,7 +12,7 @@ const Values = () => {
                     </h3>
                 </section>
                 <div>
-                    <Image src={values}></Image>
+                    <Image src={values} alt="Nuestros valores"></Image>
                 </div>
             </div>
         </div>
