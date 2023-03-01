@@ -178,11 +178,13 @@ const WorkWithUsForm = ({ handleClose }) => {
 											hidden={true}
 											onChange={handleOnChange}
 										/>
-										<span>
+										<small
+										className={errors.attachment ? 'text-red-600' : 'text-green-600'}
+										>
 											{errors.attachment
 												? "No se eligió un archivo"
 												: "CV cargado con éxito"}
-										</span>
+										</small>
 									</div>
 									<button
 										className={
