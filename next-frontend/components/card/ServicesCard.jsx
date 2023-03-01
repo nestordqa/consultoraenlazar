@@ -2,38 +2,15 @@ import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 import styles from "./ServicesCard.module.css";
 
-import ConsultationForm from "../../components/forms/ConsultationForm";
-import { useState } from "react";
 
 const ServicesCard = ({ servicesForIndividuals, servicesForOrganizations, handleOpenForm }) => {
-
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = (e) => {
-    e.preventDefault();
-    setOpen(true);
-  };
-
-  const handleClose = (e) => {
-    e.preventDefault();
-    setOpen(false);
-  };
-
+  
     const shadow = {
         boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.25)"
     }
     return (
         <>
-        {open ? (
-        <ConsultationForm
-          handleClickOpen={handleClickOpen}
-          open={open}
-          course={course}
-          scroll={scroll}
-          handleClose={handleClose}
-          handleOpenForm={handleOpenForm}
-        />
-      ) : null}
+        
             <h2 className="p-16 " id="individuals">Para individuos o grupos:</h2>
             <div className={styles.containerTotal}>
 
