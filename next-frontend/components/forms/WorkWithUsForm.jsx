@@ -179,7 +179,9 @@ const WorkWithUsForm = ({ handleClose }) => {
 											onChange={handleOnChange}
 										/>
 										<small
-										className={errors.attachment ? 'text-red-600' : 'text-green-600'}
+											className={
+												errors.attachment ? "text-red-600" : "text-green-600"
+											}
 										>
 											{errors.attachment
 												? "No se eligió un archivo"
