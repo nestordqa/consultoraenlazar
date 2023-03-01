@@ -35,6 +35,7 @@ const CourseCard = ({ course, handleOpenForm }) => {
       {/* Cards a partir de 1024px */}
       <div className={styles.card}>
         <div className={styles.imgBox}>
+          <span className={styles.imgTitle}>{title}</span>
           <Image
             alt={title + " image"}
             src={urlFor(mainImage).url()}
