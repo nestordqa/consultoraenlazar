@@ -8,8 +8,8 @@ const WorkWithUs = () => {
 
     return (
         <div className="flex justify-center bg-grey">
-            <div className='xsm:flex w-9/12 xsm:justify-center xsm:flex-wrap lg:flex-nowrap py-16 '>
-                <div className="pr-24">
+            <div className='xsm:flex w-11/12 xsm:justify-center xsm:flex-wrap lg:flex-nowrap py-16 '>
+                <div className="pr-24 xsm:pl-12 xsm:w-auto">
                     <h2 className="text-2xl md:text-3xl font-bold text-ellipsis opacity-90 pb-12 text-darkBlue">
                     ¡Trabajá con nosotros!
                     </h2>
