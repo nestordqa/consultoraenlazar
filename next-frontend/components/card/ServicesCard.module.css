@@ -26,7 +26,7 @@
   /* border: solid green 1px; */
   height: 100%;
   min-width: 150px;
-  background-color: #BAC9CE;
+  background-color: #bac9ce;
   display: flex;
   justify-content: center;
 }
@@ -42,6 +42,7 @@
   padding: 0 1em;
   height: auto;
   justify-content: space-between;
+  color: #323232;
 }
 
 .containerTitles {
@@ -49,6 +50,7 @@
   font-weight: bold;
   padding: 2rem 0 0.6rem 1rem;
   margin-bottom: 0;
+  color: #323232;
 }
 
 .containerParagraph {
@@ -84,14 +86,13 @@
   }
 }
 
- @media screen and (max-width: 480px) {
-    
-  .containerCard{
+@media screen and (max-width: 480px) {
+  .containerCard {
     width: 280px;
   }
-    
-    .containerParagraph {
-      text-align: left !important;
-      padding: 1rem 0rem;
-    }
+
+  .containerParagraph {
+    text-align: left !important;
+    padding: 1rem 0rem;
   }
+}

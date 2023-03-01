@@ -7,6 +7,9 @@ import ConsultationForm from "../forms/ConsultationForm";
 import { useState } from "react";
 
 export const LearnWithUs = ({ courses, benefits }) => {
+  const benefitsWithUrl = benefits.filter((item) => item.link);
+  const benefitsWithoutUrl = benefits.filter((item) => !item.link);
+  console.log(benefitsWithUrl, benefitsWithoutUrl);
   //Form component functions
   const [openForm, setOpenForm] = useState(false);
 
@@ -66,8 +69,19 @@ export const LearnWithUs = ({ courses, benefits }) => {
             Disfrutá de nuestros beneficios:
           </h2>
           <div className="flex flex-col p-5 md:flex-row flex-wrap justify-evenly items-center mb-8">
-            {benefits?.map((benefit) => {
+            {benefitsWithoutUrl?.map((benefit) => {
               return <BenefitCard key={benefit._id} benefit={benefit} />;
+            })}
+            {benefitsWithUrl?.map((benefit) => {
+              return (
+                <Link
+                  href={benefit.link.href}
+                  target="_blank"
+                  key={benefit._id}
+                >
+                  <BenefitCard benefit={benefit} />
+                </Link>
+              );
             })}
           </div>
         </div>

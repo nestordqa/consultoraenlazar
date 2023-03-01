@@ -3,23 +3,17 @@ import { OurServices } from "@/components/home/OurServices";
 import { getClient } from "@/lib/sanity.server";
 import groq from "groq";
 
-
 const Services = ({ services }) => {
-
   return (
     <>
       <Layout
         title={"Servicios"}
         content={"Servicios de Consultora Enlazar para empresas e individuos."}
       >
-
         <OurServices services={services} />
-
       </Layout>
-
     </>
   );
-
 };
 
 export async function getStaticProps() {
@@ -29,7 +23,6 @@ export async function getStaticProps() {
     title,
     mainImage,
       description,
-      mainImage,
       slug,
       "categories": categories[]->{categoryName},
       "provider": provider->{providerName}
