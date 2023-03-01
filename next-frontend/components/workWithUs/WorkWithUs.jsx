@@ -19,7 +19,7 @@ const WorkWithUs = () => {
                         Cargar mi CV
                     </button>
                 </div>
-                <Image className="w-80" src={WorkWithUsImage} alt='Trabaja con nosotros'/>
+                <Image className="w-80" src={WorkWithUsImage} alt='Trabaja con nosotros' width='800' height='800'/>
             </div>
         </div>
     )
