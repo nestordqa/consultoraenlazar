@@ -162,10 +162,10 @@ const WorkWithUsForm = ({ handleClose }) => {
 									rows={8}
 									className='flex w-full max-h-24 pt-2 px-4 border border-solid border-grey rounded-xl text-lg resize-none mb-3 md:h-3/4'
 								/>
-								<div className='flex pt-3 justify-end'>
-									<div className='flex flex-col'>
+								<div className='flex pt-3 justify-end self-center'>
+									<div className='flex flex-col items-center'>
 										<label
-											className='box-border border-2 border-yellow rounded-2xl  px-8 font-semibold uppercase self-center md:self-end'
+											className='box-border border-2 border-yellow rounded-2xl  px-8 font-semibold uppercase self-center '
 											htmlFor='cv'
 										>
 											Cargar Archivo
@@ -188,17 +188,19 @@ const WorkWithUsForm = ({ handleClose }) => {
 												: "CV cargado con éxito"}
 										</small>
 									</div>
-									<button
-										className={
-											isDisabled
-												? "bg-grey rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
-												: "bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
-										}
-										type='submit'
-										disabled={isDisabled}
-									>
-										Enviar
-									</button>
+									<div className="pl-5">
+										<button
+											className={
+												isDisabled
+													? "bg-grey rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
+													: "bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
+											}
+											type='submit'
+											disabled={isDisabled}
+										>
+											Enviar
+										</button>
+									</div>
 								</div>
 							</form>
 						</div>
