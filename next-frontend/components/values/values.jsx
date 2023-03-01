@@ -10,8 +10,14 @@ const Values = () => {
                         Nuestros Valores
                     </h3>
                 </section>
-                <div>
-                    <Image src={values} alt="Nuestros valores"></Image>
+                <div className='pt-12'>
+                    <Image 
+                        src={values} 
+                        alt="Nuestros valores"
+                        width='1200'
+                        height='1200'
+                        >
+                    </Image>
                 </div>
             </div>
         </div>
