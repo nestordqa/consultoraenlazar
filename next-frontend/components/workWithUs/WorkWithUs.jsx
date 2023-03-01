@@ -1,7 +1,11 @@
 import Image from "next/image";
 import WorkWithUsImage from 'public/images/trabaja-con-nosotros.webp'
+import { useState } from 'react'
+import WorkWithUsForm from "../forms/WorkWithUsForm";
 
 const WorkWithUs = () => {
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <div className="flex justify-center bg-grey">
             <div className='xsm:flex w-9/12 xsm:justify-center xsm:flex-wrap lg:flex-nowrap py-16 '>
@@ -14,13 +18,17 @@ const WorkWithUs = () => {
                     </p>
                     <button
                         className="bg-yellow rounded-2xl m-2 py-1 px-8 font-bold uppercase self-center text-dark"
-                        onClick={''}
+                        onClick={() => setIsOpen(true)}
                         >
                         Cargar mi CV
                     </button>
                 </div>
                 <Image className="w-80" src={WorkWithUsImage} alt='Trabaja con nosotros' width='800' height='800'/>
             </div>
+            {
+                isOpen &&
+                <WorkWithUsForm handleClose={setIsOpen}/>
+            }
         </div>
     )
 }
