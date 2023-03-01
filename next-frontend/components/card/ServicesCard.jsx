@@ -1,19 +1,16 @@
 import { urlFor } from "@/lib/sanity";
-import { style } from "@mui/system";
 import Image from "next/image";
-import Link from "next/link";
-import logo from "public/images/isotipo-enlazar-blanco.png";
 import styles from "./ServicesCard.module.css";
 
 
-
-
-const ServicesCard = ({ servicesForIndividuals, servicesForOrganizations }) => {
+const ServicesCard = ({ servicesForIndividuals, servicesForOrganizations, handleOpenForm }) => {
+  
     const shadow = {
         boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.25)"
     }
     return (
         <>
+        
             <h2 className="p-16 " id="individuals">Para individuos o grupos:</h2>
             <div className={styles.containerTotal}>
 
@@ -36,7 +33,8 @@ const ServicesCard = ({ servicesForIndividuals, servicesForOrganizations }) => {
                                 </div>
 
                                 <div className={styles.containerButton}>
-                                    <button className="rounded-full  bg-yellow p-1 px-6 font-semibold">QUIERO CONTRATAR</button>
+                
+                                    <button className="rounded-full  bg-yellow p-1 px-6 font-semibold" onClick={handleOpenForm}>QUIERO CONTRATAR</button>
                                 </div>
                             </div>
 
@@ -67,7 +65,7 @@ const ServicesCard = ({ servicesForIndividuals, servicesForOrganizations }) => {
                                 </div>
 
                                 <div className={styles.containerButton}>
-                                    <button className="rounded-full  bg-yellow p-1 px-6 font-semibold">QUIERO CONTRATAR</button>
+                                    <button className="rounded-full  bg-yellow p-1 px-6 font-semibold" onClick={handleOpenForm}>QUIERO CONTRATAR</button>
                                 </div>
                             </div>
 
