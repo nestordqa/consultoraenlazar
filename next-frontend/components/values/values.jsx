@@ -2,7 +2,6 @@ import values from 'public/images/nuestros-valores.gif'
 import Image from "next/image";
 
 const Values = () => {
-    console.log(values);
     return (
         <div className='flex justify-center bg-white py-16'>
             <div className='flex flex-wrap w-9/12 justify-center sm:justify-between'>
@@ -11,8 +10,14 @@ const Values = () => {
                         Nuestros Valores
                     </h3>
                 </section>
-                <div>
-                    <Image src={values}></Image>
+                <div className='pt-12'>
+                    <Image 
+                        src={values} 
+                        alt="Nuestros valores"
+                        width='1200'
+                        height='1200'
+                        >
+                    </Image>
                 </div>
             </div>
         </div>
