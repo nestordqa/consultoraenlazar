@@ -38,7 +38,7 @@ const DetailsComponents = {
       return <p className="px-2 pt-2 pb-4">{children}</p>;
     },
   },
-     marks: {
+  marks: {
     em: ({ children }) => (
       <em className="text-dark font-semibold">{children}</em>
     ),
@@ -99,7 +99,7 @@ export default function Details({ handleOpenForm, handleClose, open, course }) {
               </h3>
             </div>
 
-             <div className={styles.contentScroll}>
+            <div className={styles.contentScroll}>
               <PortableText
                 value={course.body}
                 components={DetailsComponents}
@@ -147,6 +147,8 @@ export default function Details({ handleOpenForm, handleClose, open, course }) {
                 type="button"
                 className="w-full inline-flex justify-center items-center border border-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 h-8 text-sm sm:ml-3 sm:w-auto sm:text-base bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-1"
                 onClick={handleOpenForm}
+                value="courses"
+                title={course.title}
               >
                 Consultar
               </button>
