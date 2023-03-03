@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { Blogs } from "@/components/Blog/Blogs";
 
 const Blog = () => {
   return (
@@ -7,9 +8,8 @@ const Blog = () => {
         title={"Blog"}
         content={"Consultora Enlazar."}
       >
-        <h1>
-          Hola mundo desde blog!
-        </h1>
+       
+        <Blogs/>
       </Layout>
     </>
   );
