@@ -1,7 +1,5 @@
-import TeamCards from "@/components/card/TeamCards";
+import WeAre from "@/components/home/WeAre";
 import { Layout } from "@/components/Layout";
-import Values from "@/components/values/values";
-import WorkWithUs from "@/components/workWithUs/WorkWithUs";
 import { loadTeam } from "@/lib/loadTeamMembers";
 
 const Team = ({ team }) => {
@@ -11,17 +9,7 @@ const Team = ({ team }) => {
         title={"Equipo"}
         content={"Equipo de trabajo de Consultora Enlazar"}
       >
-      <div className="flex flex-col content-center">
-        <section>
-          <TeamCards team={team}/>
-        </section>
-        <section>
-          <Values/>
-        </section>
-        <section >
-          <WorkWithUs/>
-        </section>
-      </div>
+      <WeAre team={team}/>
       </Layout>
     </>
   );
