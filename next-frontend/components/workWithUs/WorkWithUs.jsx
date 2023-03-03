@@ -1,7 +1,7 @@
 import Image from "next/image";
 import WorkWithUsImage from 'public/images/trabaja-con-nosotros.webp'
 import { useState } from 'react'
-import WorkWithUsForm from "../forms/WorkWithUsForm";
+import WorkWithUsForm from "../forms/CVSubmissionForm";
 
 const WorkWithUs = () => {
     const [isOpen, setIsOpen] = useState(false)
