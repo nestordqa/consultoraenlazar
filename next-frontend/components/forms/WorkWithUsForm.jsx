@@ -55,10 +55,10 @@ const WorkWithUsForm = ({ handleClose }) => {
 				  }))
 				: setErrors((prev) => ({ ...prev, phone: "" }));
 		} else if (input.name === "comments") {
-			input.value.length < 30
+			input.value.length < 50 || input.value.length > 1000
 				? setErrors((prev) => ({
 						...prev,
-						comments: "Debes completar este campo",
+						comments: "Entre 50 y 1000 caracteres",
 				  }))
 				: setErrors((prev) => ({ ...prev, comments: "" }));
 		} else if (input.name === "attachment") {
@@ -123,7 +123,7 @@ const WorkWithUsForm = ({ handleClose }) => {
 							</div>
 							<form onSubmit={handleSubmit}>
 								<div className='w-full flex flex-col md:flex-row justify-evenly items-center'>
-									<div className='flex flex-col w-full mb-2 justify-center items-center md:w-2/4 md:mr-2 md:mb-0'>
+									<div className='flex flex-col w-full mb-2 justify-center md:w-2/4 md:mr-2 md:mb-0'>
 										<input
 											type='text'
 											name='name'
@@ -131,9 +131,12 @@ const WorkWithUsForm = ({ handleClose }) => {
 											placeholder='Nombre y Apellido'
 											onChange={handleOnChange}
 											className='flex w-full h-[3.3rem] py-2 px-4 border border-solid border-grey rounded-xl text-lg'
+											required
 										/>
+
+										<small className='h-6 text-red-600'>{errors.name}</small>
 									</div>
-									<div className='flex flex-col w-full mt-2 justify-center items-center md:w-2/4 md:ml-2 md:mt-0'>
+									<div className='flex flex-col w-full mt-2 justify-center md:w-2/4 md:ml-2 md:mt-0'>
 										<input
 											type='tel'
 											name='phone'
@@ -141,10 +144,12 @@ const WorkWithUsForm = ({ handleClose }) => {
 											placeholder='Teléfono'
 											onChange={handleOnChange}
 											className='flex justify-between w-full h-[3.3rem] py-2 px-4 border border-solid border-grey rounded-xl text-lg '
+											required
 										/>
+										<small className='h-6 text-red-600'>{errors.phone}</small>
 									</div>
 								</div>
-								<div className='flex flex-col w-full justify-start items-center md:mb-2 md:h-2/4'>
+								<div className='flex flex-col w-full justify-start md:mb-2 md:h-2/4'>
 									<input
 										type='email'
 										name='email'
@@ -152,16 +157,29 @@ const WorkWithUsForm = ({ handleClose }) => {
 										placeholder='Email'
 										onChange={handleOnChange}
 										className='flex my-2 w-full py-3 px-4 border border-solid border-grey rounded-xl text-lg'
+										required
 									/>
+									<small className='h-6 text-red-600'>{errors.email}</small>
 								</div>
-								<textarea
-									name='comments'
-									value={input.comments}
-									placeholder='Contanos un poco sobre vos'
-									onChange={handleOnChange}
-									rows={8}
-									className='flex w-full max-h-24 pt-2 px-4 border border-solid border-grey rounded-xl text-lg resize-none mb-3 md:h-3/4'
-								/>
+								<div className='flex flex-col w-full justify-start md:mb-2 md:h-2/4'>
+									<textarea
+										name='comments'
+										value={input.comments}
+										placeholder='Contanos un poco sobre vos'
+										onChange={handleOnChange}
+										rows={8}
+										className='flex w-full max-h-24 pt-2 px-4 border border-solid border-grey rounded-xl text-lg resize-none mb-3 md:h-3/4'
+										required
+									/>
+									<div className="flex justify-between">
+										<small className='h-6 text-red-600'>
+											{errors.comments}
+										</small>
+										<small className={errors.comments ? 'h-6 text-red-600' : 'h-6 text-green-600'}>
+											{input.comments.length}
+										</small>
+									</div>
+								</div>
 								<div className='flex pt-3 justify-end self-center'>
 									<div className='flex flex-col items-center'>
 										<label
@@ -188,11 +206,11 @@ const WorkWithUsForm = ({ handleClose }) => {
 												: "CV cargado con éxito"}
 										</small>
 									</div>
-									<div className="pl-5">
+									<div className='pl-5'>
 										<button
 											className={
 												isDisabled
-													? "bg-grey rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
+													? "bg-grey text-gray-500 rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
 													: "bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
 											}
 											type='submit'
