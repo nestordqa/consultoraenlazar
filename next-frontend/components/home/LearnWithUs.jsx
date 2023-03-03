@@ -9,23 +9,34 @@ import { useState } from "react";
 export const LearnWithUs = ({ courses, benefits }) => {
   const benefitsWithUrl = benefits.filter((item) => item.link);
   const benefitsWithoutUrl = benefits.filter((item) => !item.link);
-  console.log(benefitsWithUrl, benefitsWithoutUrl);
   //Form component functions
   const [openForm, setOpenForm] = useState(false);
+  const [section, setSection] = useState("");
+  const [title, setTitle] = useState("");
 
   const handleOpenForm = (e) => {
     e.preventDefault();
+    setTitle(e.target.title);
+    setSection(e.target.value);
     setOpenForm(true);
   };
 
   const handleCloseForm = (e) => {
     e.preventDefault();
+    setTitle("");
     setOpenForm(false);
   };
 
   return (
     <>
-      {openForm ? <ConsultationForm handleCloseForm={handleCloseForm} /> : null}
+      {openForm ? (
+        <ConsultationForm
+          handleCloseForm={handleCloseForm}
+          section={section}
+          title={title}
+          setTitle={setTitle}
+        />
+      ) : null}
 
       <div className="bg-white w-full h-auto lg:min-h-screen flex flex-col justify-center items-center">
         <div className="flex justify-center items-center w-full h-auto pb-6 md:pb-12 bg-grey">
@@ -79,7 +90,10 @@ export const LearnWithUs = ({ courses, benefits }) => {
                   target="_blank"
                   key={benefit._id}
                 >
-                  <BenefitCard benefit={benefit} />
+                  <BenefitCard
+                    benefit={benefit}
+                    handleOpenForm={handleOpenForm}
+                  />
                 </Link>
               );
             })}

@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 import CookieConsent from "react-cookie-consent";
 import Link from "next/link";
 import PrivacyPolicy from "@/components/privacyPolitics/PrivacyPolicy";
+import { googleAnalyticsId } from "@/envitoment";
 
 export default function App({ Component, pageProps }) {
   /*  const router = useRouter();
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      window.gtag("config", process.env.NEXT_PUBLIC_ID_GOOGLE_ANALYTICS, {
+      window.gtag("config", googleAnalyticsId, {
         page_path: url,
       });
     };

@@ -42,7 +42,7 @@ export function validate(input) {
   return errors;
 }
 
-const ConsultationForm = ({ handleCloseForm }) => {
+const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
   let [input, setInput] = useState({
     name: "",
     phone: "",
@@ -62,6 +62,11 @@ const ConsultationForm = ({ handleCloseForm }) => {
     let errorObj = validate({ ...input, [e.target.name]: e.target.value });
     setError(errorObj);
   };
+
+  const handleSubmit = (e) => {
+    //en esta funcion se tiene que ejecutar un axios.post al back
+    setTitle("");
+  };
   let disabled = Object.entries(error).length ? true : false;
 
   return (
@@ -78,11 +83,11 @@ const ConsultationForm = ({ handleCloseForm }) => {
           >
             &#8203;
           </span>
-          <div className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-opacity-20 bg-black py-8 md:py-12 px-5 overflow-y-auto">
-            <div className="bg-white flex flex-col justify-center items-center max-h-screen w-full md:w-2/4 rounded-2xl m-4">
+          <div className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-opacity-20 bg-black md:py-6 px-4 overflow-y-auto max-h-screen">
+            <div className="bg-white flex flex-col justify-center items-center min-h-min md:max-h-min w-full md:w-2/4 rounded-2xl">
               <div className="flex flex-col justify-center items-center w-full">
                 <button
-                  className="flex justify-start self-end "
+                  className="flex justify-start self-end h-12 md:h-full"
                   onClick={handleCloseForm}
                 >
                   <Image
@@ -94,20 +99,44 @@ const ConsultationForm = ({ handleCloseForm }) => {
                     height={30}
                   />
                 </button>
-                <h3 className="text-darkBlue px-2 text-2xl lg:text-3xl font-semibold text-ellipsis text-center">
+                <h3
+                  className="text-darkBlue px-2 lg:text-3xl font-semibold text-ellipsis text-center"
+                  style={{
+                    fontSize: "clamp(1.2rem, 0.8685rem + 1.768vw, 2rem)",
+                  }}
+                >
                   ¿Cómo podemos ayudarte?
                 </h3>
-                <p className="p-3 font-semibold text-ellipsis text-center text-base">
+                <p
+                  className="p-3 font-semibold text-ellipsis text-center text-base"
+                  style={{
+                    fontSize: "clamp(0.8rem, 0.6343rem + 0.884vw, 1.2rem)",
+                  }}
+                >
                   Envianos tu consulta y nos pondremos en contacto a la
                   brevedad.
                 </p>
               </div>
               <form
                 className="flex flex-col justify-start items-center w-full h-fit pb-2 px-10 md:pt-6 lg:px-20"
-                action="post"
+                action={
+                  section === "courses" || section === "benefits"
+                    ? `https://formsubmit.co/academia@enlazar.xyz`
+                    : `https://formsubmit.co/consultora@enlazar.xyz`
+                }
+                method="POST"
+                onSubmit={handleSubmit}
               >
                 <div className="w-full flex flex-col md:flex-row justify-evenly items-center">
-                  <div className="flex flex-col w-full mb-2 justify-center items-center md:w-2/4 md:mr-2 md:mb-0">
+                  <input
+                    type="text"
+                    name="from"
+                    id="from"
+                    value={title}
+                    onChange={handleInputChange}
+                    className="hidden"
+                  />
+                  <div className="flex flex-col w-full justify-center items-center md:w-2/4 md:mr-2 md:mb-0">
                     <input
                       type="text"
                       name="name"
@@ -115,11 +144,23 @@ const ConsultationForm = ({ handleCloseForm }) => {
                       placeholder="Nombre y Apellido"
                       value={input.name}
                       onChange={handleInputChange}
-                      className="flex w-full h-[3.3rem] py-2 px-4 border border-solid border-grey rounded-xl text-lg"
+                      className="flex w-full py-2 px-4 border border-solid border-grey rounded-xl"
+                      style={{
+                        height: "clamp(2rem, 1.6565rem + 1.8321vw, 3.5rem)",
+                        fontSize: "clamp(1rem, 0.9542rem + 0.2443vw, 1.2rem)",
+                      }}
                       required
                     />
                     {error.name ? (
-                      <div className="mt-2 py-2 border text-red-400 border-red-400 rounded text-xs md:text-base">
+                      <div
+                        className="mt-2 p-2 text-red-400 rounded text-xs md:text-base"
+                        style={{
+                          paddingBottom:
+                            "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
+                          paddingTop:
+                            "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
+                        }}
+                      >
                         {error.name}
                       </div>
                     ) : null}
@@ -130,13 +171,25 @@ const ConsultationForm = ({ handleCloseForm }) => {
                       name="phone"
                       id="phone"
                       placeholder="Teléfono"
-                      className="flex justify-between w-full h-[3.3rem] py-2 px-4 border border-solid border-grey rounded-xl text-lg "
+                      className="flex justify-between w-full py-2 px-4 border border-solid border-grey rounded-xl text-lg "
+                      style={{
+                        height: "clamp(2rem, 1.6565rem + 1.8321vw, 3.5rem)",
+                        fontSize: "clamp(1rem, 0.9542rem + 0.2443vw, 1.2rem)",
+                      }}
                       value={input.phone}
                       onChange={handleInputChange}
                       required
                     />
                     {error.phone ? (
-                      <div className="mt-2 p-2 text-red-400 border border-red-400 rounded text-xs md:text-base">
+                      <div
+                        className="mt-2 p-2 text-red-400 rounded text-xs md:text-base"
+                        style={{
+                          paddingBottom:
+                            "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
+                          paddingTop:
+                            "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
+                        }}
+                      >
                         {error.phone}
                       </div>
                     ) : null}
@@ -151,10 +204,22 @@ const ConsultationForm = ({ handleCloseForm }) => {
                     onChange={handleInputChange}
                     placeholder="Email"
                     className="flex my-2 w-full py-3 px-4 border border-solid border-grey rounded-xl text-lg"
+                    style={{
+                      height: "clamp(2rem, 1.6565rem + 1.8321vw, 3.5rem)",
+                      fontSize: "clamp(1rem, 0.9542rem + 0.2443vw, 1.2rem)",
+                    }}
                     required
                   />
                   {error.email ? (
-                    <div className=" mb-2 p-2 text-red-400 border border-red-400 rounded text-xs md:text-base">
+                    <div
+                      className=" mb-2 p-2 text-red-400 rounded text-xs md:text-base"
+                      style={{
+                        paddingBottom:
+                          "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
+                        paddingTop:
+                          "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
+                      }}
+                    >
                       {error.email}
                     </div>
                   ) : null}
@@ -165,11 +230,23 @@ const ConsultationForm = ({ handleCloseForm }) => {
                     onChange={handleInputChange}
                     placeholder="Escribí tu consulta aqui"
                     className="flex w-full max-h-24 pt-2 px-4 border border-solid border-grey rounded-xl text-lg resize-none mb-3 md:h-3/4"
+                    style={{
+                      maxHeight: "clamp(3rem, 1.855rem + 6.1069vw, 8rem)",
+                      fontSize: "clamp(1rem, 0.9542rem + 0.2443vw, 1.2rem)",
+                    }}
                     rows={8}
                     required
                   />
                   {error.consultation ? (
-                    <div className="mb-2 p-2 text-red-400 border border-red-400 rounded text-xs md:text-base">
+                    <div
+                      className="mb-2 p-2 text-red-400 rounded text-xs md:text-base"
+                      style={{
+                        paddingBottom:
+                          "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
+                        paddingTop:
+                          "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
+                      }}
+                    >
                       {error.consultation}
                     </div>
                   ) : null}
@@ -177,10 +254,9 @@ const ConsultationForm = ({ handleCloseForm }) => {
                 <button
                   className={
                     disabled
-                      ? "bg-grey rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
-                      : "bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
+                      ? "bg-grey rounded-2xl py-1 px-4 text-base md:text-lg md:px-8 font-semibold uppercase self-center md:self-end"
+                      : "bg-yellow rounded-2xl py-1 px-4 text-base md:text-lg font-semibold uppercase self-center md:self-end"
                   }
-                  onClick={handleCloseForm}
                   type="submit"
                   disabled={disabled}
                 >
