@@ -27,7 +27,7 @@ const WorkWithUsForm = ({ handleClose }) => {
 		name: " ",
 		phone: " ",
 		email: " ",
-		comments: " ",
+		comments: "",
 		attachment: " ",
 	});
 
@@ -176,7 +176,7 @@ const WorkWithUsForm = ({ handleClose }) => {
 											{errors.comments}
 										</small>
 										<small className={errors.comments ? 'h-6 text-red-600' : 'h-6 text-green-600'}>
-											{input.comments.length}
+											{!input.comments.length ? '' : input.comments.length}
 										</small>
 									</div>
 								</div>
