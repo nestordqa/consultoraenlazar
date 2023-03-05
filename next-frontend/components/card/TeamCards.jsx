@@ -22,7 +22,7 @@ const TeamCards = ({ team }) => {
 				<div className='grid gap-6 lg:grid-cols-4 md:grid-cols-2 xsm:grid-cols-1 pb-12'>
 					{!team
 						? Array.from(new Array(6)).map((item, index) => (
-								<Box id={index} sx={{ width: 210, marginRight: 0.5, my: 5 }}>
+								<Box key={index} sx={{ width: 210, marginRight: 0.5, my: 5 }}>
 									<Skeleton variant='rectangular' width={210} height={200}/>
 									<Box sx={{ pt: 0.5 }}>
 										<Skeleton />
