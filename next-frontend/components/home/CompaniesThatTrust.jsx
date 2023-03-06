@@ -16,6 +16,7 @@ export const CompaniesThatTrust = () => {
           height={40}
           alt="henry"
         />
+
         <Image
           className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse"
           src="/images/empujar.png"
@@ -23,6 +24,8 @@ export const CompaniesThatTrust = () => {
           height={40}
           alt="empujar"
         />
+
+
         <Image
           className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse "
           src="/images/coderhouse.jpg"
@@ -30,6 +33,7 @@ export const CompaniesThatTrust = () => {
           height={40}
           alt="coderhouse"
         />
+
         <Image
           className="shadow-2xl outline-offset-8 m-2  w-auto h-auto animate-pulse"
           src="/images/workn.png"
@@ -37,7 +41,6 @@ export const CompaniesThatTrust = () => {
           height={80}
           alt="workn"
         />
-
         <Image
           className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse"
           src="/images/logoUBA-beneficio.png"
@@ -52,6 +55,7 @@ export const CompaniesThatTrust = () => {
           height={50}
           alt="mudafy"
         />
+
         <Image
           className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse "
           src="/images/payhouslogo-beneficio.jpg"
@@ -59,6 +63,7 @@ export const CompaniesThatTrust = () => {
           height={60}
           alt="payhous"
         />
+
         <Image
           className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse"
           src="/images/duhire.png"

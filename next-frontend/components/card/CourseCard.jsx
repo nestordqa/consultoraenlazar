@@ -4,16 +4,18 @@ import { useState } from "react";
 import styles from "./CourseCard.module.css";
 import Details from "./CourseDetail";
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, handleOpenForm }) => {
   const { title, description, mainImage } = course;
+  //Detail component functions
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
-
-  const handleClickOpen = () => {
+  const handleClickOpen = (e) => {
+    e.preventDefault();
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.preventDefault();
     setOpen(false);
   };
 
@@ -26,11 +28,14 @@ const CourseCard = ({ course }) => {
           course={course}
           scroll={scroll}
           handleClose={handleClose}
+          handleOpenForm={handleOpenForm}
         />
       ) : null}
+
       {/* Cards a partir de 1024px */}
       <div className={styles.card}>
         <div className={styles.imgBox}>
+          <span className={styles.imgTitle}>{title}</span>
           <Image
             alt={title + " image"}
             src={urlFor(mainImage).url()}
@@ -41,7 +46,7 @@ const CourseCard = ({ course }) => {
         <div className={styles.content}>
           <div className={styles.info}>
             <h2 className="pt-4 pb-4 px-2 text-lg text-center text-ellipsis">
-              <strong>{title}</strong>
+              <strong className="text-dark opacity-90">{title}</strong>
             </h2>
             <p className="text-center text-clip px-3">{description}</p>
             <button
@@ -54,31 +59,26 @@ const CourseCard = ({ course }) => {
         </div>
       </div>
       {/* Cards responsive */}
-      <div className="lg:hidden flex flex-col justify-start items-start ease-in-out bg-white max-w-xs h-[480px] relative rounded-2xl shadow-2xl outline-offset-8">
-        {/* card */}
+      <div className="lg:hidden flex flex-col justify-start items-start ease-in-out bg-white max-w-xs h-[480px] relative rounded-2xl shadow-2xl outline-offset-8 text-dark">
         <div className="bg-blue flex justify-center items-center w-full rounded-t-xl rounded-b-none">
-          {/* imgBx */}
-          {
-            <Image
-              className="max-w-[150px]"
-              alt={title + " image"}
-              src={urlFor(mainImage).url()}
-              width={150}
-              height={150}
-            />
-          }
+          <Image
+            className="max-w-[150px]"
+            alt={title + " image"}
+            src={urlFor(mainImage).url()}
+            width={150}
+            height={150}
+          />
         </div>
         <hr />
         <div className="flex flex-col flex-wrap justify-evenly items-center ">
-          {/* content */}
-          <h2 className="pt-4 pb-4 px-2 text-lg">
-            <strong>{title}</strong>
+          <h2 className="pt-4 pb-2 px-2 text-lg text-center">
+            <strong className="text-dark opacity-90">{title}</strong>
           </h2>
-          <p className="text-center text-ellipsis pt-2 pb-6 px-2">
+          <p className="text-center text-ellipsis pt-2 pb-2 px-2 overflow-y-auto max-h-56">
             {description}
           </p>
           <button
-            className="bg-yellow rounded-2xl py-1 px-8 font-bold uppercase mb-2"
+            className="bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-2 "
             onClick={handleClickOpen}
           >
             Ver detalles

@@ -1,12 +1,13 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { googleAnalyticsId } from "@/envitoment";
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <script
+        {/* <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ID_GOOGLE_ANALYTICS}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
         ></script>
         <script
           dangerouslySetInnerHTML={{
@@ -35,12 +36,12 @@ export default function Document() {
                 });
             }
 
-              gtag('config', '${process.env.NEXT_PUBLIC_ID_GOOGLE_ANALYTICS}', {
+              gtag('config', '${googleAnalyticsId}', {
                 page_path: window.location.pathname,
             });
               `,
           }}
-        />
+        /> */}
       </Head>
       <body>
         <Main />
