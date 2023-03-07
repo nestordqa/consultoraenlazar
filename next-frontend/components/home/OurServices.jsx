@@ -13,6 +13,10 @@ import coverImageCv from "public/images/revision-cv-gratis.webp";
 import WorkWithUsForm from "../forms/CVSubmissionForm";
 
 export const OurServices = ({ services }) => {
+  const servicesCvFormTitle = "¡Revisamos GRATIS tu currículum!";
+  const servicesCvFormDescription =
+    "Adjuntá tu CV para que podamos revisarlo y darte una devolución personalizada.";
+
   const [openForm, setOpenForm] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +45,13 @@ export const OurServices = ({ services }) => {
   return (
     <>
       {openForm ? <ConsultationForm handleCloseForm={handleCloseForm} /> : null}
-      {isOpen && <WorkWithUsForm handleClose={setIsOpen} />}
+      {isOpen && (
+        <WorkWithUsForm
+          handleClose={setIsOpen}
+          title={servicesCvFormTitle}
+          description={servicesCvFormDescription}
+        />
+      )}
 
       <div className="w-full h-full flex justify-center items-center flex-col top-0 bottom-0 right-0 left-0">
         <div className={styles.containerCover}>
