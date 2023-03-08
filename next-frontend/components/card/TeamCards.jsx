@@ -23,7 +23,7 @@ const TeamCards = ({ team }) => {
 										</Box>
 									</Box>
 							  ))
-							: team.map((member, index) => (
+							: team.sort(() => Math.random() - 0.5).map((member, index) => (
 									<MemberCard
 										key={index}
 										image={member.photo}
