@@ -12,7 +12,7 @@ const WorkWithUs = () => {
 		<div className='flex justify-center bg-grey lg:h-screen xsm:flex xsm:justify-center xsm:flex-wrap xsm:items-center'>
 			<div className='xsm:w-11/12 xsm:py-6 xsm:flex xsm:flex-col xsm:justify-center xsm:items-center lg:flex-row lg:justify-center lg:items-center'>
 				<Image
-					className='xsm:w-4/5 lg:w-1/4 rounded-full drop-shadow-2xl'
+					className='xsm:w-4/5 lg:w-1/4 rounded-full drop-shadow-lg'
 					src={WorkWithUsImage}
 					alt='Trabaja con nosotros'
 					width='1000'
