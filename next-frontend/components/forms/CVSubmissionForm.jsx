@@ -126,7 +126,7 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
               </div>
               <form
                 onSubmit={handleSubmit}
-                action="https://formsubmit.co/jonatan2502@gmail.com"
+                action="https://formsubmit.co/talento@enlazar.xyz"
                 method="POST"
                 encType="multipart/form-data"
               >
