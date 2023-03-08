@@ -91,7 +91,7 @@ export const CompaniesThatTrust = () => {
   <div className= {styles.slide}>
   <Image
           className="  outline-offset-8  w-auto h-auto "
-          src="/images/logos-empresas/linkedin.png"
+          src="/images/logos-empresas/linkedIn.png"
           width={200}
           height={100}
           alt="linkedin"
