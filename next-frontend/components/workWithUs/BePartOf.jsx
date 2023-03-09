@@ -5,7 +5,7 @@ const BePartOf = () => {
 	return (
 		<div className='flex justify-center items-center h-[34rem]'>
 			<div className='absolute items-center'>
-				<Image src={BackgrorundImg} width={600} height={600} alt='Background Img'/>
+				<Image src={BackgrorundImg} width={600} height={600} alt='Background Img' priority className="w-auto h-auto"/>
 			</div>
 			<div className='absolute items-center'>
 				<h2 className='text-blue text-2xl text-center'>
