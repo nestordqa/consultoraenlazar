@@ -23,7 +23,6 @@ const Home = () => {
           <OurServices/>
           <LearnWithUs/>
           <Feedback/>
-          <CompaniesThatTrust/>
           <ContactUs/>*/}
         </>
       </Layout>
