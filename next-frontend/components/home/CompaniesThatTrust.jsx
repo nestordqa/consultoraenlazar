@@ -9,7 +9,7 @@ export const CompaniesThatTrust = () => {
 
     <div className="w-full h-auto ">
       <h2 className="pt-10 px-4 md:px-8 text-1xl md:text-2xl font-bold text-center text-ellipsis opacity-90">
-        Empresas que confían en nosotros
+        Empresas que confían en nosotros  
       </h2>
     
     <div className=" w-full h-auto   ">
@@ -17,7 +17,7 @@ export const CompaniesThatTrust = () => {
         <div  className= " flex  w-full  text-center justify-content-center mb-10 mt-10  ">
         <div className= {styles.slide}>
   <Image
-          className="  outline-offset-8  w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/logo-pay.png"
           width={200}
           height={200}
@@ -26,7 +26,7 @@ export const CompaniesThatTrust = () => {
   </div>
   <div className= {styles.slide}>
   <Image
-          className="  outline-offset-8   w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/empujar.png"
           width={200}
           height={200}
@@ -35,7 +35,7 @@ export const CompaniesThatTrust = () => {
   </div>
   <div className= {styles.slide}>
   <Image
-          className="  outline-offset-8  w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/coderhouse.png"
           width={200}
           height={200}
@@ -44,7 +44,7 @@ export const CompaniesThatTrust = () => {
   </div>
   <div className= {styles.slide}>
   <Image
-          className="  outline-offset-8  w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/workn.png"
           width={200}
           height={50}
@@ -53,7 +53,7 @@ export const CompaniesThatTrust = () => {
   </div>
   <div className=  {styles.slide}>
   <Image
-          className="  outline-offset-8    w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/henry.png"
           width={200}
           height={100}
@@ -63,7 +63,7 @@ export const CompaniesThatTrust = () => {
   
   <div className= {styles.slide}>
   <Image
-          className="  outline-offset-8  w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/uba.png"
           width={200}
           height={200}
@@ -72,7 +72,7 @@ export const CompaniesThatTrust = () => {
   </div>
   <div className= {styles.slide}>
   <Image
-          className=" outline-offset-8  w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/mudafy.png"
           width={200}
           height={100}
@@ -81,7 +81,7 @@ export const CompaniesThatTrust = () => {
   </div>
   <div className= {styles.slide}>
   <Image
-          className="  outline-offset-8 w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/duhire.png"
           width={200}
           height={100}
@@ -90,7 +90,7 @@ export const CompaniesThatTrust = () => {
   </div>
   <div className= {styles.slide}>
   <Image
-          className="  outline-offset-8  w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/linkedin.png"
           width={200}
           height={100}
@@ -99,7 +99,7 @@ export const CompaniesThatTrust = () => {
   </div>
   <div className= {styles.slide}>
   <Image
-          className="  outline-offset-8   w-auto h-auto "
+          className="  outline-offset-8  w-full h-auto md:w-auto md:h-auto "
           src="/images/logos-empresas/empujar.png"
           width={200}
           height={200}

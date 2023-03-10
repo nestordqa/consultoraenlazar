@@ -17,13 +17,13 @@ const Home = () => {
       >
         <>
           <Landing />
+          <Goal/>
           <CompaniesThatTrust />
           {/*<WeAre/>
           <Goal/>
           <OurServices/>
           <LearnWithUs/>
           <Feedback/>
-          <CompaniesThatTrust/>
           <ContactUs/>*/}
         </>
       </Layout>
