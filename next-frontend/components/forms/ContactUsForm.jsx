@@ -76,8 +76,7 @@ const ContactUsForm = () => {
 					<div className='px-12 py-12 rounded-t-lg'>
 						<div className='pt-4'>
 							<h2 className='text-darkBlue px-2 text-2xl lg:text-3xl font-semibold text-ellipsis text-center'>
-								Te orientamos en el mundo laboral ¡Grandes oportunidades te
-								esperan!
+              ¿Cómo podemos ayudarte?
 							</h2>
 							<p className='p-3 pb-12 font-semibold text-ellipsis text-center text-base'>
 								Envianos tu consulta y nos pondremos en contacto a la brevedad.
