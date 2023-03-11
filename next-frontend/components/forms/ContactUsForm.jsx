@@ -85,7 +85,7 @@ const ContactUsForm = () => {
 						</div>
 						<form
 							onSubmit={handleSubmit}
-							action='https://formsubmit.co/talento@enlazar.xyz'
+							action='https://formsubmit.co/hola@enlazar.xyz'
 							method='POST'
 							encType='multipart/form-data'
 						>
