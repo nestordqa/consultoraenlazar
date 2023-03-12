@@ -166,7 +166,7 @@ const ContactUsForm = () => {
 								placeholder='Contanos un poco sobre vos'
 								onChange={handleOnChange}
 								rows={8}
-								className='flex w-full xsm:h-16 xsm:py-3 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg resize-none md:mb-3 md:h-3/4 bg-transparent'
+								className='flex w-full xsm:h-16 md:h-36 xsm:py-3 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg resize-none md:mb-3 bg-transparent'
 								required
 							/>
 							<div className='flex justify-between'>
