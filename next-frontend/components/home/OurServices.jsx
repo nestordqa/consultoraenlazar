@@ -13,16 +13,18 @@ import coverImageCv from "public/images/revision-cv-gratis.webp";
 import WorkWithUsForm from "../forms/CVSubmissionForm";
 
 export const OurServices = ({ services }) => {
-  const servicesCvFormTitle = "¡Revisamos GRATIS tu currículum!";
+  const servicesCvFormTitle = "¡RECURSOS GRATIS!";
   const servicesCvFormDescription =
-    "Adjuntá tu CV para que podamos revisarlo y darte una devolución personalizada.";
+    "Conocé todos los recursos gratuitos que ofrecemos sobre empleabilidad y desarrollo profesional.";
 
   const [openForm, setOpenForm] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
+  const [title, setTitle] = useState("");
+
 
   const handleOpenForm = (e) => {
     e.preventDefault();
+    setTitle(e.target.title);
     setOpenForm(true);
   };
 
@@ -42,14 +44,18 @@ export const OurServices = ({ services }) => {
   const individuos = services.filter(
     (item) => item.categories[0].categoryName.toLowerCase() === "individuos"
   );
+
   return (
     <>
-      {openForm ? <ConsultationForm handleCloseForm={handleCloseForm} /> : null}
+      {openForm ? <ConsultationForm title={title}
+          setTitle={setTitle} handleCloseForm={handleCloseForm} /> : null}
       {isOpen && (
         <WorkWithUsForm
           handleClose={setIsOpen}
           title={servicesCvFormTitle}
           description={servicesCvFormDescription}
+          uploadOpt={false}
+          
         />
       )}
 

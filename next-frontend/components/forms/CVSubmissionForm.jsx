@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import closeIcon from "public/images/x-cerrar.svg";
+import { useRouter } from "next/router";
 
 const iconStyles = {
   background: "transparent",
@@ -30,6 +31,9 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
     comments: " ",
     attachment: " ",
   });
+
+  const route = useRouter()
+  console.log(route.pathname === "/services")
 
   useEffect(() => {
     if (!uploadOpt) setErrors((prev) => ({ ...prev, attachment: "" }))
@@ -87,6 +91,8 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
 
   let isDisabled = Object.values(errors).join("").length ? true : false;
 
+
+
   return (
     <>
       <div className="fixed z-[300] inset-0 font-Noah overflow-y-auto">
@@ -126,7 +132,7 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
               </div>
               <form
                 onSubmit={handleSubmit}
-                action="https://formsubmit.co/talento@enlazar.xyz"
+                action={route.pathname === "/services"? "https://formsubmit.co/consultora@enlazar.xyz" : "https://formsubmit.co/talento@enlazar.xyz" }
                 method="POST"
                 encType="multipart/form-data"
               >
