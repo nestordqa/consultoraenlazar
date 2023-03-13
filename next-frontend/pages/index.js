@@ -7,6 +7,7 @@ import { LearnWithUs } from "@/components/home/LearnWithUs";
 import { OurServices } from "@/components/home/OurServices";
 import { WeAre } from "@/components/home/WeAre";
 import { CompaniesThatTrust } from "@/components/home/CompaniesThatTrust";
+import ContactUsForm from "@/components/forms/ContactUsForm";
 
 const Home = () => {
   return (
@@ -17,13 +18,14 @@ const Home = () => {
       >
         <>
           <Landing />
+          <Goal />
           <CompaniesThatTrust />
+          <ContactUsForm />
           {/*<WeAre/>
-          <Goal/>
           <OurServices/>
           <LearnWithUs/>
           <Feedback/>
-          <ContactUs/>*/}
+            */}
         </>
       </Layout>
     </>

@@ -124,6 +124,7 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                     ? `https://formsubmit.co/academia@enlazar.xyz`
                     : `https://formsubmit.co/consultora@enlazar.xyz`
                 }
+                
                 method="POST"
                 onSubmit={handleSubmit}
               >

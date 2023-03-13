@@ -106,7 +106,7 @@ export const Navbar = () => {
                 <Link href="/blog">Blog</Link>
               </li>
               <li className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base">
-                <Link href="/contact">Contacto</Link>
+                <Link href="/#contact" scroll={false}>Contacto</Link>
               </li>
               <li>
                 <div className=" space-x-4 xl:hidden flex flex-row w-full justify-center items-center">
