@@ -10,23 +10,22 @@ import { CompaniesThatTrust } from '@/components/home/CompaniesThatTrust';
 import ContactUsForm from '@/components/forms/ContactUsForm';
 
 const Home = () => {
-	return (
-		<>
-			<Layout
-				title={'Inicio'}
-				content={'Consultora Enlazar - Se parte del futuro del capital Humano'}
-			>
-				<>
-					<Landing />
-					<CompaniesThatTrust />
-					<ContactUsForm />
-					{/*<WeAre/>
+  return (
+    <>
+      <Layout
+        title={"Inicio"}
+        content={"Consultora Enlazar - Se parte del futuro del capital Humano"}
+      >
+        <>
+          <Landing />
           <Goal/>
+          <CompaniesThatTrust />
+          <ContactUsForm />
+          {/*<WeAre/>
           <OurServices/>
           <LearnWithUs/>
           <Feedback/>
-          <CompaniesThatTrust/>
-          <ContactUs/>*/}
+            */}
 				</>
 			</Layout>
 		</>
