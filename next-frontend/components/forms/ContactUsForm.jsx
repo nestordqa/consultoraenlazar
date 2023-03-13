@@ -73,7 +73,7 @@ const ContactUsForm = () => {
 
 	return (
 		<>
-			<div className='border flex flex-col justify-center items-center md:h-[44rem] xsm:h-[34rem] md:w-screen text-center'>
+			<div id='contact' className='border flex flex-col justify-center items-center md:h-[50rem] xsm:h-[44rem] md:w-screen text-center'>
 				<div className=''>
 					<Image
 						src={BackgroundImg}
