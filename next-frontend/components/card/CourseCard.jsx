@@ -1,5 +1,7 @@
 import { urlFor } from "@/lib/sanity";
+import { useSession } from "@supabase/auth-helpers-react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "./CourseCard.module.css";
 import Details from "./CourseDetail";
@@ -9,6 +11,8 @@ const CourseCard = ({ course, handleOpenForm }) => {
   //Detail component functions
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
+  const session = useSession();
+  const route = useRouter();
   const handleClickOpen = (e) => {
     e.preventDefault();
     setOpen(true);
@@ -16,7 +20,11 @@ const CourseCard = ({ course, handleOpenForm }) => {
 
   const handleClose = (e) => {
     e.preventDefault();
-    setOpen(false);
+    if (!session) {
+      route.push("/auth");
+    } else {
+      setOpen(false);
+    }
   };
 
   return (
@@ -41,6 +49,7 @@ const CourseCard = ({ course, handleOpenForm }) => {
             src={urlFor(mainImage).url()}
             width={150}
             height={150}
+            priority={true}
           />
         </div>
         <div className={styles.content}>

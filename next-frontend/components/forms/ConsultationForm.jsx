@@ -1,3 +1,5 @@
+import { supabaseKey } from "@/lib/enviroment";
+import supabase from "@/lib/supabaseClient";
 import Image from "next/image";
 import closeIcon from "public/images/x-cerrar.svg";
 import { useState } from "react";
@@ -44,10 +46,12 @@ export function validate(input) {
 
 const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
   let [input, setInput] = useState({
+    /*   title: title, */
     name: "",
     phone: "",
     email: "",
     consultation: "",
+    /* category: section, */
   });
   let [error, setError] = useState({
     name: "",
@@ -63,9 +67,30 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
     setError(errorObj);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     //en esta funcion se tiene que ejecutar un axios.post al back
-    setTitle("");
+    const { data, error } = await supabase.from("Consultas").insert([
+      {
+        title: title,
+        name: input.name,
+        phone: input.phone,
+        email: input.email,
+        consultation: input.consultation,
+        section: section,
+      },
+    ]);
+    if (data) {
+      setInput({
+        name: "",
+        phone: "",
+        email: "",
+        consultation: "",
+      });
+      setTitle("");
+    }
+    if (error) {
+      console.log(error);
+    }
   };
   let disabled = Object.entries(error).length ? true : false;
 
@@ -83,7 +108,7 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
           >
             &#8203;
           </span>
-          <div className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-opacity-20 bg-black md:py-6 px-4 overflow-y-auto max-h-screen">
+          <div className="fixed top-0 bottom-0 right-0 left-0 flex  justify-center items-center bg-opacity-20 bg-black md:py-6 px-4 overflow-y-auto max-h-screen">
             <div className="bg-white flex flex-col justify-center items-center min-h-min md:max-h-min w-full md:w-2/4 rounded-2xl">
               <div className="flex flex-col justify-center items-center w-full">
                 <button
@@ -123,7 +148,7 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                   section === "courses" || section === "benefits"
                     ? `https://formsubmit.co/academia@enlazar.xyz`
                     : `https://formsubmit.co/consultora@enlazar.xyz`
-                }
+                } 
                 
                 method="POST"
                 onSubmit={handleSubmit}
@@ -131,10 +156,10 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                 <div className="w-full flex flex-col md:flex-row justify-evenly items-center">
                   <input
                     type="text"
-                    name="from"
+                    name="title"
                     id="from"
                     value={title}
-                    onChange={handleInputChange}
+                    readOnly
                     className="hidden"
                   />
                   <div className="flex flex-col w-full justify-center items-center md:w-2/4 md:mr-2 md:mb-0">

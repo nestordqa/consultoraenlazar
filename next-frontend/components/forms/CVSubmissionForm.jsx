@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import closeIcon from "public/images/x-cerrar.svg";
 import { useRouter } from "next/router";
+import supabase from "@/lib/supabaseClient";
 
 const iconStyles = {
   background: "transparent",
@@ -15,14 +16,19 @@ const iconStyles = {
   fontSize: "1.5em",
 };
 
-const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) => {
+const WorkWithUsForm = ({
+  handleClose,
+  title,
+  description,
+  uploadOpt = true,
+}) => {
   const [input, setData] = useState({
     name: "",
     phone: "",
     email: "",
     comments: "",
-    attachment: "",
   });
+  const [attachment, setAttachment] = useState("");
 
   const [errors, setErrors] = useState({
     name: " ",
@@ -32,12 +38,11 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
     attachment: " ",
   });
 
-  const route = useRouter()
-  console.log(route.pathname === "/services")
+  const route = useRouter();
 
   useEffect(() => {
-    if (!uploadOpt) setErrors((prev) => ({ ...prev, attachment: "" }))
-  }, [])
+    if (!uploadOpt) setErrors((prev) => ({ ...prev, attachment: "" }));
+  }, []);
 
   const validate = (input) => {
     if (input.name === "email") {
@@ -82,16 +87,49 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
   const handleOnChange = (event) => {
     event.preventDefault();
     setData((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+    if (event.target.name === "attachment") {
+      setAttachment(event.target.files);
+    }
     validate(event.target);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     //en esta funcion se tiene que ejecutar un axios.post al back
+    const { data, error } = await supabase.from("TrabajaConNosotros").insert([
+      {
+        title: title,
+        name: input.name,
+        phone: input.phone,
+        email: input.email,
+        consultation: input.comments,
+      },
+    ]);
+    if (attachment) {
+      const { file, errorFile } = await supabase.storage
+        .from("curriculums")
+        .upload(attachment[0].name, attachment[0]);
+
+      if (file) {
+        setAttachment("");
+      }
+      if (errorFile) {
+        console.log(error);
+      }
+    }
+    if (data) {
+      setData({
+        name: "",
+        phone: "",
+        email: "",
+        comments: "",
+      });
+    }
+    if (error) {
+      console.log(error);
+    }
   };
 
   let isDisabled = Object.values(errors).join("").length ? true : false;
-
-
 
   return (
     <>
@@ -132,7 +170,11 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
               </div>
               <form
                 onSubmit={handleSubmit}
-                action={route.pathname === "/services"? "https://formsubmit.co/consultora@enlazar.xyz" : "https://formsubmit.co/talento@enlazar.xyz" }
+                action={
+                  route.pathname === "/services"
+                    ? "https://formsubmit.co/consultora@enlazar.xyz"
+                    : "https://formsubmit.co/talento@enlazar.xyz"
+                }
                 method="POST"
                 encType="multipart/form-data"
               >
@@ -201,7 +243,11 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
                   </div>
                 </div>
                 <div className="flex pt-3 justify-end self-center">
-                  <div className={uploadOpt ? "flex flex-col items-center" : 'hidden'}>
+                  <div
+                    className={
+                      uploadOpt ? "flex flex-col items-center" : "hidden"
+                    }
+                  >
                     <label
                       className="box-border border-2 border-yellow rounded-2xl  px-8 font-semibold uppercase self-center "
                       htmlFor="cv"
