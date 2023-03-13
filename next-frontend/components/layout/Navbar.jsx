@@ -13,10 +13,12 @@ import {
 import { AiFillInstagram } from "react-icons/ai";
 import logo from "public/images/logo-enlazar-web.png";
 import birrete from "public/images/birrete-web.png";
+import { useSession } from "@supabase/auth-helpers-react";
 
 export const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const router = useRouter();
+  const session = useSession();
   const route = router.pathname;
   const path = route === "/courses" ? birrete : logo;
   const icon = {
@@ -106,7 +108,9 @@ export const Navbar = () => {
                 <Link href="/blog">Blog</Link>
               </li>
               <li className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base">
-                <Link href="/#contact" scroll={false}>Contacto</Link>
+                <Link href="/#contact" scroll={false}>
+                  Contacto
+                </Link>
               </li>
               <li>
                 <div className=" space-x-4 xl:hidden flex flex-row w-full justify-center items-center">
@@ -145,6 +149,16 @@ export const Navbar = () => {
                   </Link>
                 </div>
               </li>
+              {!session ? (
+                <div className="flex flex-row justify-end items-center">
+                  <Link
+                    href="/auth"
+                    className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-4 py-2 bg-yellow"
+                  >
+                    SingIn
+                  </Link>
+                </div>
+              ) : null}
             </ul>
           </div>
         </div>

@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 import CookieConsent from "react-cookie-consent";
 import Link from "next/link";
 import PrivacyPolicy from "@/components/privacyPolitics/PrivacyPolicy";
-import { googleAnalyticsId, supabaseKey, supabaseUrl } from "@/enviroment";
+import { googleAnalyticsId, supabaseKey, supabaseUrl } from "@/lib/enviroment";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, useUser } from "@supabase/auth-helpers-react";
+import supabase from "@/lib/supabaseClient";
 
 export default function App({ Component, pageProps }) {
   /*  const router = useRouter();
@@ -26,9 +27,9 @@ export default function App({ Component, pageProps }) {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
   // Create a new supabase browser client on every first render.
-  const [supabaseClient] = useState(() =>
+  /* const [supabaseClient] = useState(() =>
     createBrowserSupabaseClient(supabaseUrl, supabaseKey)
-  );
+  ); */
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -41,7 +42,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <SessionContextProvider
-        supabaseClient={supabaseClient}
+        supabaseClient={supabase}
         initialSession={pageProps.initialSession}
       >
         <Component {...pageProps} />
