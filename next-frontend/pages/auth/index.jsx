@@ -1,10 +1,10 @@
 import { Layout } from "@/components/Layout";
-import SingIn from "@/components/session/singIn";
+import SignIn from "@/components/session/SignIn";
 
 const Authentication = () => {
   return (
     <Layout title={"LogIn"} content={"Consultora Enlazar."}>
-      <SingIn />
+      <SignIn />
     </Layout>
   );
 };

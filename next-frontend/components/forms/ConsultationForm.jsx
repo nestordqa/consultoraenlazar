@@ -146,10 +146,11 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                 className="flex flex-col justify-start items-center w-full h-fit pb-2 px-10 md:pt-6 lg:px-20"
                 action={
                   section === "courses" || section === "benefits"
-                    ? `https://formsubmit.co/academia@enlazar.xyz`
-                    : `https://formsubmit.co/consultora@enlazar.xyz`
-                } 
-                
+                   /*  ? `https://formsubmit.co/academia@enlazar.xyz`
+                    : `https://formsubmit.co/consultora@enlazar.xyz` */
+                    ? "https://formsubmit.co/micaelaceballos411@gmail.com"
+                    : "https://formsubmit.co/micaelaceballos411@gmail.com"
+                }
                 method="POST"
                 onSubmit={handleSubmit}
               >

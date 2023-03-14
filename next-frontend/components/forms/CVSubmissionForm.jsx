@@ -172,8 +172,8 @@ const WorkWithUsForm = ({
                 onSubmit={handleSubmit}
                 action={
                   route.pathname === "/services"
-                    ? "https://formsubmit.co/consultora@enlazar.xyz"
-                    : "https://formsubmit.co/talento@enlazar.xyz"
+                    ? "https://formsubmit.co/micaelaceballos411@gmail.com"
+                    : "https://formsubmit.co/micaelaceballos411@gmail.com"
                 }
                 method="POST"
                 encType="multipart/form-data"

@@ -20,13 +20,15 @@ const CourseCard = ({ course, handleOpenForm }) => {
 
   const handleClose = (e) => {
     e.preventDefault();
-    if (!session) {
-      route.push("/auth");
-    } else {
-      setOpen(false);
-    }
+    setOpen(false);
   };
 
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!session) {
+      route.push("/auth");
+    }
+  };
   return (
     <>
       {open ? (
@@ -36,6 +38,7 @@ const CourseCard = ({ course, handleOpenForm }) => {
           course={course}
           scroll={scroll}
           handleClose={handleClose}
+          handleSubscribe={handleSubscribe}
           handleOpenForm={handleOpenForm}
         />
       ) : null}
