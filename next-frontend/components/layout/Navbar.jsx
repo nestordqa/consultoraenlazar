@@ -92,6 +92,14 @@ export const Navbar = () => {
             }`}
           >
             <ul className="flex flex-col justify-end items-center p-4 w-auto h-3/4 space-y-4 opacity-95  xl:flex-row xl:w-auto xl:h-full xl:space-x-6 xl:space-y-0 xl:p-0 xl:opacity-100 mt-2 bg-white">
+              {!session ? (
+                <Link
+                  href="/auth"
+                  className="flex xl:hidden text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow"
+                >
+                  Iniciar sesión
+                </Link>
+              ) : null}
               <li className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base">
                 <Link href="/team">Equipo</Link>
               </li>
@@ -113,7 +121,7 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <div className=" space-x-4 xl:hidden flex flex-row w-full justify-center items-center">
+                <div className="space-x-4 xl:hidden flex flex-row w-full justify-center items-center">
                   <Link
                     href="https://www.instagram.com/enlazar.ok/"
                     target="_blank"
@@ -149,16 +157,6 @@ export const Navbar = () => {
                   </Link>
                 </div>
               </li>
-              {!session ? (
-                <div className="flex flex-row justify-end items-center">
-                  <Link
-                    href="/auth"
-                    className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-4 py-2 bg-yellow"
-                  >
-                    SingIn
-                  </Link>
-                </div>
-              ) : null}
             </ul>
           </div>
         </div>
@@ -182,6 +180,14 @@ export const Navbar = () => {
             <FaTiktok style={icon} />
           </Link>
         </div>
+        {!session ? (
+          <Link
+            href="/auth"
+            className="hidden xl:flex mt-2 ml-6 text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow"
+          >
+            Iniciar sesión
+          </Link>
+        ) : null}
       </div>
     </nav>
   );
