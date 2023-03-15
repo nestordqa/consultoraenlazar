@@ -21,22 +21,14 @@ export function validate(input) {
   } else if (!/^[A-Z][a-zA-ZÀ-ÿ\s]{1,40}$/.test(input.name)) {
     errors.name = "Debe iniciar con mayúscula y contener solo letras";
   }
-  if (!input.phone) {
-    errors.phone = "Forma de comunicacion requerida";
-  } else if (
-    /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{1-4}$/.test(
-      input.phone
-    ) ||
-    input.phone.length < 8
-  ) {
-    errors.phone =
-      "Numero invalido, especifica codigo de acceso, codigo de area y número local, ej.: +5492213333333";
-  }
   if (!input.email) {
     errors.email = "Email requerido";
   } else if (!/\S+@\S+\.\S+/.test(input.email)) {
     errors.email =
       "Ingresa un email valido, por ejemplo: firstname.lastname@example.com";
+  }
+  if (input.consultation.length > 2000) {
+    errors.consultation = "Haz llegado al límite de caracteres permitidos.";
   }
   if (!input.consultation) {
     errors.consultation = "Especifica tu consulta";
@@ -147,7 +139,7 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                 action={
                   section === "courses" || section === "benefits"
                     ? `https://formsubmit.co/academia@enlazar.xyz`
-                    : `https://formsubmit.co/consultora@enlazar.xyz` 
+                    : `https://formsubmit.co/consultora@enlazar.xyz`
                 }
                 method="POST"
                 onSubmit={handleSubmit}
@@ -177,17 +169,9 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                       required
                     />
                     {error.name ? (
-                      <div
-                        className="mt-2 p-2 text-red-400 rounded text-xs md:text-base"
-                        style={{
-                          paddingBottom:
-                            "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
-                          paddingTop:
-                            "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
-                        }}
-                      >
+                      <small className="h-6 text-red-600 w-full flex self-start mb-2">
                         {error.name}
-                      </div>
+                      </small>
                     ) : null}
                   </div>
                   <div className="flex flex-col w-full mt-2 justify-center items-center md:w-2/4 md:ml-2 md:mt-0">
@@ -196,7 +180,7 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                       name="phone"
                       id="phone"
                       placeholder="Teléfono"
-                      className="flex justify-between w-full py-2 px-4 border border-solid border-grey rounded-xl text-lg "
+                      className="flex justify-between w-full py-2 px-4 border border-solid border-grey rounded-xl text-lg"
                       style={{
                         height: "clamp(2rem, 1.6565rem + 1.8321vw, 3.5rem)",
                         fontSize: "clamp(1rem, 0.9542rem + 0.2443vw, 1.2rem)",
@@ -205,19 +189,6 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                       onChange={handleInputChange}
                       required
                     />
-                    {error.phone ? (
-                      <div
-                        className="mt-2 p-2 text-red-400 rounded text-xs md:text-base"
-                        style={{
-                          paddingBottom:
-                            "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
-                          paddingTop:
-                            "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
-                        }}
-                      >
-                        {error.phone}
-                      </div>
-                    ) : null}
                   </div>
                 </div>
                 <div className="flex flex-col w-full justify-start items-center md:mb-2 md:h-2/4">
@@ -236,17 +207,9 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                     required
                   />
                   {error.email ? (
-                    <div
-                      className=" mb-2 p-2 text-red-400 rounded text-xs md:text-base"
-                      style={{
-                        paddingBottom:
-                          "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
-                        paddingTop:
-                          "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
-                      }}
-                    >
+                    <small className="h-6 text-red-600 w-full flex self-start mb-2">
                       {error.email}
-                    </div>
+                    </small>
                   ) : null}
                   <textarea
                     name="consultation"
@@ -262,19 +225,22 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                     rows={8}
                     required
                   />
-                  {error.consultation ? (
-                    <div
-                      className="mb-2 p-2 text-red-400 rounded text-xs md:text-base"
-                      style={{
-                        paddingBottom:
-                          "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
-                        paddingTop:
-                          "clamp(0.2rem, 0.1313rem + 0.3664vw, 0.5rem)",
-                      }}
-                    >
+                  <div className="flex justify-between w-full">
+                    <small className="h-6 text-red-600">
                       {error.consultation}
-                    </div>
-                  ) : null}
+                    </small>
+                    <small
+                      className={
+                        error.consultation
+                          ? "h-6 text-red-600"
+                          : "h-6 text-green-600"
+                      }
+                    >
+                      {!input.consultation.length
+                        ? ""
+                        : input.consultation.length}
+                    </small>
+                  </div>
                 </div>
                 <button
                   className={
