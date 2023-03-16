@@ -170,7 +170,7 @@ export default function Details({
                 type="button"
                 className="w-full inline-flex justify-center items-center border border-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 h-8 text-sm sm:ml-3 sm:w-auto sm:text-base bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-1"
                 onClick={handleOpenForm}
-                value="courses"
+                value="Cursos"
                 title={course.title}
               >
                 Consultar

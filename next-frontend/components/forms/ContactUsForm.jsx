@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import BackgroundImg from "@/public/images/letra-e-completa.png";
 import supabase from "@/lib/supabaseClient";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 const ContactUsForm = () => {
   const [input, setData] = useState({
@@ -67,7 +69,7 @@ const ContactUsForm = () => {
   };
 
   const handleSubmit = async (event) => {
-    //en esta funcion se tiene que ejecutar un axios.post al back
+    //en esta funcion se ejecuta el aviso y se envia la informacion a la base de datos y al mail
     const { data, error } = await supabase.from("Consultas").insert([
       {
         title: "General",
@@ -90,6 +92,23 @@ const ContactUsForm = () => {
     if (error) {
       console.log(error);
     }
+    Swal.fire({
+      title: "Tu consulta ha sido enviada con éxito.",
+      text: "Nos pondremos en contacto a la brevedad.",
+      imageUrl: "../images/consulta-enviada-con-exito.gif",
+      imageWidth: 200,
+      imageHeight: 150,
+      imageAlt: "Consulta enviada",
+      width: "45em",
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+    }).then((isOk) => {
+      if (isOk) {
+        event.target.submit();
+      }
+      return false;
+    });
   };
 
   let isDisabled = Object.values(errors).join("").length ? true : false;
@@ -127,6 +146,15 @@ const ContactUsForm = () => {
           >
             <div className="w-full flex flex-col md:flex-row md:mb-2 justify-evenly items-center">
               <div className="flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0">
+                <input type="hidden" name="_subject" value="Contacto" />
+                {/*En este input se tiene que poner la pagina final cuando se haga el hosting */}
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://consultoraenlazar-git-dev-micacblls.vercel.app/"
+                />
+                <input type="hidden" name="_template" value="box" />
+                <input type="hidden" name="_captcha" value="false" />
                 <input
                   type="text"
                   name="name"

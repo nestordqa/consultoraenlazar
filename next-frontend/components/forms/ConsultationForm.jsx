@@ -1,8 +1,9 @@
-import { supabaseKey } from "@/lib/enviroment";
 import supabase from "@/lib/supabaseClient";
 import Image from "next/image";
 import closeIcon from "public/images/x-cerrar.svg";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 const styledLogo = {
   background: "transparent",
@@ -38,12 +39,10 @@ export function validate(input) {
 
 const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
   let [input, setInput] = useState({
-    /*   title: title, */
     name: "",
     phone: "",
     email: "",
     consultation: "",
-    /* category: section, */
   });
   let [error, setError] = useState({
     name: "",
@@ -60,7 +59,7 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
   };
 
   const handleSubmit = async (e) => {
-    //en esta funcion se tiene que ejecutar un axios.post al back
+    //en esta funcion se ejecuta el aviso y se envia la informacion a la base de datos y al mail
     const { data, error } = await supabase.from("Consultas").insert([
       {
         title: title,
@@ -83,6 +82,23 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
     if (error) {
       console.log(error);
     }
+    Swal.fire({
+      title: "Tu consulta ha sido enviada con éxito.",
+      text: "Nos pondremos en contacto a la brevedad.",
+      imageUrl: "../images/consulta-enviada-con-exito.gif",
+      imageWidth: 200,
+      imageHeight: 150,
+      imageAlt: "Consulta enviada",
+      width: "45em",
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+    }).then((isOk) => {
+      if (isOk) {
+        e.target.submit();
+      }
+      return false;
+    });
   };
   let disabled = Object.entries(error).length ? true : false;
 
@@ -137,7 +153,7 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
               <form
                 className="flex flex-col justify-start items-center w-full h-fit pb-2 px-10 md:pt-6 lg:px-20"
                 action={
-                  section === "courses" || section === "benefits"
+                  section === "Cursos" || section === "Beneficios"
                     ? `https://formsubmit.co/academia@enlazar.xyz`
                     : `https://formsubmit.co/consultora@enlazar.xyz`
                 }
@@ -145,6 +161,18 @@ const ConsultationForm = ({ handleCloseForm, section, title, setTitle }) => {
                 onSubmit={handleSubmit}
               >
                 <div className="w-full flex flex-col md:flex-row justify-evenly items-center">
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value={`${section}: ${title}`}
+                  />
+                  <input
+                    type="hidden"
+                    name="_next"
+                    value={window.location.href}
+                  />
+                  <input type="hidden" name="_template" value="box" />
+                  <input type="hidden" name="_captcha" value="false" />
                   <input
                     type="text"
                     name="title"
