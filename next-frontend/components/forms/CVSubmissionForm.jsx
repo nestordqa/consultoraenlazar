@@ -41,7 +41,6 @@ const WorkWithUsForm = ({
   });
 
   const route = useRouter();
-  console.log(window.location.href);
 
   useEffect(() => {
     if (!uploadOpt) setErrors((prev) => ({ ...prev, attachment: "" }));
