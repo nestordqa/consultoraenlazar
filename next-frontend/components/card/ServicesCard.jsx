@@ -44,7 +44,7 @@ const ServicesCard = ({
                     className="rounded-full bg-yellow p-1 px-6 font-semibold text-base md:text-lg"
                     onClick={handleOpenForm}
                     title={service.title}
-                    value="services"
+                    value="Servicios"
                   >
                     QUIERO CONTRATAR
                   </button>
@@ -85,7 +85,7 @@ const ServicesCard = ({
                     className="rounded-full  bg-yellow p-1 px-6 font-semibold"
                     onClick={handleOpenForm}
                     title={service.title}
-                    value="services"
+                    value="Servicios"
                   >
                     QUIERO CONTRATAR
                   </button>

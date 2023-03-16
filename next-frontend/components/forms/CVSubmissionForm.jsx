@@ -5,6 +5,8 @@ import Image from "next/image";
 import closeIcon from "public/images/x-cerrar.svg";
 import { useRouter } from "next/router";
 import supabase from "@/lib/supabaseClient";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 const iconStyles = {
   background: "transparent",
@@ -94,7 +96,7 @@ const WorkWithUsForm = ({
   };
 
   const handleSubmit = async (event) => {
-    //en esta funcion se tiene que ejecutar un axios.post al back
+    //en esta funcion se ejecuta el aviso y se envia la informacion a la base de datos y al mail
     const { data, error } = await supabase.from("TrabajaConNosotros").insert([
       {
         title: title,
@@ -127,6 +129,25 @@ const WorkWithUsForm = ({
     if (error) {
       console.log(error);
     }
+    return Swal.fire({
+      title: uploadOpt
+        ? "Tu currículum ha sido enviado con éxito."
+        : "Tu consulta ha sido enviada con éxito.",
+      text: "Nos pondremos en contacto a la brevedad.",
+      imageUrl: "../images/consulta-enviada-con-exito.gif",
+      imageWidth: 200,
+      imageHeight: 150,
+      imageAlt: "Consulta enviada",
+      width: "45em",
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+    }).then((isOk) => {
+      if (isOk) {
+        event.target.submit();
+      }
+      return false;
+    });
   };
 
   let isDisabled = Object.values(errors).join("").length ? true : false;
@@ -180,6 +201,14 @@ const WorkWithUsForm = ({
               >
                 <div className="w-full flex flex-col md:flex-row justify-evenly items-center">
                   <div className="flex flex-col w-full mb-2 justify-center md:w-2/4 md:mr-2 md:mb-0">
+                    <input type="hidden" name="_subject" value={title} />
+                    <input
+                      type="hidden"
+                      name="_next"
+                      value={window.location.href}
+                    />
+                    <input type="hidden" name="_template" value="box" />
+                    <input type="hidden" name="_captcha" value="false" />
                     <input
                       type="text"
                       name="name"
