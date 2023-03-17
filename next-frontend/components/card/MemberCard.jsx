@@ -11,7 +11,7 @@ const MemberCard = ({ name, image, jobFirstLine, jobSecondLine}) => {
                 width="800"
                 height="800"
             ></Image>
-            <p className="text-center font-bold">{name}</p>
+            <p className="text-center font-bold pt-4">{name}</p>
             <p className="text-center">{jobFirstLine}</p>
             <p className="text-center">{jobSecondLine}</p>
         </div>
