@@ -46,10 +46,10 @@ const ContactUsForm = () => {
     //       }))
     //     : setErrors((prev) => ({ ...prev, phone: "" }));
     } else if (input.name === "comments") {
-      input.value.length < 50 || input.value.length > 1000
+      input.value.length > 1000
         ? setErrors((prev) => ({
             ...prev,
-            comments: "Entre 50 y 1000 caracteres",
+            comments: "Máximo 1000 caracteres",
           }))
         : setErrors((prev) => ({ ...prev, comments: "" }));
     } else if (input.name === "company") {
