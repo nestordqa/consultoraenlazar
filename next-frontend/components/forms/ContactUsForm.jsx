@@ -13,7 +13,7 @@ const ContactUsForm = () => {
 
 	const [errors, setErrors] = useState({
 		name: ' ',
-		phone: ' ',
+		// phone: ' ',
 		email: ' ',
 		comments: ' ',
 		company: ' ',

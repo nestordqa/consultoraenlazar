@@ -25,7 +25,7 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
 
   const [errors, setErrors] = useState({
     name: " ",
-    phone: " ",
+    // phone: " ",
     email: " ",
     comments: " ",
     attachment: " ",
