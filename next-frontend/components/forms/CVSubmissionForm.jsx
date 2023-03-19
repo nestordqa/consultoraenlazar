@@ -164,7 +164,7 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
                     <small className="h-6 text-red-600">{errors.phone}</small>
                   </div>
                 </div>
-                <div className='flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0'>
+                <div className='flex flex-col w-full justify-center md:w-auto md:mr-2 md:mb-0'>
                   <input
                     type="email"
                     name="email"
@@ -176,7 +176,7 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
                   />
                   <small className="h-6 text-red-600">{errors.email}</small>
                 </div>
-                <div className='flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0'>
+                <div className='flex flex-col w-full justify-center md:w-auto md:mr-2 md:mb-0'>
                   <textarea
                     name="comments"
                     value={input.comments}
