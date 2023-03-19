@@ -72,6 +72,13 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
 						company: 'Ingresa un nombre válido',
 				  }))
 				: setErrors((prev) => ({ ...prev, company: '' }));
+		} else if (input.name === 'attachment') {
+			!input.value.length
+				? setErrors((prev) => ({
+						...prev,
+						attachment: ' ',
+				  }))
+				: setErrors((prev) => ({ ...prev, attachment: '' }));
 		}
 	};
 
@@ -89,7 +96,7 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
 
   return (
     <>
-      <div className="fixed z-[300] inset-0 font-Noah overflow-y-auto">
+      <div className="fixed z-[300] inset-0 font-Noah overflow-y-auto xsm:h-[40rem] ">
         <div className="flex items-center justify-center max-h-screen pt-10 px-4 pb-5 text-center sm:block sm:p-0">
           <div className="fixed inset-0 transition-opacity" aria-hidden="true">
             <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -102,7 +109,7 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
             &#8203;
           </span>
 
-          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle sm:max-w-2xl sm:w-full bg-white">
+          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle md:h-[50rem] xsm:h-[35rem] bg-white">
             <button
               className="float-right transition duration-150 ease-in-out ml-4 mb-4 top-0 h-8 md:h-10"
               onClick={() => handleClose(false)}
@@ -117,10 +124,10 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
             </button>
             <div className="px-12 py-12 rounded-t-lg">
               <div className="pt-4">
-                <h2 className="text-darkBlue px-2 text-2xl lg:text-3xl font-semibold text-ellipsis text-center">
+              <h2 className='text-darkBlue md:px-2 xsm:text-xl lg:text-3xl font-semibold text-ellipsis text-center'>
                   {title}
                 </h2>
-                <p className="p-3 pb-12 font-semibold text-ellipsis text-center text-base">
+                <p className='xsm:p-1 xsm:pb-8 md:p-3 md:pb-12 font-semibold text-ellipsis text-center xsm:text-sm lg:text-base'>
                   {description}
                 </p>
               </div>
@@ -131,52 +138,52 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
                 encType="multipart/form-data"
               >
                 <div className="w-full flex flex-col md:flex-row justify-evenly items-center">
-                  <div className="flex flex-col w-full mb-2 justify-center md:w-2/4 md:mr-2 md:mb-0">
+                <div className='flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0'>
                     <input
                       type="text"
                       name="name"
                       value={input.name}
                       placeholder="Nombre y Apellido"
                       onChange={handleOnChange}
-                      className="flex w-full h-[3.3rem] py-2 px-4 border border-solid border-grey rounded-xl text-lg"
+                      className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
                       required
                     />
 
                     <small className="h-6 text-red-600">{errors.name}</small>
                   </div>
-                  <div className="flex flex-col w-full mt-2 justify-center md:w-2/4 md:ml-2 md:mt-0">
+                  <div className='flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0'>
                     <input
                       type="tel"
                       name="phone"
                       value={input.phone}
                       placeholder="Teléfono"
                       onChange={handleOnChange}
-                      className="flex justify-between w-full h-[3.3rem] py-2 px-4 border border-solid border-grey rounded-xl text-lg "
+                      className='flex justify-between w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
                       required
                     />
                     <small className="h-6 text-red-600">{errors.phone}</small>
                   </div>
                 </div>
-                <div className="flex flex-col w-full justify-start md:mb-2 md:h-2/4">
+                <div className='flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0'>
                   <input
                     type="email"
                     name="email"
                     value={input.email}
                     placeholder="Email"
                     onChange={handleOnChange}
-                    className="flex my-2 w-full py-3 px-4 border border-solid border-grey rounded-xl text-lg"
+                    className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
                     required
                   />
                   <small className="h-6 text-red-600">{errors.email}</small>
                 </div>
-                <div className="flex flex-col w-full justify-start md:mb-2 md:h-2/4">
+                <div className='flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0'>
                   <textarea
                     name="comments"
                     value={input.comments}
                     placeholder="Contanos un poco sobre vos"
                     onChange={handleOnChange}
                     rows={8}
-                    className="flex w-full max-h-24 pt-2 px-4 border border-solid border-grey rounded-xl text-lg resize-none mb-3 md:h-3/4"
+                    className='flex w-full xsm:h-16 md:h-36 xsm:py-3 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg resize-none md:mb-3 bg-transparent'
                     required
                   />
                   <div className="flex justify-between">
@@ -197,7 +204,7 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
                 <div className="flex pt-3 justify-end self-center">
                   <div className={uploadOpt ? "flex flex-col items-center" : 'hidden'}>
                     <label
-                      className="box-border border-2 border-yellow rounded-2xl  px-8 font-semibold uppercase self-center "
+                      className="box-border border-2 border-yellow rounded-2xl xsm:text-xs md:text-base px-8 font-semibold uppercase self-center "
                       htmlFor="cv"
                     >
                       Cargar Archivo
@@ -224,8 +231,8 @@ const WorkWithUsForm = ({ handleClose, title, description, uploadOpt = true }) =
                     <button
                       className={
                         isDisabled
-                          ? "bg-grey text-gray-500 rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
-                          : "bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end"
+                        ? 'bg-grey text-gray-500 rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end'
+                        : 'bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end'
                       }
                       type="submit"
                       disabled={isDisabled}
