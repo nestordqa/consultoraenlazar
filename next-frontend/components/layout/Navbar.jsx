@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import logo from "public/images/logo-enlazar-web.png";
-import birrete from "public/images/birrete-web.png";
+import birrete from "public/images/birrete-web2.png";
 import { useSession } from "@supabase/auth-helpers-react";
 
 export const Navbar = () => {
