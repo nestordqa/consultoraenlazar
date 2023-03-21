@@ -33,7 +33,7 @@ const BenefitCard = ({ benefit, handleOpenForm }) => {
         </div>
         <button
           className="bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center"
-          value="benefits"
+          value="Beneficios"
           title={benefit.title}
           onClick={handleOpenForm}
         >

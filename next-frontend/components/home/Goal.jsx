@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Companies.module.css";
 
 export const Goal = () => {
   return (
+
     <div class="goal-container  py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center flex-wrap ">
-        
-        <div class="goal-image w-full lg:w-1/2 mb-10 lg:mb-0">
+         <div class="goal-image w-full lg:w-1/2 mb-10 lg:mb-0">
             <div class= {styles.image}>
             <Image     
            className='w-full h-full '
@@ -25,17 +25,16 @@ export const Goal = () => {
             Nuestra misión: Revolucionar el área de RRHH. Creamos y brindamos soluciones de desarrollo para personas, equipos y organizaciones en materia de formación profesional y consultoría, basadas en la experiencia, la innovación y las buenas prácticas, apoyándonos en el valor humano y las nuevas tecnologías.
               </p>
               <div className="goal-button flex justify-center">
+
+   
               <Link href="/team">
-                        <button className="rounded-full  bg-yellow p-1 px-6 font-semibold">Conoce nuestro Equipo</button>
-               </Link>        
-               </div>
+                <button className="rounded-full  bg-yellow p-1 px-6 font-semibold">
+                  Conoce nuestro Equipo
+                </button>
+              </Link>
+            </div>
           </div>
-          
         </div>
       </div>
-   
- 
-         
-   
   );
 };

@@ -169,7 +169,7 @@ export const Footer = () => {
             <Link href="#">
               <Image
                 width={60}
-                height={60}
+                height={"auto"}
                 src={logo}
                 alt="Logo Consultora Enlazar"
               />
