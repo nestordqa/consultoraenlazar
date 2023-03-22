@@ -278,7 +278,7 @@ const WorkWithUsForm = ({
                     }
                   >
                     <label
-                      className="box-border border-2 border-yellow rounded-2xl xsm:text-xs md:text-base px-8 font-semibold uppercase self-center "
+                      className="box-border border-2 border-yellow rounded-2xl xsm:text-xs md:text-base px-8 font-semibold uppercase self-center text-center"
                       htmlFor="cv"
                     >
                       Cargar Archivo
