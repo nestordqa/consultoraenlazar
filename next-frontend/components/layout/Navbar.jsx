@@ -9,11 +9,22 @@ import {
   FaTiktok,
   FaTelegramPlane,
   FaLinkedinIn,
+  FaUserCircle,
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import logo from "public/images/logo-enlazar-web.png";
 import birrete from "public/images/birrete-web.png";
 import { useSession } from "@supabase/auth-helpers-react";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import Tooltip from '@mui/material/Tooltip';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+
+// import AccountCircle from '@mui/icons-material/AccountCircle';
 
 export const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -21,6 +32,23 @@ export const Navbar = () => {
   const session = useSession();
   const route = router.pathname;
   const path = route === "/courses" ? birrete : logo;
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const settings = ['Perfil', 'Cuenta', 'Dashboard', 'Salir'];
+  const supabase = useSupabaseClient();
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut()
+  }
+
   const icon = {
     fontSize: "24px",
     color: "#043959",
@@ -99,7 +127,9 @@ export const Navbar = () => {
                 >
                   Iniciar sesión
                 </Link>
-              ) : null}
+              ) : (
+                null
+              )}
               <li className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base">
                 <Link href="/team">Equipo</Link>
               </li>
@@ -187,7 +217,43 @@ export const Navbar = () => {
           >
             Iniciar sesión
           </Link>
-        ) : null}
+        ) : 
+        <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {/* {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))} */}
+              <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Cuenta</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleSignOut}>
+                  <Typography textAlign="center">Salir</Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+        }
       </div>
     </nav>
   );
