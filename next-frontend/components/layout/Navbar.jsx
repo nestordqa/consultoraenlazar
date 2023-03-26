@@ -247,7 +247,7 @@ export const Navbar = () => {
 							<MenuItem onClick={handleCloseUserMenu} >
                 <Link href='/myAccount'>
                   <div className='flex'>
-                    <div className='flex pr-2 items-center'><FaUserCircle/></div>Mi cuenta
+                    <div className='flex pr-2 items-center'><FaUserCircle/></div>Mi perfil
                   </div>
 								</Link>
 							</MenuItem>
