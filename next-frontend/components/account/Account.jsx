@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { FaSave } from 'react-icons/fa';
+import { countries } from '@/public/countries.json';
 
 export default function Account({ session }) {
-  console.log(session);
+	//   console.log(session);
 	const supabase = useSupabaseClient();
 	const user = useUser();
 	const [loading, setLoading] = useState(true);
@@ -10,17 +12,18 @@ export default function Account({ session }) {
 	const [website, setWebsite] = useState(null);
 	const [avatar_url, setAvatarUrl] = useState(null);
 	const [input, setInput] = useState({
-		firstName: session.user.user_metadata.firstName || '',
-		lastName: session.user.user_metadata.lastName || '',
-		phone: session.user.user_metadata.phone || '',
-		occupation: session.user.user_metadata.occupation || '',
-		country: session.user.user_metadata.country || '',
-		company: session.user.user_metadata.company || '',
+		firstName: '',
+		lastName: '',
+		phone: '',
+		occupation: '',
+		country: '',
+		company: '',
+		email: '',
 	});
 
-  // useEffect(() => {
-	// 	getProfile();
-	// }, [session]);
+	useEffect(() => {
+		getProfile();
+	}, [session]);
 
 	function handleOnChange(event) {
 		setInput((prev) => ({ ...prev, [event.target.name]: event.target.value }));
@@ -30,24 +33,33 @@ export default function Account({ session }) {
 		try {
 			setLoading(true);
 
-			const { user } = (await supabase.auth.getSession()).data.session;
+			let { data, error, status } = await supabase
+				.from('profiles')
+				.select(
+					`firstName, lastName, phone, occupation, country, company, email`
+				)
+				.eq('id', user.id)
+				.single();
 
-			console.log(user);
-			// let { data, error, status } = await supabase
-			//   .from('profiles')
-			//   .select(`username, website, avatar_url`)
-			//   .eq('id', user.id)
-			//   .single()
+			if (error && status !== 406) {
+				throw error;
+			}
 
-			// if (error && status !== 406) {
-			//   throw error
-			// }
-
-			// if (data) {
-			//   setUsername(data.username)
-			//   setWebsite(data.website)
-			//   setAvatarUrl(data.avatar_url)
-			// }
+			if (data) {
+				console.log(data);
+				// Object.keys(input).forEach((e) =>
+				// 	setInput((prev) => ({...prev, [e]: data[e] }))
+				// );
+				setInput({
+					firstName: data.firstName,
+					lastName: data.lastName,
+					phone: data.phone,
+					occupation: data.occupation,
+					country: data.country,
+					company: data.company,
+					email: data.email,
+				});
+			}
 		} catch (error) {
 			alert('Error loading user data!');
 			console.log(error);
@@ -71,11 +83,8 @@ export default function Account({ session }) {
 				updated_at: new Date().toISOString(),
 			};
 
-			// let { error } = await supabase.from('profiles').upsert(updates);
-      const { data, error } = await supabase.auth.updateUser({
-        data: updates,
-      })
-      // console.log('update:', data);
+			let { error } = await supabase.from('profiles').upsert(updates);
+			// console.log('update:', data);
 			if (error) throw error;
 			alert('Profile updated!');
 		} catch (error) {
@@ -87,98 +96,132 @@ export default function Account({ session }) {
 	}
 
 	return (
-		<div className='form-widget'>
+		<div className='form-widget w-1/3'>
 			<form>
-				<div>
-					<label htmlFor='email'>Email: </label>
+				<div className='pb-2'>
+					<label className='font-semibold' htmlFor='email'>
+						Email:{' '}
+					</label>
 					<input
 						id='email'
 						name='email'
 						type='text'
-						value={session.user.email}
+						value={input.email}
+						className='flex bg-gray-100 w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 						disabled
 					/>
 				</div>
-				<div>
-					<label htmlFor='firstName'>Nombre: </label>
+				<div className='pb-2'>
+					<label className='font-semibold' htmlFor='firstName'>
+						Nombre:{' '}
+					</label>
 					<input
 						id='firstName'
-            name='firstName'
+						name='firstName'
 						type='text'
 						value={input.firstName}
 						onChange={handleOnChange}
+						className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 					/>
 				</div>
-				<div>
-					<label htmlFor='lastName'>Apellido: </label>
+				<div className='pb-2'>
+					<label className='font-semibold' htmlFor='lastName'>
+						Apellido:{' '}
+					</label>
 					<input
 						id='lastName'
 						name='lastName'
 						type='text'
 						value={input.lastName}
 						onChange={handleOnChange}
+						className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 					/>
 				</div>
-				<div>
-					<label htmlFor='phone'>Teléfono: </label>
+				<div className='pb-2'>
+					<label className='font-semibold' htmlFor='phone'>
+						Teléfono:{' '}
+					</label>
 					<input
 						id='phone'
-            name='phone'
+						name='phone'
 						type='tel'
 						value={input.phone}
 						onChange={handleOnChange}
+						className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 					/>
 				</div>
-				<div>
-					<label htmlFor='occupation'>Ocupación: </label>
+				<div className='pb-2'>
+					<label className='font-semibold' htmlFor='occupation'>
+						Ocupación:{' '}
+					</label>
 					<input
 						id='occupation'
-            name='occupation'
+						name='occupation'
 						type='text'
 						value={input.occupation}
 						onChange={handleOnChange}
+						className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 					/>
 				</div>
-				<div>
-					<label htmlFor='company'>Empresa: </label>
+				<div className='pb-2'>
+					<label className='font-semibold' htmlFor='company'>
+						Empresa:{' '}
+					</label>
 					<input
 						id='company'
-            name='company'
+						name='company'
 						type='text'
 						value={input.company}
 						onChange={handleOnChange}
+						className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 					/>
 				</div>
-				<div>
-					<label htmlFor='country'>País: </label>
+				<div className='pb-2'>
+					{/* <label className='font-semibold' htmlFor='country'>País: </label>
 					<input
 						id='country'
-            name='country'
+						name='country'
 						type='text'
 						value={input.country}
 						onChange={handleOnChange}
-					/>
+						className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
+					/> */}
+					<label for='country' className='font-semibold'>País:</label>
+					<select
+						name='country'
+						id='country'
+						className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
+						onChange={handleOnChange}
+						defaultValue={input.country ? input.country : 'Argentina'}
+					>
+						{countries.map((country) => (
+							<option key={country.id} value={country.name}>
+								{country.name}
+							</option>
+						))}
+					</select>
 				</div>
 			</form>
 
-			<div>
+			<div className='flex justify-center p-5'>
 				<button
-					className='button primary block'
+					// className='button primary block'
 					onClick={() => updateProfile()}
 					// disabled={loading}
+					className='bg-yellow rounded-3xl py-3 px-10 font-semibold uppercase self-center md:self-end'
 				>
-					Actualizar
+					Guardar
 				</button>
 			</div>
 
-			<div>
+			{/* <div>
 				<button
 					className='button block'
 					onClick={() => supabase.auth.signOut()}
 				>
 					Sign Out
 				</button>
-			</div>
+			</div> */}
 		</div>
 	);
 }
