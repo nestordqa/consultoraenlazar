@@ -3,7 +3,7 @@ import { Layout } from "@/components/Layout";
 import { useSession } from '@supabase/auth-helpers-react';
 
 
-const myAccount = () => {
+const MyAccount = () => {
     const session = useSession()
   return (
     <>
@@ -17,4 +17,4 @@ const myAccount = () => {
   );
 };
 
-export default myAccount
+export default MyAccount
