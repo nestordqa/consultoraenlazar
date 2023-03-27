@@ -3,7 +3,7 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { FaSave } from 'react-icons/fa';
 import { countries } from '@/public/countries.json';
 
-export default function Account({ session }) {
+export default function PersonalData({ session }) {
 	const supabase = useSupabaseClient();
 	const user = useUser();
 	const [loading, setLoading] = useState(true);
@@ -95,11 +95,11 @@ export default function Account({ session }) {
 
 	return (
 		<div className='flex flex-col w-9/12 content-center'>
-			<div className='flex'>
+			{/* <div className='flex'>
 				<h2 className='pt-12 pb-8 text-2xl md:text-3xl text-left font-bold text-ellipsis opacity-90 text-darkBlue'>
 					Mi cuenta
 				</h2>
-			</div>
+			</div> */}
 			<div className='flex w-full justify-center'>
 				<form className='w-1/2'>
 					<div className='pb-2'>
@@ -111,7 +111,7 @@ export default function Account({ session }) {
 							name='email'
 							type='text'
 							value={input.email}
-							className='flex bg-gray-100 w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
+							className='flex bg-gray-50 text-gray-500 w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 							disabled
 						/>
 					</div>
