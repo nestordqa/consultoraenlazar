@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -22,7 +22,7 @@ import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 
@@ -30,9 +30,11 @@ export const Navbar = () => {
 	const [navbar, setNavbar] = useState(false);
 	const router = useRouter();
 	const session = useSession();
+	const user = useUser();
 	const route = router.pathname;
 	const path = route === '/courses' ? birrete : logo;
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [name, setName] = useState('')
 
 	const settings = ['Perfil', 'Cuenta', 'Dashboard', 'Salir'];
 	const supabase = useSupabaseClient();
@@ -46,9 +48,32 @@ export const Navbar = () => {
 	};
 
 	const handleSignOut = async () => {
-    handleCloseUserMenu()
+		handleCloseUserMenu();
 		const { error } = await supabase.auth.signOut();
+    router.push("/auth");
 	};
+
+	const getUserName = async () => {
+		const {
+			data: { user },
+		} = await supabase.auth.getUser();
+		return user;
+	};
+
+	useEffect(() => {
+    const altName = (async function getProfile() {
+      try {
+        let { data, error, status } = await supabase
+          .from('profiles')
+          .select(`firstName`)
+          .eq('id', user.id)
+          .single();
+        setName(data.firstName);
+      } catch {
+        setName('')
+      }
+    })();
+  }, []);
 
 	const icon = {
 		fontSize: '24px',
@@ -220,7 +245,7 @@ export const Navbar = () => {
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='Open settings'>
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+								<Avatar alt={`P`} src='/static/images/avatar/2.jpg' />
 							</IconButton>
 						</Tooltip>
 						<Menu
@@ -244,15 +269,21 @@ export const Navbar = () => {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))} */}
-							<MenuItem onClick={handleCloseUserMenu} >
-                <Link href='/myAccount'>
-                  <div className='flex'>
-                    <div className='flex pr-2 items-center'><FaUserCircle/></div>Mi perfil
-                  </div>
+							<MenuItem onClick={handleCloseUserMenu}>
+								<Link href='/myAccount'>
+									<div className='flex'>
+										<div className='flex pr-2 items-center'>
+											<FaUserCircle />
+										</div>
+										Mi perfil
+									</div>
 								</Link>
 							</MenuItem>
 							<MenuItem onClick={handleSignOut} className='flex'>
-                <div className='pr-2'><FaSignOutAlt/></div>Salir
+								<div className='pr-2'>
+									<FaSignOutAlt />
+								</div>
+								Salir
 							</MenuItem>
 						</Menu>
 					</Box>
