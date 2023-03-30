@@ -34,7 +34,7 @@ export const Navbar = () => {
 	const route = router.pathname;
 	const path = route === '/courses' ? birrete : logo;
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [name, setName] = useState('')
+	const [name, setName] = useState('');
 
 	const settings = ['Perfil', 'Cuenta', 'Dashboard', 'Salir'];
 	const supabase = useSupabaseClient();
@@ -50,7 +50,7 @@ export const Navbar = () => {
 	const handleSignOut = async () => {
 		handleCloseUserMenu();
 		const { error } = await supabase.auth.signOut();
-    router.push("/auth");
+		router.push('/auth');
 	};
 
 	const getUserName = async () => {
@@ -61,19 +61,21 @@ export const Navbar = () => {
 	};
 
 	useEffect(() => {
-    const altName = (async function getProfile() {
-      try {
-        let { data, error, status } = await supabase
-          .from('profiles')
-          .select(`firstName`)
-          .eq('id', user.id)
-          .single();
-        setName(data.firstName);
-      } catch {
-        setName('')
-      }
-    })();
-  }, []);
+		const altName = (async function getProfile() {
+			try {
+				let { data, error, status } = await supabase
+					.from('profiles')
+					.select(
+						`firstName`
+					)
+					.eq('id', user.id)
+					.single();
+				setName(data.firstName);
+			} catch {
+				setName('');
+			}
+		})();
+	}, [user]);
 
 	const icon = {
 		fontSize: '24px',
@@ -245,7 +247,7 @@ export const Navbar = () => {
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='Open settings'>
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt={`P`} src='/static/images/avatar/2.jpg' />
+								<Avatar alt={`${name}`} src='' />
 							</IconButton>
 						</Tooltip>
 						<Menu
