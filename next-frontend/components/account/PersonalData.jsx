@@ -62,8 +62,9 @@ export default function PersonalData({ session }) {
 	}
 
 	async function updateProfile(e) {
+		e.preventDefault()
 		try {
-			setLoading(true);
+			// setLoading(true);
 
 			const updates = {
 				id: user.id,
@@ -80,10 +81,10 @@ export default function PersonalData({ session }) {
 			if (error) throw error;
 			alert('Datos actualizados');
 		} catch (error) {
-			alert('Error al actualizar los datos');
 			console.log(error);
+			alert('Error al actualizar los datos');
 		} finally {
-			setLoading(false);
+			// setLoading(false);
 		}
 	}
 
@@ -209,7 +210,7 @@ export default function PersonalData({ session }) {
 					<div className='flex justify-center p-5'>
 						<button
 							// className='button primary block'
-							onClick={() => updateProfile()}
+							onClick={(e) => updateProfile(e)}
 							// disabled={loading}
 							className='bg-yellow rounded-3xl py-3 px-10 font-semibold uppercase self-center md:self-end'
 						>
