@@ -9,6 +9,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Historial from '@/components/account/Historial';
 import { BsPersonVcard } from "react-icons/bs";
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { Router, useRouter } from "next/router";
+
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -23,7 +26,7 @@ function TabPanel(props) {
 		>
 			{value === index && (
 				<Box sx={{ p: 3 }}>
-					<Typography>{children}</Typography>
+					{children}
 				</Box>
 			)}
 		</div>
@@ -45,6 +48,13 @@ function a11yProps(index) {
 
 const MyAccount = () => {
 	const [value, setValue] = React.useState(0);
+  const supabase = useSupabaseClient();
+  const route = useRouter();
+
+  const handleSignOut = async () => {
+		const { error } = await supabase.auth.signOut();
+    route.push("/auth");
+	};
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -67,7 +77,7 @@ const MyAccount = () => {
 							height: 'auto',
 						}}
 					> */}
-					<div className='flex jus'>
+					<div className='flex'>
 						<Tabs
 							orientation='vertical'
 							variant='scrollable'
@@ -82,7 +92,7 @@ const MyAccount = () => {
 							{/* <Tab label='Item Four' {...a11yProps(3)} />
 							<Tab label='Item Five' {...a11yProps(4)} />
 							<Tab label='Item Six' {...a11yProps(5)} /> */}
-							<Tab label='Salir' {...a11yProps(6)} />
+							<Tab label='Salir'  onClick={handleSignOut} {...a11yProps(6)} />
 						</Tabs>
 						<div className='w-full'>
 							<TabPanel value={value} index={0}>
@@ -96,15 +106,6 @@ const MyAccount = () => {
 							</TabPanel>
 							<TabPanel value={value} index={3}>
 								Item Four
-							</TabPanel>
-							<TabPanel value={value} index={4}>
-								Item Five
-							</TabPanel>
-							<TabPanel value={value} index={5}>
-								Item Six
-							</TabPanel>
-							<TabPanel value={value} index={6}>
-								Item Seven
 							</TabPanel>
 						</div>
 						{/* </Box> */}
