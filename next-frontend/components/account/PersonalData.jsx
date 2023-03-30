@@ -30,7 +30,7 @@ export default function PersonalData({ session }) {
 
 	async function getProfile() {
 		try {
-			setLoading(true);
+			// setLoading(true);
 
 			let { data, error, status } = await supabase
 				.from('profiles')
@@ -45,10 +45,6 @@ export default function PersonalData({ session }) {
 			}
 
 			if (data) {
-				console.log(data);
-				// Object.keys(input).forEach((e) =>
-				// 	setInput((prev) => ({...prev, [e]: data[e] }))
-				// );
 				setInput({
 					firstName: data.firstName,
 					lastName: data.lastName,
@@ -60,11 +56,9 @@ export default function PersonalData({ session }) {
 				});
 			}
 		} catch (error) {
-			alert('Error loading user data!');
-			console.log(error);
-		} finally {
-			setLoading(false);
-		}
+			// alert('Error loading user data!');
+			// console.log(error);
+		} 
 	}
 
 	async function updateProfile(e) {
