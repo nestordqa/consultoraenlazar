@@ -1,4 +1,4 @@
-{
+const countries = {
     "countries": [
         {
             "id" : 144,
@@ -857,3 +857,5 @@
             "name" : "Zimbabwe"
         }
     ]}
+
+    export default countries

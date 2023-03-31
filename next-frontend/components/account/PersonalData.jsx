@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { FaSave } from 'react-icons/fa';
-import { countries } from '@/public/countries.json';
+import data from '@/public/countries.js'
 
 export default function PersonalData({ session }) {
 	const supabase = useSupabaseClient();
@@ -90,11 +90,6 @@ export default function PersonalData({ session }) {
 
 	return (
 		<div className='flex flex-col w-9/12 content-center'>
-			{/* <div className='flex'>
-				<h2 className='pt-12 pb-8 text-2xl md:text-3xl text-left font-bold text-ellipsis opacity-90 text-darkBlue'>
-					Mi cuenta
-				</h2>
-			</div> */}
 			<div className='flex w-full justify-center'>
 				<form className='xsm:w-full xl:w-3/4'>
 					<div className='pb-2'>
@@ -180,15 +175,6 @@ export default function PersonalData({ session }) {
 						/>
 					</div>
 					<div className='pb-2'>
-						{/* <label className='font-semibold' htmlFor='country'>País: </label>
-					<input
-					id='country'
-					name='country'
-					type='text'
-					value={input.country}
-					onChange={handleOnChange}
-					className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
-				/> */}
 						<label for='country' className='font-semibold'>
 							País:
 						</label>
@@ -199,7 +185,7 @@ export default function PersonalData({ session }) {
 							onChange={handleOnChange}
 							defaultValue={input.country !== '' ? input.country : 'Argentina'}
 						>
-							{countries.map((country) => (
+							{data.countries?.map((country) => (
 								<option key={country.id} value={country.name}>
 									{country.name}
 								</option>
