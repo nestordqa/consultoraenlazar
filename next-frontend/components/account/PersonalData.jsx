@@ -96,7 +96,7 @@ export default function PersonalData({ session }) {
 				</h2>
 			</div> */}
 			<div className='flex w-full justify-center'>
-				<form className='w-1/2'>
+				<form className='xsm:w-full xl:w-3/4'>
 					<div className='pb-2'>
 						<label className='font-semibold' htmlFor='email'>
 							Email:{' '}
@@ -110,8 +110,8 @@ export default function PersonalData({ session }) {
 							disabled
 						/>
 					</div>
-					<div className='flex gap-4'>
-						<div className='pb-2'>
+					<div className='md:flex gap-4 xl:w-full'>
+						<div className='pb-2 xl:w-full'>
 							<label className='font-semibold' htmlFor='firstName'>
 								Nombre:{' '}
 							</label>
@@ -124,7 +124,7 @@ export default function PersonalData({ session }) {
 								className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 							/>
 						</div>
-						<div className='pb-2'>
+						<div className='pb-2 xl:w-full'>
 							<label className='font-semibold' htmlFor='lastName'>
 								Apellido:{' '}
 							</label>
@@ -138,8 +138,8 @@ export default function PersonalData({ session }) {
 							/>
 						</div>
 					</div>
-					<div className='flex gap-4'>
-						<div className='pb-2'>
+					<div className='md:flex gap-4'>
+						<div className='pb-2 xl:w-full'>
 							<label className='font-semibold' htmlFor='phone'>
 								Teléfono:{' '}
 							</label>
@@ -152,7 +152,7 @@ export default function PersonalData({ session }) {
 								className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 							/>
 						</div>
-						<div className='pb-2'>
+						<div className='pb-2 xl:w-full'>
 							<label className='font-semibold' htmlFor='occupation'>
 								Ocupación:{' '}
 							</label>
