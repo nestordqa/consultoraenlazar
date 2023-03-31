@@ -26,6 +26,57 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 
+const AccountMenu = ({
+	name,
+	handleOpenUserMenu,
+	anchorElUser,
+	handleCloseUserMenu,
+	handleSignOut,
+}) => {
+	return (
+		<Box sx={{ flexGrow: 0 }}>
+			<Tooltip title='Open settings'>
+				<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+					<Avatar alt={`${name}`} src='' />
+				</IconButton>
+			</Tooltip>
+			<Menu
+				sx={{ mt: '45px' }}
+				id='menu-appbar'
+				anchorEl={anchorElUser}
+				anchorOrigin={{
+					vertical: 'top',
+					horizontal: 'right',
+				}}
+				keepMounted
+				transformOrigin={{
+					vertical: 'top',
+					horizontal: 'right',
+				}}
+				open={Boolean(anchorElUser)}
+				onClose={handleCloseUserMenu}
+			>
+				<MenuItem onClick={handleCloseUserMenu}>
+					<Link href='/myAccount'>
+						<div className='flex'>
+							<div className='flex pr-2 items-center'>
+								<FaUserCircle />
+							</div>
+							Mi perfil
+						</div>
+					</Link>
+				</MenuItem>
+				<MenuItem onClick={handleSignOut} className='flex'>
+					<div className='pr-2'>
+						<FaSignOutAlt />
+					</div>
+					Salir
+				</MenuItem>
+			</Menu>
+		</Box>
+	);
+};
+
 export const Navbar = () => {
 	const [navbar, setNavbar] = useState(false);
 	const router = useRouter();
@@ -65,9 +116,7 @@ export const Navbar = () => {
 			try {
 				let { data, error, status } = await supabase
 					.from('profiles')
-					.select(
-						`firstName`
-					)
+					.select(`firstName`)
 					.eq('id', user.id)
 					.single();
 				setName(data.firstName);
@@ -148,14 +197,6 @@ export const Navbar = () => {
 						}`}
 					>
 						<ul className='flex flex-col justify-end items-center p-4 w-auto h-3/4 space-y-4 opacity-95  xl:flex-row xl:w-auto xl:h-full xl:space-x-6 xl:space-y-0 xl:p-0 xl:opacity-100 mt-2 bg-white'>
-							{!session ? (
-								<Link
-									href='/auth'
-									className='flex xl:hidden text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow'
-								>
-									Iniciar sesión
-								</Link>
-							) : null}
 							<li className='text-dark hover:text-darkBlue font-bold xl:font-medium text-base'>
 								<Link href='/team'>Equipo</Link>
 							</li>
@@ -175,6 +216,37 @@ export const Navbar = () => {
 								<Link href='/#contact' scroll={false}>
 									Contacto
 								</Link>
+							</li>
+							<li>
+								<div className='flex flex-row'>
+									{!session ? (
+										<Link
+											href='/auth'
+											className='flex xl:hidden text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow'
+										>
+											Iniciar sesión
+										</Link>
+									) : (
+										<div className='xl:hidden flex flex-col items-center'>
+											<MenuItem>
+												<Link href='/myAccount'>
+													<div className='flex'>
+														<div className='flex pr-2 items-center'>
+															<FaUserCircle />
+														</div>
+														Mi perfil
+													</div>
+												</Link>
+											</MenuItem>
+											<MenuItem onClick={handleSignOut} className='flex'>
+												<div className='pr-2'>
+													<FaSignOutAlt />
+												</div>
+												Salir
+											</MenuItem>
+										</div>
+									)}
+								</div>
 							</li>
 							<li>
 								<div className='space-x-4 xl:hidden flex flex-row w-full justify-center items-center'>
@@ -244,51 +316,15 @@ export const Navbar = () => {
 						Iniciar sesión
 					</Link>
 				) : (
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title='Open settings'>
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt={`${name}`} src='' />
-							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: '45px' }}
-							id='menu-appbar'
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}
-						>
-							{/* {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))} */}
-							<MenuItem onClick={handleCloseUserMenu}>
-								<Link href='/myAccount'>
-									<div className='flex'>
-										<div className='flex pr-2 items-center'>
-											<FaUserCircle />
-										</div>
-										Mi perfil
-									</div>
-								</Link>
-							</MenuItem>
-							<MenuItem onClick={handleSignOut} className='flex'>
-								<div className='pr-2'>
-									<FaSignOutAlt />
-								</div>
-								Salir
-							</MenuItem>
-						</Menu>
-					</Box>
+					<div className='xsm:hidden xl:block'>
+						<AccountMenu
+							name={name}
+							handleOpenUserMenu={handleOpenUserMenu}
+							anchorElUser={anchorElUser}
+							handleCloseUserMenu={handleCloseUserMenu}
+							handleSignOut={handleSignOut}
+						/>
+					</div>
 				)}
 			</div>
 		</nav>
