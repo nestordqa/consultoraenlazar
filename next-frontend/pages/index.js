@@ -19,12 +19,12 @@ const Home = () => {
         <>
           <Landing />
           <Goal />
+          <Feedback/>
           <CompaniesThatTrust />
           <ContactUsForm />
           {/*<WeAre/>
           <OurServices/>
           <LearnWithUs/>
-          <Feedback/>
             */}
         </>
       </Layout>
