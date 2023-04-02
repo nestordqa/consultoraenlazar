@@ -16,7 +16,7 @@ const ContactUsForm = () => {
 
   const [errors, setErrors] = useState({
     name: " ",
-    phone: " ",
+    // phone: " ",
     email: " ",
     comments: " ",
     company: " ",
@@ -31,25 +31,25 @@ const ContactUsForm = () => {
           }))
         : setErrors((prev) => ({ ...prev, email: "" }));
     } else if (input.name === "name") {
-      !/^[A-Z][a-zA-ZÀ-ÿ\s]{1,40}$/.test(input.value)
+      !/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(input.value)
         ? setErrors((prev) => ({
             ...prev,
             name: "Ingresa un nombre válido",
           }))
         : setErrors((prev) => ({ ...prev, name: "" }));
-    } else if (input.name === "phone") {
-      !/^(\+|00)[1-9][0-9 \-\(\)\.]{11,32}$/.test(input.value) ||
-      input.value.length < 8
-        ? setErrors((prev) => ({
-            ...prev,
-            phone: "Ingresa un número de teléfono válido",
-          }))
-        : setErrors((prev) => ({ ...prev, phone: "" }));
+    // } else if (input.name === "phone") {
+    //   !/^(\+|00)[1-9][0-9 \-\(\)\.]{11,32}$/.test(input.value) ||
+    //   input.value.length < 8
+    //     ? setErrors((prev) => ({
+    //         ...prev,
+    //         phone: "Ingresa un número de teléfono válido",
+    //       }))
+    //     : setErrors((prev) => ({ ...prev, phone: "" }));
     } else if (input.name === "comments") {
-      input.value.length < 50 || input.value.length > 1000
+      input.value.length > 1000
         ? setErrors((prev) => ({
             ...prev,
-            comments: "Entre 50 y 1000 caracteres",
+            comments: "Máximo 1000 caracteres",
           }))
         : setErrors((prev) => ({ ...prev, comments: "" }));
     } else if (input.name === "company") {

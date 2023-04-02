@@ -13,7 +13,7 @@ const TeamCards = ( props ) => {
 			<div className='flex flex-wrap w-9/12 sm:justify-center lg:justify-start lg:py-12'>
 				<div className='lg:pb-20 flex self-start'>
 					<h3 className=' py-12 text-2xl md:text-3xl text-left font-bold text-ellipsis opacity-90 text-yellow'>
-						Conoce a nuestro gran equipo...
+						Detrás de todo gran proyecto hay grandes personas y profesionales.<br></br>Queremos que conozcas a nuestro gran equipo. 
 					</h3>
 				</div>
 				<div className="flex justify-center w-screen">
