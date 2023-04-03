@@ -217,7 +217,6 @@ export const Navbar = () => {
 									Contacto
 								</Link>
 							</li>
-							<li>
 								<div className='flex flex-row'>
 									{!session ? (
 										<Link
@@ -247,7 +246,6 @@ export const Navbar = () => {
 										</div>
 									)}
 								</div>
-							</li>
 							<li>
 								<div className='space-x-4 xl:hidden flex flex-row w-full justify-center items-center'>
 									<Link
