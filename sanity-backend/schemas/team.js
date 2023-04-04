@@ -7,7 +7,7 @@ export default {
       name: 'name',
       type: 'string',
       title: 'Nombre',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().max(30),
     },
     {
       name: 'photo',
@@ -16,10 +16,16 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'jobTitle',
+      name: 'jobFirstLine',
       type: 'string',
-      title: 'Puesto/Cargo',
-      validation: (Rule) => Rule.required(),
+      title: 'Puesto/Cargo. Linea 1',
+      validation: (Rule) => Rule.required().max(30),
+    },
+    {
+      name: 'jobSecondLine',
+      type: 'string',
+      title: 'Puesto/Cargo. Linea 2',
+      validation: (Rule) => Rule.max(30),
     },
   ],
 }
