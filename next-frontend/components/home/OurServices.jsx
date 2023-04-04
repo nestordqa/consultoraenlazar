@@ -11,29 +11,41 @@ import styles from "./OurServices.module.css";
 import coverImage from "public/images/portada-servicios.webp";
 import coverImageCv from "public/images/revision-cv-gratis.webp";
 import WorkWithUsForm from "../forms/CVSubmissionForm";
+import { useSession } from "@supabase/auth-helpers-react";
+import { Router, useRouter } from "next/router";
 
 export const OurServices = ({ services }) => {
-  const servicesCvFormTitle = "¡Revisamos GRATIS tu currículum!";
+  const servicesCvFormTitle = "¡RECURSOS GRATIS!";
   const servicesCvFormDescription =
-    "Adjuntá tu CV para que podamos revisarlo y darte una devolución personalizada.";
+    "Conocé todos los recursos gratuitos que ofrecemos sobre empleabilidad y desarrollo profesional.";
 
   const [openForm, setOpenForm] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [section, setSection] = useState("");
+  const session = useSession();
+  const route = useRouter();
 
   const handleOpenForm = (e) => {
     e.preventDefault();
+    setTitle(e.target.title);
+    setSection(e.target.value);
     setOpenForm(true);
   };
 
   const handleCloseForm = (e) => {
     e.preventDefault();
+    setTitle("");
     setOpenForm(false);
   };
 
   const handleOpenCv = (e) => {
     e.preventDefault();
-    setIsOpen(true);
+    if (session) {
+      setIsOpen(true);
+    } else {
+      route.push("/auth");
+    }
   };
 
   const organizaciones = services.filter(
@@ -42,14 +54,23 @@ export const OurServices = ({ services }) => {
   const individuos = services.filter(
     (item) => item.categories[0].categoryName.toLowerCase() === "individuos"
   );
+
   return (
     <>
-      {openForm ? <ConsultationForm handleCloseForm={handleCloseForm} /> : null}
+      {openForm ? (
+        <ConsultationForm
+          title={title}
+          setTitle={setTitle}
+          handleCloseForm={handleCloseForm}
+          section={section}
+        />
+      ) : null}
       {isOpen && (
         <WorkWithUsForm
           handleClose={setIsOpen}
           title={servicesCvFormTitle}
           description={servicesCvFormDescription}
+          uploadOpt={false}
         />
       )}
 
