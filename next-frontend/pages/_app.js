@@ -26,10 +26,6 @@ export default function App({ Component, pageProps }) {
  */
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
-  // Create a new supabase browser client on every first render.
-  /* const [supabaseClient] = useState(() =>
-    createBrowserSupabaseClient(supabaseUrl, supabaseKey)
-  ); */
 
   const handleClickOpen = () => {
     setOpen(true);

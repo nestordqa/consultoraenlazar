@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import logo from "public/images/logo-enlazar-web.png";
-import birrete from "public/images/birrete-web.png";
+import birrete from "public/images/birrete-web2.png";
 import { useSession } from "@supabase/auth-helpers-react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -138,7 +138,7 @@ export const Navbar = () => {
 
   return (
     <nav className="w-full bg-white text-dark shadow font-Noah fixed h-28 z-50">
-      <div className="mx-6 justify-between xl:mx-auto xl:max-w-7xl xl:items-center xl:flex xl:px-8 mt-4">
+      <div className="mx-6 justify-between xl:mx-auto xl:max-w-7xl xl:items-center xl:flex xl:px-6 mt-4">
         <div className="flex items-center justify-between py-3 xl:py-5 xl:block">
           <Link href="/">
             <Image
@@ -196,8 +196,8 @@ export const Navbar = () => {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="flex flex-col justify-end items-center p-4 w-auto h-3/4 space-y-4 opacity-95  xl:flex-row xl:w-auto xl:h-full xl:space-x-6 xl:space-y-0 xl:p-0 xl:opacity-100 mt-2 bg-white">
-              <li className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base">
+            <ul className="flex flex-col justify-end items-center p-4 w-auto h-3/4 space-y-4 opacity-95 xl:flex-row xl:w-auto xl:h-full xl:space-x-6 xl:space-y-0 xl:p-0 xl:opacity-100 mt-2 bg-white">
+              <li className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base pl-8">
                 <Link href="/team">Equipo</Link>
               </li>
               <li className="text-dark hover:text-darkBlue font-bold xl:font-medium text-base">
@@ -221,7 +221,7 @@ export const Navbar = () => {
                 {!session ? (
                   <Link
                     href="/auth"
-                    className="flex xl:hidden text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow"
+                    className="flex xl:hidden text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow whitespace-nowrap"
                   >
                     Iniciar sesión
                   </Link>
@@ -309,7 +309,7 @@ export const Navbar = () => {
         {!session ? (
           <Link
             href="/auth"
-            className="hidden xl:flex mt-2 ml-6 text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow"
+            className="hidden xl:flex mt-2 ml-6 text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow whitespace-nowrap"
           >
             Iniciar sesión
           </Link>
