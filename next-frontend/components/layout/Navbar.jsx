@@ -191,7 +191,7 @@ export const Navbar = () => {
         </div>
 
         <div
-          className={`flex-1 justify-center xl:flex items-center w-full h-full p-4 ${
+          className={`flex-1 justify-center xl:flex items-center w-full h-3/4 p-2 ${
             navbar ? "flex" : "hidden"
           }`}
         >
@@ -255,7 +255,7 @@ export const Navbar = () => {
                 </Link>
               </div>
             ) : (
-              <div className="xl:hidden flex flex-col items-center">
+              <div className="xl:hidden flex flex-col items-center justify-center">
                 <MenuItem>
                   <Link href="/myAccount">
                     <div className="flex">
@@ -338,7 +338,7 @@ export const Navbar = () => {
             Iniciar sesión
           </Link>
         ) : (
-          <div className="xsm:hidden xl:block">
+          <div className="xsm:hidden xl:block px-10 py-2">
             <AccountMenu
               name={name}
               handleOpenUserMenu={handleOpenUserMenu}
