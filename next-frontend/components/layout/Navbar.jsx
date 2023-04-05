@@ -191,7 +191,7 @@ export const Navbar = () => {
         </div>
 
         <div
-          className={`flex-1 justify-center xl:flex items-center w-full h-full p-4 ${
+          className={`flex-1 justify-center xl:flex items-center w-full h-3/4 p-2 ${
             navbar ? "flex" : "hidden"
           }`}
         >
@@ -255,7 +255,7 @@ export const Navbar = () => {
                 </Link>
               </div>
             ) : (
-              <div className="xl:hidden flex flex-col items-center">
+              <div className="xl:hidden flex flex-col items-center justify-center">
                 <MenuItem>
                   <Link href="/myAccount">
                     <div className="flex">
@@ -310,7 +310,7 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="hidden space-x-2 xl:flex xl:flex-row xl:mt-2">
+        <div className="hidden space-x-2 xl:flex xl:flex-row xl:mt-2 pr-8">
           <Link href="https://www.instagram.com/enlazar.ok/" target="_blank">
             <AiFillInstagram style={icon} />
           </Link>
