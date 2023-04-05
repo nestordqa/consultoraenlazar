@@ -310,7 +310,7 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="hidden space-x-2 xl:flex xl:flex-row xl:mt-2 pr-8">
+        <div className="hidden space-x-2 xl:flex xl:flex-row xl:mt-2">
           <Link href="https://www.instagram.com/enlazar.ok/" target="_blank">
             <AiFillInstagram style={icon} />
           </Link>
@@ -338,7 +338,7 @@ export const Navbar = () => {
             Iniciar sesión
           </Link>
         ) : (
-          <div className="xsm:hidden xl:block">
+          <div className="xsm:hidden xl:block px-10 py-2">
             <AccountMenu
               name={name}
               handleOpenUserMenu={handleOpenUserMenu}
