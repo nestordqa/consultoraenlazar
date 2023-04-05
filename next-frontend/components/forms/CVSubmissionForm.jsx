@@ -47,44 +47,51 @@ const WorkWithUsForm = ({
   }, []);
 
   const validate = (input) => {
-    if (input.name === "email") {
-      !/\S+@\S+\.\S+/.test(input.value)
-        ? setErrors((prev) => ({
-            ...prev,
-            email: "Ingresa un email válido",
-          }))
-        : setErrors((prev) => ({ ...prev, email: "" }));
-    } else if (input.name === "name") {
-      !/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(input.value)
-        ? setErrors((prev) => ({
-            ...prev,
-            name: "Ingresa un nombre válido",
-          }))
-        : setErrors((prev) => ({ ...prev, name: "" }));
-    // } else if (input.name === "phone") {
-    //   !/^(\+|00)[1-9][0-9 \-\(\)\.]{11,32}$/.test(input.value) ||
-    //   input.value.length < 8
-    //     ? setErrors((prev) => ({
-    //         ...prev,
-    //         phone: "Ingresa un número de teléfono válido",
-    //       }))
-    //     : setErrors((prev) => ({ ...prev, phone: "" }));
-    } else if (input.name === "comments") {
-      input.value.length > 1000
-        ? setErrors((prev) => ({
-            ...prev,
-            comments: "Máximo 1000 caracteres",
-          }))
-        : setErrors((prev) => ({ ...prev, comments: "" }));
-    } else if (input.name === "attachment") {
-      !input.files.length
-        ? setErrors((prev) => ({
-            ...prev,
-            attachment: "No se eligió un archivo",
-          }))
-        : setErrors((prev) => ({ ...prev, attachment: "" }));
-    }
-  };
+		if (input.name === 'email') {
+			!/\S+@\S+\.\S+/.test(input.value)
+				? setErrors((prev) => ({
+						...prev,
+						email: 'Ingresa un email válido',
+				  }))
+				: setErrors((prev) => ({ ...prev, email: '' }));
+		} else if (input.name === 'name') {
+			!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(input.value)
+				? setErrors((prev) => ({
+						...prev,
+						name: 'Ingresa un nombre válido',
+				  }))
+				: setErrors((prev) => ({ ...prev, name: '' }));
+		// } else if (input.name === 'phone') {
+		// 	!/^(\+|00)[1-9][0-9 \-\(\)\.]{11,32}$/.test(input.value) ||
+		// 	input.value.length < 8
+		// 		? setErrors((prev) => ({
+		// 				...prev,
+		// 				phone: 'Ingresa un número de teléfono válido',
+		// 		  }))
+		// 		: setErrors((prev) => ({ ...prev, phone: '' }));
+		} else if (input.name === 'comments') {
+			input.value.length > 1000
+				? setErrors((prev) => ({
+						...prev,
+						comments: 'Máximo 1000 caracteres',
+				  }))
+				: setErrors((prev) => ({ ...prev, comments: '' }));
+		} else if (input.name === 'company') {
+			!input.value.length
+				? setErrors((prev) => ({
+						...prev,
+						company: 'Ingresa un nombre válido',
+				  }))
+				: setErrors((prev) => ({ ...prev, company: '' }));
+		} else if (input.name === 'attachment') {
+			!input.value.length
+				? setErrors((prev) => ({
+						...prev,
+						attachment: ' ',
+				  }))
+				: setErrors((prev) => ({ ...prev, attachment: '' }));
+		}
+	};
 
   const handleOnChange = (event) => {
     event.preventDefault();
@@ -182,7 +189,7 @@ const WorkWithUsForm = ({
             </button>
             <div className="px-12 py-12 rounded-t-lg">
               <div className="pt-4">
-                <h2 className='text-darkBlue md:px-2 xsm:text-xl lg:text-3xl font-semibold text-ellipsis text-center'>
+              <h2 className='text-darkBlue md:px-2 xsm:text-xl lg:text-3xl font-semibold text-ellipsis text-center'>
                   {title}
                 </h2>
                 <p className='xsm:p-1 xsm:pb-8 md:p-3 md:pb-12 font-semibold text-ellipsis text-center xsm:text-sm lg:text-base'>
@@ -200,15 +207,7 @@ const WorkWithUsForm = ({
                 encType="multipart/form-data"
               >
                 <div className="w-full flex flex-col md:flex-row justify-evenly items-center">
-                  <div className='flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0'>
-                    <input type="hidden" name="_subject" value={title} />
-                    <input
-                      type="hidden"
-                      name="_next"
-                      value={window.location.href}
-                    />
-                    <input type="hidden" name="_template" value="box" />
-                    <input type="hidden" name="_captcha" value="false" />
+                <div className='flex flex-col w-full justify-center md:w-2/4 md:mr-2 md:mb-0'>
                     <input
                       type="text"
                       name="name"
@@ -234,14 +233,14 @@ const WorkWithUsForm = ({
                     <small className="h-6 text-red-600">{errors.phone}</small>
                   </div>
                 </div>
-                <div className='flex flex-col w-full justify-center md:auto md:mr-2 md:mb-0'>
+                <div className='flex flex-col w-full justify-center md:w-auto md:mr-2 md:mb-0'>
                   <input
                     type="email"
                     name="email"
                     value={input.email}
                     placeholder="Email"
                     onChange={handleOnChange}
-                    className='flex justify-between w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
+                    className='flex w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
                     required
                   />
                   <small className="h-6 text-red-600">{errors.email}</small>
@@ -278,7 +277,7 @@ const WorkWithUsForm = ({
                     }
                   >
                     <label
-                      className="box-border border-2 border-yellow rounded-2xl xsm:text-xs md:text-base px-8 font-semibold uppercase self-center text-center"
+                      className="box-border border-2 border-yellow rounded-2xl xsm:text-xs md:text-base px-8 font-semibold uppercase self-center "
                       htmlFor="cv"
                     >
                       Cargar Archivo
