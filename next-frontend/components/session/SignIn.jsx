@@ -1,5 +1,5 @@
 import { Auth } from "@supabase/auth-ui-react";
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 
 const SignIn = ({ Component, props }) => {
@@ -80,6 +80,7 @@ const SignIn = ({ Component, props }) => {
                 fontFamily: "Noah Text",
                 fontSize: "clamp(0.8rem, 0.7256rem + 0.3967vw, 1.1rem)",
                 borderRadius: "35px",
+                color: "white",
               },
               anchor: {
                 color: "#323232",
@@ -99,7 +100,7 @@ const SignIn = ({ Component, props }) => {
             },
             theme: ThemeSupa,
           }}
-          providers={[]}
+          providers={["google"]}
         />
       </div>
     </div>
