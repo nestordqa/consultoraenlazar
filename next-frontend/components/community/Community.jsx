@@ -13,6 +13,15 @@ const Community = () => {
 					<br />
 					el mundo laboral!
 				</p>
+                <Image
+                src='/images/flecha-doble.svg'
+                width='30'
+                height='30'
+                alt='Flecha doble'
+                priority
+                className='fill-darkBlue animate-bounce'>
+
+                </Image>
 			</section>
 			<section>
 				<h3 className='text-2xl md:text-3xl font-bold text-left text-ellipsis opacity-90 text-black'>
