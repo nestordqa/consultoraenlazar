@@ -1,10 +1,22 @@
 import { Auth } from "@supabase/auth-ui-react";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useContext, useEffect } from "react";
+import AuthContext from "@/pages/AuthContext";
+import { useRouter } from "next/router";
 
-const SignIn = ({ Component, props }) => {
+const SignIn = () => {
   const supabase = useSupabaseClient();
+  const { currentPath, setCurrentPath } = useContext(AuthContext);
+  const router = useRouter();
+  const session = useSession();
 
+  useEffect(() => {
+    if (session) {
+      router.push(currentPath);
+    }
+  }, [session]);
+  console.log(window.location.origin);
   return (
     <div
       className="w-full h-full flex justify-center items-center"
@@ -101,6 +113,9 @@ const SignIn = ({ Component, props }) => {
             theme: ThemeSupa,
           }}
           providers={["google"]}
+          redirectTo={`${window.location.origin}${
+            currentPath.includes("#") ? currentPath.split("#")[0] : currentPath
+          }`}
         />
       </div>
     </div>

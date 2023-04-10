@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import logoIndividuos from "public/images/card-individuos-grupos.webp";
 import logoOrg from "public/images/card-empresas.webp";
 import Image from "next/image";
@@ -12,7 +12,8 @@ import coverImage from "public/images/portada-servicios.webp";
 import coverImageCv from "public/images/revision-cv-gratis.webp";
 import WorkWithUsForm from "../forms/CVSubmissionForm";
 import { useSession } from "@supabase/auth-helpers-react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
+import AuthContext from "@/pages/AuthContext";
 
 export const OurServices = ({ services }) => {
   const servicesCvFormTitle = "¡RECURSOS GRATIS!";
@@ -23,6 +24,7 @@ export const OurServices = ({ services }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
+  const { currentPath, setCurrentPath } = useContext(AuthContext);
   const session = useSession();
   const route = useRouter();
 
@@ -44,6 +46,7 @@ export const OurServices = ({ services }) => {
     if (session) {
       setIsOpen(true);
     } else {
+      setCurrentPath("/services#freeResources");
       route.push("/auth");
     }
   };
@@ -160,7 +163,7 @@ export const OurServices = ({ services }) => {
           />
         </div>
 
-        <div className={styles.containerCover}>
+        <div className={styles.containerCover} id="freeResources">
           <Image
             src={coverImageCv}
             alt="imagen cover"
