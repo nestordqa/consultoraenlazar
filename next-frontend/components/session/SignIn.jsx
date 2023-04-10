@@ -1,9 +1,27 @@
 import { Auth } from "@supabase/auth-ui-react";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "@/public/AuthContext";
+import { useRouter } from "next/router";
 
-const SignIn = ({ Component, props }) => {
+const SignIn = () => {
   const supabase = useSupabaseClient();
+  const { currentPath, setCurrentPath } = useContext(AuthContext);
+  const [originUrl, setOriginUrl] = useState(null);
+  const router = useRouter();
+  const session = useSession();
+
+  useEffect(() => {
+    if (window) {
+      setOriginUrl(window.location.origin);
+    } else {
+      setOriginUrl("http://localhost:3000");
+    }
+    if (session) {
+      router.push(currentPath);
+    }
+  }, [session]);
 
   return (
     <div
@@ -101,6 +119,9 @@ const SignIn = ({ Component, props }) => {
             theme: ThemeSupa,
           }}
           providers={["google"]}
+          redirectTo={`${originUrl}${
+            currentPath.includes("#") ? currentPath.split("#")[0] : currentPath
+          }`}
         />
       </div>
     </div>

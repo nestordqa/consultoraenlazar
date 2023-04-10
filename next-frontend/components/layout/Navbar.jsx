@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -23,6 +23,7 @@ import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import AuthContext from "@/public/AuthContext";
 
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 
@@ -86,6 +87,7 @@ export const Navbar = () => {
   const path = route === "/courses" ? birrete : logo;
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [name, setName] = useState("");
+  const { currentPath, setCurrentPath } = useContext(AuthContext);
 
   const settings = ["Perfil", "Cuenta", "Dashboard", "Salir"];
   const supabase = useSupabaseClient();
@@ -140,7 +142,7 @@ export const Navbar = () => {
     <nav className="w-full bg-white text-dark shadow font-Noah fixed h-28 z-50">
       <div className="mx-6 justify-between xl:mx-auto xl:max-w-7xl xl:items-center xl:flex xl:px-6 mt-4">
         <div className="flex items-center justify-between py-3 xl:py-5 xl:block">
-          <Link href="/">
+          <Link href="/" onClick={() => setCurrentPath("/")}>
             <Image
               src={path}
               style={{
@@ -200,6 +202,7 @@ export const Navbar = () => {
               <Link
                 className="flex flex-1 w-full justify-center self-center"
                 href="/team"
+                onClick={() => setCurrentPath("/team")}
               >
                 Equipo
               </Link>
@@ -208,6 +211,7 @@ export const Navbar = () => {
               <Link
                 className="flex flex-1 w-full justify-center self-center"
                 href="/services"
+                onClick={() => setCurrentPath("/services")}
               >
                 Servicios
               </Link>
@@ -216,6 +220,7 @@ export const Navbar = () => {
               <Link
                 className="flex flex-1 w-full justify-center self-center"
                 href="/courses"
+                onClick={() => setCurrentPath("/courses")}
               >
                 Cursos & Capacitaciones
               </Link>
@@ -224,6 +229,7 @@ export const Navbar = () => {
               <Link
                 className="flex flex-1 w-full justify-center self-center"
                 href="/community"
+                onClick={() => setCurrentPath("/community")}
               >
                 Comunidad
               </Link>
@@ -231,7 +237,8 @@ export const Navbar = () => {
             <li className="flex xl:w-full text-dark hover:text-darkBlue font-bold xl:font-medium text-base">
               <Link
                 className="flex flex-1 w-full justify-center self-center"
-                href="/blog"
+                href={session ? "/blog" : "/auth"}
+                onClick={() => setCurrentPath("/blog")}
               >
                 Blog
               </Link>
@@ -240,6 +247,7 @@ export const Navbar = () => {
               <Link
                 className="flex flex-1 w-full justify-center self-center"
                 href="/#contact"
+                onClick={() => setCurrentPath("/#contact")}
                 scroll={false}
               >
                 Contacto
