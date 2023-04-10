@@ -13,7 +13,7 @@ import coverImageCv from "public/images/revision-cv-gratis.webp";
 import WorkWithUsForm from "../forms/CVSubmissionForm";
 import { useSession } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
-import AuthContext from "@/pages/AuthContext";
+import AuthContext from "@/public/AuthContext";
 
 export const OurServices = ({ services }) => {
   const servicesCvFormTitle = "¡RECURSOS GRATIS!";

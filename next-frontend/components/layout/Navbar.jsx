@@ -23,7 +23,7 @@ import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
-import AuthContext from "@/pages/AuthContext";
+import AuthContext from "@/public/AuthContext";
 
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 

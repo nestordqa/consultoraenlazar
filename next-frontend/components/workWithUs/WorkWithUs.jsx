@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import WorkWithUsImage from "public/images/trabaja-con-nosotros.webp";
 import { useContext, useState } from "react";
 import WorkWithUsForm from "../forms/CVSubmissionForm";
-import AuthContext from "@/pages/AuthContext";
+import AuthContext from "@/public/AuthContext";
 
 const WorkWithUs = () => {
   const [isOpen, setIsOpen] = useState(false);

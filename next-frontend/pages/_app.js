@@ -8,7 +8,7 @@ import { googleAnalyticsId, supabaseKey, supabaseUrl } from "@/lib/enviroment";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, useUser } from "@supabase/auth-helpers-react";
 import supabase from "@/lib/supabaseClient";
-import AuthContext from "./AuthContext";
+import AuthContext from "../public/AuthContext";
 
 export default function App({ Component, pageProps }) {
   /*  const router = useRouter();

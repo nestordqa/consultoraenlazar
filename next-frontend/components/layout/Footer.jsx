@@ -11,7 +11,7 @@ import Image from "next/image";
 import logo from "public/images/isotipo-enlazar-blanco.png";
 import { useContext, useState } from "react";
 import PrivacyPolicy from "../privacyPolitics/PrivacyPolicy";
-import AuthContext from "@/pages/AuthContext";
+import AuthContext from "@/public/AuthContext";
 
 export const Footer = () => {
   const [open, setOpen] = useState(false);
