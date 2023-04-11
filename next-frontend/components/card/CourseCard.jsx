@@ -12,7 +12,6 @@ const CourseCard = ({ course, handleOpenForm }) => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
   const session = useSession();
-  const route = useRouter();
   const handleClickOpen = (e) => {
     e.preventDefault();
     setOpen(true);
@@ -23,12 +22,6 @@ const CourseCard = ({ course, handleOpenForm }) => {
     setOpen(false);
   };
 
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!session) {
-      route.push("/auth");
-    }
-  };
   return (
     <>
       {open ? (
@@ -38,8 +31,8 @@ const CourseCard = ({ course, handleOpenForm }) => {
           course={course}
           scroll={scroll}
           handleClose={handleClose}
-          handleSubscribe={handleSubscribe}
           handleOpenForm={handleOpenForm}
+          session={session}
         />
       ) : null}
 
