@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Background from '@/public/images/portada-comunidad.webp';
+import Airplane from '@/public/images/avioncito.gif';
 import Link from 'next/link';
 
 const Community = () => {
@@ -11,17 +12,14 @@ const Community = () => {
 					<div className='flex w-full h-full justify-center items-center'>
 						<p className='text-center text-white text-3xl font-semibold'>
 							¡Sé parte de nuestra comunidad y<br />
-							encontrás todo lo que tenés que saber sobre
+							encontrá todo lo que tenés que saber sobre
 							<br />
 							el mundo laboral!
 						</p>
 					</div>
 				</div>
 			</section>
-			<section
-				id='services'
-				className='bg-slate-500 flex flex-col pt-12 pb-24 h-[700px]'
-			>
+			<section id='services' className='flex flex-col pt-12 pb-24 h-[700px]'>
 				<div className='flex justify-center pt-5'>
 					<Link href='#services'>
 						<Image
@@ -34,7 +32,7 @@ const Community = () => {
 						></Image>
 					</Link>
 				</div>
-				<h3 className='text-2xl md:text-3xl font-bold text-left text-ellipsis opacity-90 text-black pt-5 pb-14 pl-12'>
+				<h3 className='text-2xl md:text-3xl font-semibold text-left text-ellipsis opacity-90 text-black pt-5 pb-14 pl-12'>
 					Encontrarás
 				</h3>
 				<div className='flex flex-wrap justify-evenly pb-24'>
@@ -109,35 +107,42 @@ const Community = () => {
 				</div>
 				<div className='flex flex-col items-center'>
 					<Link href='https://www.instagram.com/enlazar.ok/' target='_blank'>
-						<button className='bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end'>
+						<button className='bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end w-48'>
 							Ir ahora
 						</button>
 					</Link>
 				</div>
 			</section>
-			<section>
-				<h3 className='text-2xl md:text-3xl font-bold text-left text-ellipsis opacity-90 text-black'>
-					También te esperamos
-					<br />
-					en Telegram...
-				</h3>
-				<div>
-					<ul>
-						<li>• Ofertas de empleo</li>
-						<li>• Networking</li>
-						<li>• Tips para mejorar tu perfil profesional</li>
-						<li>• Acompañamiento para la inserción laboral</li>
-						<li>• Apoyo profesional</li>
-						<li>• Contenido de calidad</li>
-						<li>• Información de actualidad</li>
-						<li>• Cursos y capacitaciones</li>
-					</ul>
+			<section id='telegram' className='relative bg-grey'>
+				<Image src={Airplane} alt='Avion volando' priority className='' />
+				<div className='absolute left-0 right-0 bottom-0 top-32'>
+					<h3 className='text-2xl md:text-3xl font-semibold text-left text-ellipsis opacity-90 text-black pl-40'>
+						También te esperamos
+						<br />
+						en Telegram...
+					</h3>
+					<div className='pl-40 pt-4 pb-16'>
+						<ul>
+							<li>• Ofertas de empleo</li>
+							<li>• Networking</li>
+							<li>• Tips para mejorar tu perfil profesional</li>
+							<li>• Acompañamiento para la inserción laboral</li>
+							<li>• Apoyo profesional</li>
+							<li>• Contenido de calidad</li>
+							<li>• Información de actualidad</li>
+							<li>• Cursos y capacitaciones</li>
+						</ul>
+					</div>
+					<Link
+						href='https://t.me/joinchat/e8dtvJ5XB2k1MGIx'
+						target='_blank'
+						className='pl-40'
+					>
+						<button className='bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end'>
+							¡Quiero ser parte!
+						</button>
+					</Link>
 				</div>
-				<Link href='https://t.me/joinchat/e8dtvJ5XB2k1MGIx' target='_blank'>
-					<button className='bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end'>
-						¡Quiero ser parte!
-					</button>
-				</Link>
 			</section>
 		</div>
 	);
