@@ -118,12 +118,12 @@ const Community = () => {
 			<section id='telegram' className='relative bg-grey'>
 				<Image src={Airplane} alt='Avion volando' priority className='xsm:hidden md:block' />
 				<div className='md:absolute left-0 right-0 bottom-0 xsm:top-24 md:top-32'>
-					<h3 className='md:text-2xl font-semibold text-left text-ellipsis opacity-90 text-black xsm:pl-6 md:pl-40'>
+					<h3 className='xsm:text-xl md:text-2xl font-semibold text-left text-ellipsis opacity-90 text-black xsm:pl-6 xsm:pt-16 md:pl-40'>
 						También te esperamos
 						<br />
 						en Telegram...
 					</h3>
-					<div className='xsm:pl-6 md:pl-40 md:pt-4 xsm:pb-10 md:pb-16'>
+					<div className='xsm:pl-6 md:pl-40 xsm:pt-2 md:pt-4 xsm:pb-10 md:pb-16'>
 						<ul>
 							<li>• Ofertas de empleo</li>
 							<li>• Networking</li>
@@ -140,7 +140,7 @@ const Community = () => {
 						target='_blank'
 						className='xsm:pl-20 md:pl-40'
 					>
-						<button className='bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end'>
+						<button className='bg-yellow rounded-2xl py-1 px-8 font-semibold uppercase self-center md:self-end '>
 							¡Quiero ser parte!
 						</button>
 					</Link>
