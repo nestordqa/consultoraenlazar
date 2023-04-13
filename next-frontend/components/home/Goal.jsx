@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export const Goal = () => {
   return (
-    <div className="goal-container flex flex-wrap ">
-      <div className="goal-image w-full lg:w-1/3 mb-10 lg:mb-0  ">
+   <div className="goal-container flex flex-wrap w-full h-auto ">
+         <div className="goal-image w-full lg:w-1/2 mb-10 lg:mb-0  "> 
         <Image
           className="w-full h-full "
           alt=" image"
@@ -14,7 +14,7 @@ export const Goal = () => {
           height={500}
         />
       </div>
-      <div className="goal-content w-full lg:w-1/2 pl-5 lg:pl-24 flex flex-col justify-center">
+       <div className="goal-content w-full lg:w-1/2 pl-5 flex flex-col justify-center">
         <h2 className="text-2xl lg:text-3xl font-bold text-center text-ellipsis text-gray-800 mb-8">
           Somos Enlazar
         </h2>
