@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import logoIndividuos from "public/images/card-individuos-grupos.webp";
 import logoOrg from "public/images/card-empresas.webp";
 import Image from "next/image";
@@ -12,7 +12,8 @@ import coverImage from "public/images/portada-servicios.webp";
 import coverImageCv from "public/images/revision-cv-gratis.webp";
 import WorkWithUsForm from "../forms/CVSubmissionForm";
 import { useSession } from "@supabase/auth-helpers-react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
+import AuthContext from "@/public/AuthContext";
 
 export const OurServices = ({ services }) => {
   const servicesCvFormTitle = "¡RECURSOS GRATIS!";
@@ -23,6 +24,7 @@ export const OurServices = ({ services }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
+  const { currentPath, setCurrentPath } = useContext(AuthContext);
   const session = useSession();
   const route = useRouter();
 
@@ -44,6 +46,7 @@ export const OurServices = ({ services }) => {
     if (session) {
       setIsOpen(true);
     } else {
+      setCurrentPath("/services#freeResources");
       route.push("/auth");
     }
   };
@@ -86,22 +89,23 @@ export const OurServices = ({ services }) => {
             className="w-full "
           />
           <div
-            className=" text-white font-bold w-auto  text-center  drop-shadow-[(4px 4px 10px rgba(0, 0, 0, 0.25))]   absolute"
-            style={{ fontSize: "clamp(0.8rem, 0.4794rem + 1.7099vw, 2.2rem)" }}
+            className=" text-white font-bold w-auto  text-center  drop-shadow-[(4px 4px 10px rgba(0, 0, 0, 0.25))]  absolute"
+            style={{ fontSize: "clamp(1rem, 0.7025rem + 1.5868vw, 2.2rem)" }}
           >
-            Nuestros servicios están orientados a todas
+            Servicios personalizados de calidad
             <br />
-            las áreas que involucran el capital humano
-            <br />
-            garantizando la mayor profesionalidad.
+            con profesionalismo garantizado.
           </div>
         </div>
 
         <div className=" bg-[#bbcacf] flex flex-col text-center justify-center w-full gap-10 p-8 h-auto pb-20">
           <div className="flex ">
             <h2
-              className="text-2xl text-ellipsis font-semibold"
-              style={{ padding: "clamp(1.5rem, 1.271rem + 1.2214vw, 2.5rem)" }}
+              className="text-ellipsis font-semibold"
+              style={{
+                padding: "clamp(1.5rem, 1.271rem + 1.2214vw, 2.5rem)",
+                fontSize: "clamp(1.2rem, 1.076rem + 0.6612vw, 1.7rem)",
+              }}
             >
               ¿Para quiénes los ofrecemos?
             </h2>
@@ -159,7 +163,7 @@ export const OurServices = ({ services }) => {
           />
         </div>
 
-        <div className={styles.containerCover}>
+        <div className={styles.containerCover} id="freeResources">
           <Image
             src={coverImageCv}
             alt="imagen cover"
@@ -191,7 +195,7 @@ export const OurServices = ({ services }) => {
             </p>
 
             <button
-              className="rounded-full font-semibold bg-yellow py-1 px-4 uppercase text-xs sm:max-md:text-base md:text-lg"
+              className="rounded-full font-semibold bg-yellow py-1 px-4 uppercase text-xs sm:max-md:text-base md:text-lg lg:py-2"
               onClick={handleOpenCv}
             >
               Me Interesa
