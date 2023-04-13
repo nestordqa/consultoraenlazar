@@ -24,7 +24,6 @@ import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import AuthContext from "@/public/AuthContext";
-
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const AccountMenu = ({
