@@ -28,17 +28,17 @@ export default function LearnWithUsHero() {
           className="sm:hidden w-full max-h-[600px]
            bg-cover flex justify-center items-center p-0 m-0"
         />
-        <div className="absolute">
+        <div className="absolute px-3">
           <h2
             className="font-semibold"
             style={{
               fontSize: "clamp(1.25rem, 1.095rem + 0.8264vw, 1.875rem)",
             }}
           >
-            Aprendé con nosotros.
+            Aprendé con los mejores profesionales del área de RRHH
           </h2>
-          <p className="text-base font-semibold pb-4">
-            Conocé todo lo que tenemos para ofrecerte.
+          <p className="text-base pb-4 whitespace-nowrap">
+            Conocé toda nuestra propuesta formativa.
           </p>
           <Link
             className="text-dark bg-yellow inline-block align-middle text-center select-none whitespace-no-wrap rounded-full py-2 px-6 sm:px-10 leading-normal no-underline font-bold ease-in-out duration-200 hover:scale-105"

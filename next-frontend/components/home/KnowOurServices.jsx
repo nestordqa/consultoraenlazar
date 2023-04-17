@@ -9,7 +9,7 @@ export default function KnowOurServices() {
   return (
     <>
       <section className="relative bg-lightBlue container mx-auto sm:px-4 max-w-full overflow-hidden">
-        <div className="py-20 sm:py-40 text-center">
+        <div className="py-10 sm:py-30 text-center">
           <div>
             <h2
               className="font-bold pb-4 sm:pb-0"
@@ -17,11 +17,11 @@ export default function KnowOurServices() {
                 fontSize: "clamp(1.25rem, 1.095rem + 0.8264vw, 1.875rem)",
               }}
             >
-              Conocé todo lo que tenemos para ofrecerte.
+              Conocé todo sobre nuestra propuesta de consultoría en RRHH
             </h2>
             <p className="text-base">
-              Nuestros servicios están fundados en la calidad de información,
-              actualización y transmisión.
+              Nuestros servicios profesionales están diseñados para acompañar tu
+              desarrollo profesional.
             </p>
             <br />
           </div>
