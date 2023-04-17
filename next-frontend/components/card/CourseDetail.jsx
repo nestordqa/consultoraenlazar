@@ -88,6 +88,7 @@ export default function Details({
       );
     }
   };
+  console.log(course);
   return (
     <>
       <ToastContainer
