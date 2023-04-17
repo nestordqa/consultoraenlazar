@@ -7,15 +7,15 @@ import Link from "next/link";
 export default function LearnWithUsHero() {
   return (
     <>
-      <div className="flex w-full max-h-[600px] flex-wrap justify-center items-center text-white text-center">
+      <div className="flex w-full max-h-[500px] flex-wrap justify-center items-center text-white text-center">
         <Image
           src={heroImage}
           alt="imagen cover"
           priority={true}
           quality={100}
-          width={600}
-          height={600}
-          className="hidden w-full max-h-[600px]
+          width={500}
+          height={500}
+          className="hidden w-full max-h-[500px]
            bg-cover sm:flex justify-center items-center p-0 m-0"
         />
         <Image
@@ -23,9 +23,9 @@ export default function LearnWithUsHero() {
           alt="imagen cover"
           priority={true}
           quality={100}
-          width={600}
-          height={600}
-          className="sm:hidden w-full max-h-[600px]
+          width={500}
+          height={500}
+          className="sm:hidden w-full max-h-[500px]
            bg-cover flex justify-center items-center p-0 m-0"
         />
         <div className="absolute px-3">
@@ -37,7 +37,7 @@ export default function LearnWithUsHero() {
           >
             Aprendé con los mejores profesionales del área de RRHH
           </h2>
-          <p className="text-base pb-4 whitespace-nowrap">
+          <p className="text-base font-semibold pb-4 whitespace-nowrap">
             Conocé toda nuestra propuesta formativa.
           </p>
           <Link
