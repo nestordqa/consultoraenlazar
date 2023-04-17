@@ -24,7 +24,8 @@ export const OurServices = ({ services }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
-  const { currentPath, setCurrentPath } = useContext(AuthContext);
+  const { currentPath, setCurrentPath, setPreviousPath } =
+    useContext(AuthContext);
   const session = useSession();
   const route = useRouter();
 
@@ -46,7 +47,8 @@ export const OurServices = ({ services }) => {
     if (session) {
       setIsOpen(true);
     } else {
-      setCurrentPath("/services#freeResources");
+      setPreviousPath("/services#freeResources");
+      setCurrentPath("/auth");
       route.push("/auth");
     }
   };

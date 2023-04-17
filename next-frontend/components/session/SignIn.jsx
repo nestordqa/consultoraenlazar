@@ -7,21 +7,37 @@ import { useRouter } from "next/router";
 
 const SignIn = () => {
   const supabase = useSupabaseClient();
-  const { currentPath, setCurrentPath } = useContext(AuthContext);
+  const { currentPath, setCurrentPath, previousPath, setPreviousPath } =
+    useContext(AuthContext);
   const [originUrl, setOriginUrl] = useState(null);
+  const [authState, setAuthState] = useState("SIGNED_IN");
   const router = useRouter();
   const session = useSession();
 
+  const handleAuthStateChange = supabase.auth.onAuthStateChange(
+    (event, session) => {
+      setAuthState(event);
+    }
+  );
+
   useEffect(() => {
+    setCurrentPath(router.pathname);
     if (window) {
       setOriginUrl(window.location.origin);
     } else {
       setOriginUrl("http://localhost:3000");
     }
-    if (session) {
-      router.push(currentPath);
+    if (
+      session &&
+      authState === "USER_UPDATED" &&
+      router.pathname === "/auth/resetPassword"
+    ) {
+      router.push(previousPath);
     }
-  }, [session]);
+    if (session && router.pathname !== "/auth/resetPassword") {
+      router.push(previousPath);
+    }
+  }, [session, authState]);
 
   return (
     <div
@@ -37,6 +53,7 @@ const SignIn = () => {
         style={{ width: "clamp(12.5rem, 7.8512rem + 24.7934vw, 31.25rem)" }}
       >
         <Auth
+          onAuthStateChange={handleAuthStateChange}
           supabaseClient={supabase}
           localization={{
             variables: {
@@ -119,9 +136,12 @@ const SignIn = () => {
             theme: ThemeSupa,
           }}
           providers={["google"]}
-          redirectTo={`${originUrl}${
-            currentPath.includes("#") ? currentPath.split("#")[0] : currentPath
-          }`}
+          view={
+            router.pathname === "/auth/resetPassword" && session
+              ? "update_password"
+              : "sign_in" || "sign_up" || "forgotten_password"
+          }
+          redirectTo={originUrl}
         />
       </div>
     </div>

@@ -87,7 +87,8 @@ export const Navbar = () => {
   const path = route === "/courses" ? birrete : logo;
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [name, setName] = useState("");
-  const { currentPath, setCurrentPath } = useContext(AuthContext);
+  const { currentPath, setCurrentPath, previousPath, setPreviousPath } =
+    useContext(AuthContext);
 
   const settings = ["Perfil", "Cuenta", "Dashboard", "Salir"];
   const supabase = useSupabaseClient();
@@ -103,6 +104,7 @@ export const Navbar = () => {
   const handleSignOut = async () => {
     handleCloseUserMenu();
     const { error } = await supabase.auth.signOut();
+    setPreviousPath(route);
     router.push("/auth");
   };
 
@@ -111,6 +113,13 @@ export const Navbar = () => {
       data: { user },
     } = await supabase.auth.getUser();
     return user;
+  };
+
+  const handleLogInBtn = (e) => {
+    if (currentPath !== "/auth") {
+      setPreviousPath(currentPath);
+      setCurrentPath("/auth");
+    }
   };
 
   useEffect(() => {
@@ -258,6 +267,7 @@ export const Navbar = () => {
                 <Link
                   href="/auth"
                   className="flex xl:hidden text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow whitespace-nowrap"
+                  onClick={handleLogInBtn}
                 >
                   Iniciar sesión
                 </Link>
@@ -342,11 +352,12 @@ export const Navbar = () => {
           <Link
             href="/auth"
             className="hidden xl:flex mt-2 ml-6 text-dark hover:text-darkBlue font-bold xl:font-medium text-base border rounded px-2 py-2 bg-yellow whitespace-nowrap"
+            onClick={handleLogInBtn}
           >
             Iniciar sesión
           </Link>
         ) : (
-          <div className="xsm:hidden xl:block px-10 py-2">
+          <div className="hidden xl:block px-10 py-2">
             <AccountMenu
               name={name}
               handleOpenUserMenu={handleOpenUserMenu}

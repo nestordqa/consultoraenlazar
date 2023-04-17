@@ -5,7 +5,6 @@ import CookieConsent from "react-cookie-consent";
 import Link from "next/link";
 import PrivacyPolicy from "@/components/privacyPolitics/PrivacyPolicy";
 import { googleAnalyticsId, supabaseKey, supabaseUrl } from "@/lib/enviroment";
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, useUser } from "@supabase/auth-helpers-react";
 import supabase from "@/lib/supabaseClient";
 import AuthContext from "../public/AuthContext";
@@ -26,6 +25,7 @@ export default function App({ Component, pageProps }) {
   }, [router.events]);
   */
   const [currentPath, setCurrentPath] = useState("/");
+  const [previousPath, setPreviousPath] = useState("/");
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
 
@@ -43,6 +43,8 @@ export default function App({ Component, pageProps }) {
         value={{
           currentPath,
           setCurrentPath,
+          previousPath,
+          setPreviousPath,
         }}
       >
         <SessionContextProvider

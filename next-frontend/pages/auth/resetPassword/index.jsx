@@ -1,7 +1,7 @@
 import { Layout } from "@/components/Layout";
 import SignIn from "@/components/session/SignIn";
 
-const Authentication = () => {
+const ResetPassword = () => {
   return (
     <Layout title={"Sesión"} content={"Consultora Enlazar."}>
       <SignIn />
@@ -9,4 +9,4 @@ const Authentication = () => {
   );
 };
 
-export default Authentication;
+export default ResetPassword;
