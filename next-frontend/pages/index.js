@@ -4,6 +4,8 @@ import { Goal } from "@/components/home/Goal";
 import { Landing } from "@/components/home/Landing";
 import { CompaniesThatTrust } from "@/components/home/CompaniesThatTrust";
 import ContactUsForm from "@/components/forms/ContactUsForm";
+import KnowOurServices from "@/components/home/KnowOurServices";
+import LearnWithUsHero from "@/components/home/LearnWithUsHero";
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
         <>
           <Landing />
           <Goal />
+          <KnowOurServices />
+          <LearnWithUsHero />
           <Feedback />
           <CompaniesThatTrust />
           <ContactUsForm />
