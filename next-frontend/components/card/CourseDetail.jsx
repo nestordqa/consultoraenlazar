@@ -3,6 +3,9 @@ import { PortableText } from "@portabletext/react";
 import closeIcon from "public/images/x-cerrar.svg";
 import Image from "next/image";
 import styles from "./CourseDetail.module.css";
+import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DetailsComponents = {
   block: {
@@ -71,10 +74,37 @@ export default function Details({
   handleClose,
   open,
   course,
-  handleSubscribe,
+  session,
 }) {
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!session) {
+      return toast.info(
+        "¡Nos alegra que quieras formar parte! Por favor inicia sesión para continuar."
+      );
+    } else if (session && !course.inscriptionLink) {
+      return toast.info(
+        "La inscripción estará disponible próximamente. Si tienes dudas realiza una consulta o contáctanos a través de nuestras redes sociales."
+      );
+    }
+  };
+  console.log(course);
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        style={{ width: "600px" }}
+      />
+
       <div className="fixed z-[300] inset-0 font-Noah overflow-y-auto">
         <div className="flex items-center justify-center max-h-screen px-4 py-5 text-center sm:p-0">
           <div className="fixed inset-0 transition-opacity" aria-hidden="true">
@@ -158,13 +188,32 @@ export default function Details({
             </div>
 
             <div className="bg-white border-t rounded-b-lg px-4 py-1 sm:px-6 sm:flex sm:flex-row-reverse">
-              <button
-                type="button"
-                className="w-full inline-flex justify-center items-center border border-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 h-8 text-sm sm:ml-3 sm:w-auto sm:text-base bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-1"
-                onClick={handleSubscribe}
-              >
-                Inscribirse
-              </button>
+              {session && course.inscriptionLink ? (
+                <Link href={course.inscriptionLink} target="_blank">
+                  <button
+                    type="button"
+                    className="w-full inline-flex justify-center items-center border border-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 h-8 text-sm sm:ml-3 sm:w-auto sm:text-base bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-1"
+                  >
+                    Inscribirse
+                  </button>
+                </Link>
+              ) : session && !course.inscriptionLink ? (
+                <button
+                  type="button"
+                  className="w-full inline-flex justify-center items-center border border-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 h-8 text-sm sm:ml-3 sm:w-auto sm:text-base bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-1"
+                  onClick={handleSubscribe}
+                >
+                  Inscribirse
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="w-full inline-flex justify-center items-center border border-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 h-8 text-sm sm:ml-3 sm:w-auto sm:text-base bg-yellow rounded-2xl py-1 px-8 font-bold uppercase my-1"
+                  onClick={handleSubscribe}
+                >
+                  Inscribirse
+                </button>
+              )}
 
               <button
                 type="button"

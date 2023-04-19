@@ -16,7 +16,6 @@ const ContactUsForm = () => {
 
 	const [errors, setErrors] = useState({
 		name: ' ',
-		// phone: ' ',
 		email: ' ',
 		comments: ' ',
 		company: ' ',
@@ -37,14 +36,6 @@ const ContactUsForm = () => {
 						name: 'Ingresa un nombre válido',
 				  }))
 				: setErrors((prev) => ({ ...prev, name: '' }));
-		// } else if (input.name === 'phone') {
-		// 	!/^(\+|00)[1-9][0-9 \-\(\)\.]{11,32}$/.test(input.value) ||
-		// 	input.value.length < 8
-		// 		? setErrors((prev) => ({
-		// 				...prev,
-		// 				phone: 'Ingresa un número de teléfono válido',
-		// 		  }))
-		// 		: setErrors((prev) => ({ ...prev, phone: '' }));
 		} else if (input.name === 'comments') {
 			input.value.length > 1000
 				? setErrors((prev) => ({

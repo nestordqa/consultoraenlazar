@@ -8,6 +8,7 @@ import { googleAnalyticsId, supabaseKey, supabaseUrl } from "@/lib/enviroment";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, useUser } from "@supabase/auth-helpers-react";
 import supabase from "@/lib/supabaseClient";
+import AuthContext from "../public/AuthContext";
 
 export default function App({ Component, pageProps }) {
   /*  const router = useRouter();
@@ -23,13 +24,10 @@ export default function App({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
- */
+  */
+  const [currentPath, setCurrentPath] = useState("/");
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
-  // Create a new supabase browser client on every first render.
-  /* const [supabaseClient] = useState(() =>
-    createBrowserSupabaseClient(supabaseUrl, supabaseKey)
-  ); */
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -41,20 +39,26 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <SessionContextProvider
-        supabaseClient={supabase}
-        initialSession={pageProps.initialSession}
+      <AuthContext.Provider
+        value={{
+          currentPath,
+          setCurrentPath,
+        }}
       >
-        <Component {...pageProps} />
-        {open ? (
-          <PrivacyPolicy
-            handleClose={handleClose}
-            scroll={scroll}
-            open={open}
-          />
-        ) : null}
+        <SessionContextProvider
+          supabaseClient={supabase}
+          initialSession={pageProps.initialSession}
+        >
+          <Component {...pageProps} />
+          {open ? (
+            <PrivacyPolicy
+              handleClose={handleClose}
+              scroll={scroll}
+              open={open}
+            />
+          ) : null}
 
-        {/* <CookieConsent
+          {/* <CookieConsent
         location="bottom"
         buttonText="Sí, utilizar cookies"
         cookieName="CookieConsent"
@@ -101,7 +105,8 @@ export default function App({ Component, pageProps }) {
           <strong>Política de Protección de Datos</strong>
         </Link>
       </CookieConsent> */}
-      </SessionContextProvider>
+        </SessionContextProvider>
+      </AuthContext.Provider>
     </>
   );
 }
