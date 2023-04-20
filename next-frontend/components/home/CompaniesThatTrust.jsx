@@ -8,7 +8,7 @@ export const CompaniesThatTrust = () => {
   return (
 
     <div className="w-full h-auto bg-grey ">
-      <h2 className="pt-10 pb-10 px-4 md:px-8 text-2xl lg:text-3xl font-bold text-center text-ellipsis opacity-90 "  >
+      <h2 className="pt-10 pb-20 px-4 md:px-8 text-2xl lg:text-3xl font-bold text-center text-ellipsis opacity-90 "  >
         Empresas que confían en nosotros  
       </h2>
       

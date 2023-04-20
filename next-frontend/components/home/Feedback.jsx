@@ -12,7 +12,7 @@ export const Feedback = () => {
     <h2 className=" p-4 md:p-8 text-2xl lg:text-3xl font-bold text-center text-ellipsis opacity-90 text-yellow">
       ¡Garantizamos tu aptendizaje!</h2> 
       
-    <div className="flex justify-between items-center bg-blue p-12 text  flex-wrap animate-pulse">
+    <div className="flex justify-between items-center bg-blue p-12 text  flex-wrap">
     <div className="flex flex-col items-center justify-center text-center  m-4">
     <div className="w-60 h-60 rounded-full border-2 border-yellow flex flex-col items-center justify-center relative">
     <Image alt="uno" src="/images/logos-empresas/registrarse.png" width={50} height={50} quality={100} style={{position: "absolute", top: "-25px"}} />
