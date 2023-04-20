@@ -4,12 +4,41 @@ import BackgroundMobile from '@/public/images/portada-comunidad-mobile.webp';
 import Airplane from '@/public/images/avioncito.gif';
 import Link from 'next/link';
 
+const ChevronsDown = ({ size = 50, color = '#34668b' }) => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		width={size}
+		height={size}
+		viewBox='0 0 24 24'
+		fill='none'
+		stroke={color}
+		strokeWidth='2'
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	>
+		<path d='M7 13l5 5 5-5M7 6l5 5 5-5' />
+	</svg>
+);
+
 const Community = () => {
 	return (
 		<div className='relative'>
-			<section id='banner' className='flex flex-col xsm:h-[225px] md:h-[490px] overflow-hidden'>
-				<Image src={Background} alt='Header' priority className='xsm:hidden md:block' />
-				<Image src={BackgroundMobile} alt='Header' priority className='xsm:block md:hidden' />
+			<section
+				id='banner'
+				className='flex flex-col xsm:h-[225px] md:h-[490px] overflow-hidden'
+			>
+				<Image
+					src={Background}
+					alt='Header'
+					priority
+					className='xsm:hidden md:block'
+				/>
+				<Image
+					src={BackgroundMobile}
+					alt='Header'
+					priority
+					className='xsm:block md:hidden'
+				/>
 				<div className='absolute left-0 right-0 bottom-0 top-0 xsm:h-[225px] md:h-[490px]'>
 					<div className='flex w-full h-full justify-center items-center'>
 						<p className='text-center text-white md:text-3xl font-semibold'>
@@ -21,17 +50,10 @@ const Community = () => {
 					</div>
 				</div>
 			</section>
-			<section id='services' className='flex flex-col pt-12 pb-24 h-[700px]'>
+			<section id='services' className='flex flex-col pb-24 h-[700px]'>
 				<div className='flex justify-center pt-5'>
-					<Link href='#services'>
-						<Image
-							src='/images/flecha-doble.svg'
-							width='30'
-							height='30'
-							alt='Flecha doble'
-							priority
-							className='animate-bounce pb-12'
-						></Image>
+					<Link href='#services' className='animate-bounce pt-6 pb-12'>
+						<ChevronsDown />
 					</Link>
 				</div>
 				<h3 className='text-2xl md:text-3xl font-semibold text-left text-ellipsis opacity-90 text-black pt-5 pb-14 xsm:pl-4 md:pl-12'>
@@ -80,7 +102,9 @@ const Community = () => {
 							priority
 							className=''
 						/>
-						<p className='font-medium text-center'>Espacio para emprendedores</p>
+						<p className='font-medium text-center'>
+							Espacio para emprendedores
+						</p>
 					</div>
 					<div className='flex flex-col items-center md:h-[160px] md:w-[210px]'>
 						<Image
@@ -116,7 +140,12 @@ const Community = () => {
 				</div>
 			</section>
 			<section id='telegram' className='relative bg-grey'>
-				<Image src={Airplane} alt='Avion volando' priority className='xsm:hidden md:block' />
+				<Image
+					src={Airplane}
+					alt='Avion volando'
+					priority
+					className='xsm:hidden md:block'
+				/>
 				<div className='md:absolute left-0 right-0 bottom-0 xsm:top-24 md:top-32'>
 					<h3 className='xsm:text-xl md:text-2xl font-semibold text-left text-ellipsis opacity-90 text-black xsm:pl-6 xsm:pt-16 md:pl-40'>
 						También te esperamos
@@ -145,7 +174,12 @@ const Community = () => {
 						</button>
 					</Link>
 				</div>
-				<Image src={Airplane} alt='Avion volando' priority className='xsm:block md:hidden' />
+				<Image
+					src={Airplane}
+					alt='Avion volando'
+					priority
+					className='xsm:block md:hidden'
+				/>
 			</section>
 		</div>
 	);
