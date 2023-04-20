@@ -25,8 +25,7 @@ export function validate(input) {
   if (!input.email) {
     errors.email = "Email requerido";
   } else if (!/\S+@\S+\.\S+/.test(input.email)) {
-    errors.email =
-      "Ingresa un email valido, por ejemplo: firstname.lastname@example.com";
+    errors.email = "Ingresa un email valido, por ejemplo: nombre@ejemplo.com";
   }
   if (input.consultation.length > 2000) {
     errors.consultation = "Haz llegado al límite de caracteres permitidos.";

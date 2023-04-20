@@ -1,24 +1,21 @@
 import { Auth } from "@supabase/auth-ui-react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "@/public/AuthContext";
+import { useEffect, useMemo, useState } from "react";
+import { useAuth } from "@/lib/AuthContext";
 import { useRouter } from "next/router";
 
 const SignIn = () => {
   const supabase = useSupabaseClient();
-  const { currentPath, setCurrentPath, previousPath, setPreviousPath } =
-    useContext(AuthContext);
-  const [originUrl, setOriginUrl] = useState(null);
-  const [authState, setAuthState] = useState("SIGNED_IN");
+  const { setCurrentPath, previousPath, authState, handleAuthStateChange } =
+    useAuth();
   const router = useRouter();
   const session = useSession();
+  const [originUrl, setOriginUrl] = useState("");
 
-  const handleAuthStateChange = supabase.auth.onAuthStateChange(
-    (event, session) => {
-      setAuthState(event);
-    }
-  );
+  const memorizedPath = useMemo(() => {
+    return previousPath;
+  }, [previousPath]);
 
   useEffect(() => {
     setCurrentPath(router.pathname);
@@ -32,26 +29,23 @@ const SignIn = () => {
       authState === "USER_UPDATED" &&
       router.pathname === "/auth/resetPassword"
     ) {
-      router.push(previousPath);
+      router.push(memorizedPath);
     }
     if (session && router.pathname !== "/auth/resetPassword") {
-      router.push(previousPath);
+      router.push(memorizedPath);
     }
   }, [session, authState]);
 
   return (
     <div
-      className="w-full h-full flex justify-center items-center"
+      className="w-full h-full flex justify-center items-center font-Noah"
       style={{
         background: "rgb(255,255,255)",
         background:
           "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(187,202,207,1) 66%)",
       }}
     >
-      <div
-        className=" border border-blue py-2 px-6 outline-offset-8 rounded-lg shadow-xl bg-white m-4"
-        style={{ width: "clamp(12.5rem, 7.8512rem + 24.7934vw, 31.25rem)" }}
-      >
+      <div className="flex flex-col border border-blue py-2 px-6 outline-offset-8 rounded-lg shadow-xl bg-white m-4 w-full md:w-1/3">
         <Auth
           onAuthStateChange={handleAuthStateChange}
           supabaseClient={supabase}
@@ -141,7 +135,6 @@ const SignIn = () => {
               ? "update_password"
               : "sign_in" || "sign_up" || "forgotten_password"
           }
-          redirectTo={originUrl}
         />
       </div>
     </div>

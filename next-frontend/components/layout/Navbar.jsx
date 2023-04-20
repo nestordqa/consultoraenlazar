@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -23,7 +22,7 @@ import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
-import AuthContext from "@/public/AuthContext";
+import { useAuth } from "@/lib/AuthContext";
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const AccountMenu = ({
@@ -86,8 +85,7 @@ export const Navbar = () => {
   const path = route === "/courses" ? birrete : logo;
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [name, setName] = useState("");
-  const { currentPath, setCurrentPath, previousPath, setPreviousPath } =
-    useContext(AuthContext);
+  const { currentPath, setCurrentPath, setPreviousPath } = useAuth();
 
   const settings = ["Perfil", "Cuenta", "Dashboard", "Salir"];
   const supabase = useSupabaseClient();

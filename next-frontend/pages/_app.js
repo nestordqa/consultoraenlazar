@@ -7,7 +7,7 @@ import PrivacyPolicy from "@/components/privacyPolitics/PrivacyPolicy";
 import { googleAnalyticsId, supabaseKey, supabaseUrl } from "@/lib/enviroment";
 import { SessionContextProvider, useUser } from "@supabase/auth-helpers-react";
 import supabase from "@/lib/supabaseClient";
-import AuthContext from "../public/AuthContext";
+import { AuthProvider } from "../lib/AuthContext";
 
 export default function App({ Component, pageProps }) {
   /*  const router = useRouter();
@@ -24,8 +24,7 @@ export default function App({ Component, pageProps }) {
     };
   }, [router.events]);
   */
-  const [currentPath, setCurrentPath] = useState("/");
-  const [previousPath, setPreviousPath] = useState("/");
+
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
 
@@ -39,14 +38,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <AuthContext.Provider
-        value={{
-          currentPath,
-          setCurrentPath,
-          previousPath,
-          setPreviousPath,
-        }}
-      >
+      <AuthProvider supabase={supabase}>
         <SessionContextProvider
           supabaseClient={supabase}
           initialSession={pageProps.initialSession}
@@ -108,7 +100,7 @@ export default function App({ Component, pageProps }) {
         </Link>
       </CookieConsent> */}
         </SessionContextProvider>
-      </AuthContext.Provider>
+      </AuthProvider>
     </>
   );
 }

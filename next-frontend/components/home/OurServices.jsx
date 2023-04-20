@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import logoIndividuos from "public/images/card-individuos-grupos.webp";
 import logoOrg from "public/images/card-empresas.webp";
 import Image from "next/image";
 import ServicesCard from "@/components/card/ServicesCard";
 import ConsultationForm from "../../components/forms/ConsultationForm";
-import { useState } from "react";
+
 import Link from "next/link";
 
 import styles from "./OurServices.module.css";
@@ -13,7 +13,7 @@ import coverImageCv from "public/images/revision-cv-gratis.webp";
 import WorkWithUsForm from "../forms/CVSubmissionForm";
 import { useSession } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
-import AuthContext from "@/public/AuthContext";
+import { useAuth } from "@/lib/AuthContext";
 
 export const OurServices = ({ services }) => {
   const servicesCvFormTitle = "¡RECURSOS GRATIS!";
@@ -24,8 +24,7 @@ export const OurServices = ({ services }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
-  const { currentPath, setCurrentPath, setPreviousPath } =
-    useContext(AuthContext);
+  const { setCurrentPath, setPreviousPath } = useAuth();
   const session = useSession();
   const route = useRouter();
 

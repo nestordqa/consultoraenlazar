@@ -9,14 +9,14 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import logo from "public/images/isotipo-enlazar-blanco.png";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import PrivacyPolicy from "../privacyPolitics/PrivacyPolicy";
-import AuthContext from "@/public/AuthContext";
+import { useAuth } from "@/lib/AuthContext";
 
 export const Footer = () => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
-  const { currentPath, setCurrentPath } = useContext(AuthContext);
+  const { setCurrentPath } = useAuth();
 
   const handleClickOpen = () => {
     setOpen(true);
