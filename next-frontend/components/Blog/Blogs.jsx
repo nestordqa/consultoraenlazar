@@ -16,10 +16,10 @@ export const Blogs = () => {
                 >
                 <div className={styles.containerImage}>
                 <Image
-          className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse "
+          className="shadow-2xl outline-offset-8 m-2 w-auto h-auto "
           src="/images/trabaja-con-nosotros.webp"
-          width={100}
-          height={100}
+          width={500}
+          height={350}
           alt="payhous"
                 />
                 </div>
@@ -47,10 +47,10 @@ export const Blogs = () => {
                 >
                 <div className={styles.containerImage}>
                 <Image
-          className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse "
+          className="shadow-2xl outline-offset-8 m-2 w-auto h-auto "
           src="/images/trabaja-con-nosotros.webp"
-          width={100}
-          height={100}
+          width={500}
+          height={350}
           alt="payhous"
         />
                 </div>
@@ -84,10 +84,10 @@ export const Blogs = () => {
        >
        <div className={styles.containerImage}>
        <Image
- className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse "
+ className="shadow-2xl outline-offset-8 m-2 w-auto h-auto "
  src="/images/trabaja-con-nosotros.webp"
- width={100}
- height={100}
+ width={500}
+ height={350}
  alt="payhous"
 />
        </div>
@@ -115,10 +115,10 @@ export const Blogs = () => {
        >
        <div className={styles.containerImage}>
        <Image
- className="shadow-2xl outline-offset-8 m-2 w-auto h-auto animate-pulse "
+ className="shadow-2xl outline-offset-8 m-2 w-auto h-auto "
  src="/images/trabaja-con-nosotros.webp"
- width={100}
- height={100}
+ width={500}
+ height={350}
  alt="payhous"
 />
        </div>
