@@ -25,13 +25,13 @@ const Community = () => {
 		<div className='relative'>
 			<section
 				id='banner'
-				className='flex flex-col xsm:h-[225px] md:h-[490px] overflow-hidden'
+				className='flex flex-col xsm:h-[225px] md:h-[600px] lg:h-[490px] overflow-hidden'
 			>
 				<Image
 					src={Background}
 					alt='Header'
 					priority
-					className='xsm:hidden md:block'
+					className='xsm:hidden md:block md:object-none lg:object-cover h-full'
 				/>
 				<Image
 					src={BackgroundMobile}
@@ -39,7 +39,7 @@ const Community = () => {
 					priority
 					className='xsm:block md:hidden'
 				/>
-				<div className='absolute left-0 right-0 bottom-0 top-0 xsm:h-[225px] md:h-[490px]'>
+				<div className='absolute left-0 right-0 bottom-0 top-0 xsm:h-[225px] md:h-[600px] lg:h-[490px]'>
 					<div className='flex w-full h-full justify-center items-center'>
 						<p className='text-center text-white md:text-3xl font-semibold'>
 							¡Sé parte de nuestra comunidad y<br />
@@ -50,16 +50,16 @@ const Community = () => {
 					</div>
 				</div>
 			</section>
-			<section id='services' className='flex flex-col pb-24 h-[700px]'>
+			<section id='services' className='flex flex-col xsm:pb-28 md:pb-24 lg:h-[700px]'>
 				<div className='flex justify-center pt-5'>
-					<Link href='#services' className='animate-bounce pt-6 pb-12'>
+					<Link href='#services' className='animate-bounce xsm:pt-16 md:pt-12 lg:pt-6 xsm:pb-6 md:pb-12'>
 						<ChevronsDown />
 					</Link>
 				</div>
-				<h3 className='text-2xl md:text-3xl font-semibold text-left text-ellipsis opacity-90 text-black pt-5 pb-14 xsm:pl-4 md:pl-12'>
+				<h3 className='text-2xl md:text-3xl font-semibold text-left text-ellipsis opacity-90 text-black pt-5 md:pb-0 lg:pb-14 xsm:pl-4 md:pl-12'>
 					Encontrarás
 				</h3>
-				<div className='xsm:grid xsm:grid-cols-3 md:flex md:flex-wrap justify-center xsm:pb-10 md:pb-24 xsm:px-2'>
+				<div className='xsm:grid xsm:grid-cols-3 md:grid lg:flex md:justify-items-center lg:flex-wrap justify-center xsm:pb-10 md:pb-24 xsm:px-2 xsm:pt-12'>
 					<div className='flex flex-col items-center md:h-[160px] md:w-[210px]'>
 						<Image
 							src='/images/icono-tips-consejos.svg'
