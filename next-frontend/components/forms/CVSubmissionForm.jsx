@@ -161,7 +161,7 @@ const WorkWithUsForm = ({
 
   return (
     <>
-      <div className="fixed z-[300] inset-0 font-Noah overflow-y-auto xsm:h-[40rem] ">
+      <div className="fixed z-[300] inset-0 font-Noah overflow-y-auto xsm:h-[40rem] md:h-full">
         <div className="flex items-center justify-center max-h-screen pt-10 px-4 pb-5 text-center sm:block sm:p-0">
           <div className="fixed inset-0 transition-opacity" aria-hidden="true">
             <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -174,7 +174,7 @@ const WorkWithUsForm = ({
             &#8203;
           </span>
 
-          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle md:h-[50rem] xsm:h-[35rem] bg-white">
+          <div className="inline-block align-bottom rounded-lg text-left shadow-2xl transform transition-all my-2 sm:align-middle xsm:h-full bg-white">
             <button
               className="float-right transition duration-150 ease-in-out ml-4 mb-4 top-0 h-8 md:h-10"
               onClick={() => handleClose(false)}
