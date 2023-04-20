@@ -243,8 +243,7 @@ export const Navbar = () => {
             <li className="flex xl:w-full text-dark hover:text-darkBlue font-bold xl:font-medium text-base">
               <Link
                 className="flex flex-1 w-full justify-center self-center"
-                href={session ? "/blog" : "/auth"}
-                onClick={() => setCurrentPath("/blog")}
+                href="/blog"
               >
                 Blog
               </Link>
