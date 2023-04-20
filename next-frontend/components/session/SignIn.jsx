@@ -7,23 +7,21 @@ import { useRouter } from "next/router";
 
 const SignIn = () => {
   const supabase = useSupabaseClient();
-  const { setCurrentPath, previousPath, authState, handleAuthStateChange } =
-    useAuth();
+  const {
+    currentPath,
+    setCurrentPath,
+    previousPath,
+    authState,
+    handleAuthStateChange,
+  } = useAuth();
   const router = useRouter();
   const session = useSession();
-  const [originUrl, setOriginUrl] = useState("");
 
   const memorizedPath = useMemo(() => {
     return previousPath;
   }, [previousPath]);
 
   useEffect(() => {
-    setCurrentPath(router.pathname);
-    if (window) {
-      setOriginUrl(window.location.origin);
-    } else {
-      setOriginUrl("http://localhost:3000");
-    }
     if (
       session &&
       authState === "USER_UPDATED" &&
@@ -35,7 +33,7 @@ const SignIn = () => {
       router.push(memorizedPath);
     }
   }, [session, authState]);
-
+  console.log(previousPath, currentPath);
   return (
     <div
       className="w-full h-full flex justify-center items-center font-Noah"
