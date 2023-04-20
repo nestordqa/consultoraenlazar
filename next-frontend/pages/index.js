@@ -4,10 +4,19 @@ import { Goal } from "@/components/home/Goal";
 import { Landing } from "@/components/home/Landing";
 import { CompaniesThatTrust } from "@/components/home/CompaniesThatTrust";
 import ContactUsForm from "@/components/forms/ContactUsForm";
+import KnowOurServices from "@/components/home/KnowOurServices";
+import LearnWithUsHero from "@/components/home/LearnWithUsHero";
 import { getClient } from "@/lib/sanity.server";
 import groq from "groq";
+import { useMemo } from "react";
+import { useAuth } from "@/lib/AuthContext";
 
 const Home = () => {
+  const { previousPath } = useAuth();
+  const memorizedPath = useMemo(() => {
+    return previousPath;
+  }, [previousPath]);
+  console.log(memorizedPath);
   return (
     <>
       <Layout
@@ -17,6 +26,8 @@ const Home = () => {
         <>
           <Landing />
           <Goal />
+          <KnowOurServices />
+          <LearnWithUsHero />
           <Feedback />
           <CompaniesThatTrust />
           <ContactUsForm />

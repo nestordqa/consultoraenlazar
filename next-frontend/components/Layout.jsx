@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-
 export const Layout = ({ title, content, children }) => {
   const route = useRouter();
 
@@ -113,22 +112,25 @@ export const Layout = ({ title, content, children }) => {
       </Head>
       <>
         <Navbar />
-        <main className="w-full flex flex-1 flex-wrap justify-center items-center  mx-auto h-auto relative pt-28 text-dark">
+        <main
+          id="top"
+          className="w-full flex flex-1 flex-wrap justify-center items-center  mx-auto h-auto relative pt-28 text-dark"
+        >
           {children}
         </main>
         <Link
-					href='https://wa.me/5491133130958/?text=Hola Consultora Enlazar, quería realizarles una consulta...'
-					target='_blank'
-				>
-					<Image
-						src='/images/logo-whatsapp.svg'
-						alt='Logo WhatsApp'
-						width={50}
-						height={50}
-						priority
-						className='fixed bottom-5 right-5 hover:w-[52px] hover:transition-all z-10 drop-shadow-lg'
-					/>
-				</Link>
+          href="https://wa.me/5491133130958/?text=Hola Consultora Enlazar, quería realizarles una consulta..."
+          target="_blank"
+        >
+          <Image
+            src="/images/logo-whatsapp.svg"
+            alt="Logo WhatsApp"
+            width={50}
+            height={50}
+            priority
+            className="fixed bottom-5 right-5 hover:w-[52px] hover:transition-all z-10 drop-shadow-lg"
+          />
+        </Link>
         <Footer />
       </>
     </>
