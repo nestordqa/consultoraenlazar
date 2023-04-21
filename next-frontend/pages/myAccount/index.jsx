@@ -77,7 +77,7 @@ const MyAccount = () => {
 						>
 							<Tab label='Mis datos' {...a11yProps(0)} />
 							<Tab label='Mi historial' {...a11yProps(1)} />
-							<Tab label='Otras opciones' {...a11yProps(2)} />
+							{/* <Tab label='Otras opciones' {...a11yProps(2)} /> */}
 							<Tab label='Salir' onClick={handleSignOut} {...a11yProps(6)} />
 						</Tabs>
 						<div className='w-full'>

@@ -92,7 +92,7 @@ export default function PersonalData({ session }) {
 		<div className='flex flex-col w-9/12 content-center'>
 			<div className='flex w-full justify-center'>
 				<form className='xsm:w-full xl:w-3/4'>
-					<div className='pb-2'>
+					{/* <div className='pb-2'>
 						<label className='font-semibold' htmlFor='email'>
 							Email:{' '}
 						</label>
@@ -104,7 +104,7 @@ export default function PersonalData({ session }) {
 							className='flex bg-gray-50 text-gray-500 w-full xsm:h-8 md:h-[3.3rem] xsm:py-1 xsm:px-4 md:py-2 md:px-4 border border-solid border-grey rounded-xl xsm:text-xs md:text-lg bg-transparent'
 							disabled
 						/>
-					</div>
+					</div> */}
 					<div className='md:flex gap-4 xl:w-full'>
 						<div className='pb-2 xl:w-full'>
 							<label className='font-semibold' htmlFor='firstName'>
