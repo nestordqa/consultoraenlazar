@@ -11,7 +11,7 @@ export const Landing = () => {
   ];
 
   return (
-    <div className="relative w-full h-auto md:h-[700px] flex ">
+    <div className="relative w-full h-auto xl:h-[700px] flex ">
       <video
         className="h-full w-full object-cover aspect-auto overflow-y-hidden opacity-85"
         playsInline
