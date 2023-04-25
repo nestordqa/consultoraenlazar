@@ -5,15 +5,6 @@ export default {
   fields: [
     {name: 'title', type: 'string', title: 'Título'},
     {
-      name: 'slug',
-      title: 'Identificador',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    },
-    {
       name: 'mainImage',
       type: 'image',
       title: 'Imagen',

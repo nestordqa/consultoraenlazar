@@ -14,44 +14,44 @@ const ContactUsForm = () => {
     company: "",
   });
 
-	const [errors, setErrors] = useState({
-		name: ' ',
-		email: ' ',
-		comments: ' ',
-		company: ' ',
-	});
+  const [errors, setErrors] = useState({
+    name: " ",
+    email: " ",
+    comments: " ",
+    company: " ",
+  });
 
-	const validate = (input) => {
-		if (input.name === 'email') {
-			!/\S+@\S+\.\S+/.test(input.value)
-				? setErrors((prev) => ({
-						...prev,
-						email: 'Ingresa un email válido',
-				  }))
-				: setErrors((prev) => ({ ...prev, email: '' }));
-		} else if (input.name === 'name') {
-			!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(input.value)
-				? setErrors((prev) => ({
-						...prev,
-						name: 'Ingresa un nombre válido',
-				  }))
-				: setErrors((prev) => ({ ...prev, name: '' }));
-		} else if (input.name === 'comments') {
-			input.value.length > 1000
-				? setErrors((prev) => ({
-						...prev,
-						comments: 'Máximo 1000 caracteres',
-				  }))
-				: setErrors((prev) => ({ ...prev, comments: '' }));
-		} else if (input.name === 'company') {
-			!input.value.length
-				? setErrors((prev) => ({
-						...prev,
-						company: 'Ingresa un nombre válido',
-				  }))
-				: setErrors((prev) => ({ ...prev, company: '' }));
-		}
-	};
+  const validate = (input) => {
+    if (input.name === "email") {
+      !/\S+@\S+\.\S+/.test(input.value)
+        ? setErrors((prev) => ({
+            ...prev,
+            email: "Ingresa un email válido",
+          }))
+        : setErrors((prev) => ({ ...prev, email: "" }));
+    } else if (input.name === "name") {
+      !/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(input.value)
+        ? setErrors((prev) => ({
+            ...prev,
+            name: "Ingresa un nombre válido",
+          }))
+        : setErrors((prev) => ({ ...prev, name: "" }));
+    } else if (input.name === "comments") {
+      input.value.length > 1000
+        ? setErrors((prev) => ({
+            ...prev,
+            comments: "Máximo 1000 caracteres",
+          }))
+        : setErrors((prev) => ({ ...prev, comments: "" }));
+    } else if (input.name === "company") {
+      !input.value.length
+        ? setErrors((prev) => ({
+            ...prev,
+            company: "Ingresa un nombre válido",
+          }))
+        : setErrors((prev) => ({ ...prev, company: "" }));
+    }
+  };
 
   const handleOnChange = (event) => {
     event.preventDefault();
@@ -108,7 +108,7 @@ const ContactUsForm = () => {
     <>
       <div
         id="contact"
-        className="border flex flex-col justify-center items-center md:h-[50rem] xsm:h-[44rem] md:w-screen text-center"
+        className="border flex flex-col justify-center items-center md:h-[50rem] h-[40rem] md:w-screen text-center"
       >
         <div className="">
           <Image
@@ -120,7 +120,7 @@ const ContactUsForm = () => {
             className="w-auto h-auto"
           />
         </div>
-        <div className="absolute rounded-lg w-fit content-center transition-all bg-transparent p-12">
+        <div className="absolute rounded-lg w-fit content-center transition-all bg-transparent p-8 md:p-12">
           <div className="md:pt-4">
             <h2 className="text-darkBlue md:px-2 xsm:text-xl lg:text-3xl font-semibold text-ellipsis text-center">
               ¿Cómo podemos ayudarte?

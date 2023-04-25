@@ -8,8 +8,8 @@ import flechaDoble from "../../public/images/flecha-doble.svg";
 export default function KnowOurServices() {
   return (
     <>
-      <section className="relative bg-lightBlue container mx-auto sm:px-4 max-w-full overflow-hidden">
-        <div className="py-6 sm:py-44 text-center">
+      <section className="relative bg-lightBlue container mx-auto sm:px-4 max-w-full overflow-hidden ">
+        <div className="py-6 md:py-40 text-center">
           <div>
             <h2
               className="font-bold pb-4 sm:pb-0"

@@ -52,7 +52,7 @@ export const Footer = () => {
           <div className="flex flex-row xsm:max-xl:flex-col justify-center items-center xsm:max-sm:w-full">
             <div className="flex flex-row justify-center items-center ">
               <div className="pt-3 px-0 pb-4 xsm:max-md:hidden ">
-                <Link href="/" onClick={() => setCurrentPath("/")}>
+                <Link href="/#top" onClick={() => setCurrentPath("/")}>
                   <Image
                     className="min-w-[60px]"
                     width={60}
@@ -66,7 +66,7 @@ export const Footer = () => {
                 <ul className="flex flex-row border-r-0 justify-center items-center self-center no-underline text-white list-none xsm:max-md:flex-col py-2 px-2 xsm:max-md:p-0 ">
                   <li className="md:border-r md:border-solid md:border-r-white px-2 py-0 xsm:max-md:pb-3">
                     <Link
-                      href="/team"
+                      href="/team#top"
                       onClick={() => setCurrentPath("/team")}
                       className="hover:font-bold"
                     >
@@ -75,7 +75,7 @@ export const Footer = () => {
                   </li>
                   <li className="md:border-r md:border-solid md:border-r-white px-2 py-0 xsm:max-md:pb-3">
                     <Link
-                      href="/services"
+                      href="/services#top"
                       onClick={() => setCurrentPath("/services")}
                       className="hover:font-bold"
                     >
@@ -84,7 +84,7 @@ export const Footer = () => {
                   </li>
                   <li className="md:border-r md:border-solid md:border-r-white pl-2 pr-2 xsm:max-md:pb-3">
                     <Link
-                      href="/courses"
+                      href="/courses#top"
                       onClick={() => setCurrentPath("/courses")}
                       className="hover:font-bold whitespace-nowrap"
                     >
@@ -93,7 +93,7 @@ export const Footer = () => {
                   </li>
                   <li className="md:border-r md:border-solid md:border-r-white px-2 py-0 xsm:max-md:pb-3">
                     <Link
-                      href="/community"
+                      href="/community#top"
                       onClick={() => setCurrentPath("/community")}
                       className="hover:font-bold"
                     >
@@ -102,7 +102,7 @@ export const Footer = () => {
                   </li>
                   <li className="md:border-r md:border-solid md:border-r-white px-2 py-0 xsm:max-md:pb-3">
                     <Link
-                      href="/blog"
+                      href="/blog#top"
                       onClick={() => setCurrentPath("/blog")}
                       className="hover:font-bold"
                     >
@@ -182,7 +182,7 @@ export const Footer = () => {
             </div>
           </div>
           <div className="pt-3 px-0 pb-4 hidden xsm:max-md:block xsm:max-md:pt-4 ">
-            <Link href="/" onClick={() => setCurrentPath("/")}>
+            <Link href="/#top" onClick={() => setCurrentPath("/")}>
               <Image
                 width={60}
                 height={"auto"}
