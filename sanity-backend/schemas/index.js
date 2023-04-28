@@ -7,6 +7,7 @@ import services from './services.js'
 import category from './category.js'
 import team from './team.js'
 import companies from './companies.js'
+import blog from './blog.js'
 
 export const schemaTypes = [
   course,
@@ -18,4 +19,5 @@ export const schemaTypes = [
   category,
   team,
   companies,
+  blog,
 ]

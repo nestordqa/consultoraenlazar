@@ -41,7 +41,7 @@ export const LearnWithUs = ({ courses, benefits }) => {
       <div className="bg-white w-full h-auto lg:min-h-screen flex flex-col justify-center items-center text-dark">
         <div className="flex justify-center items-center w-full h-auto pb-6 bg-grey">
           <h2
-            className="pt-16 px-4 md:px-8 font-bold text-center text-ellipsis text-3xl"
+            className="pt-16 px-4 md:px-8 font-bold text-center text-ellipsis "
             style={{
               fontSize: "clamp(1.2rem, 1.0264rem + 0.9256vw, 1.9rem)",
               width: "clamp(28.125rem, 24.251rem + 20.6612vw, 43.75rem)",

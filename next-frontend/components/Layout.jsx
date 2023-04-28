@@ -23,7 +23,7 @@ export const Layout = ({ title, content, children }) => {
           name="keywords"
           content="Recursos humanos, psicologia, psicología laboral, consultora enlazar, enlazar, consultoría, relaciones laborales, trabajo, educación, capital humano, talento, cursos, cursos online, capacitaciones, webinars gratuitos, curriculum, revisión de cv, empleabilidad, orientación vocacional, calidad de trabajo, comunidad, encontrar empleo, desarrollo profesional, reclutamiento, selección de personal, recruiting, coaching, acompañamiento personalizado, asesorías, recursos gratis, consultas, cosching, experiencia laboral,"
         />
-        <title>{title} - Consultora Enlazar</title>
+        <title>{title}</title>
         <link rel="icon" href="/images/favicon/favicon.ico" />
         <link
           rel="apple-touch-icon"
