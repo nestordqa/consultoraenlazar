@@ -6,6 +6,7 @@ import styles from "./CourseDetail.module.css";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { height } from "@mui/system";
 
 const DetailsComponents = {
   block: {
@@ -102,7 +103,10 @@ export default function Details({
         draggable
         pauseOnHover
         theme="light"
-        style={{ width: "600px" }}
+        style={{
+          width: "clamp(12.5rem, 6.3017rem + 33.0579vw, 37.5rem)",
+          height: "auto",
+        }}
       />
 
       <div className="fixed z-[300] inset-0 font-Noah overflow-y-auto">

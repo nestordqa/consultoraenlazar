@@ -56,7 +56,7 @@ const AccountMenu = ({
         onClose={handleCloseUserMenu}
       >
         <MenuItem onClick={handleCloseUserMenu}>
-          <Link href="/myAccount">
+          <Link href="/myAccount#top">
             <div className="flex">
               <div className="flex pr-2 items-center">
                 <FaUserCircle />
