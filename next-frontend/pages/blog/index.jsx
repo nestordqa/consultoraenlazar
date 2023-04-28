@@ -19,8 +19,8 @@ const Blog = ({ blogs }) => {
   return (
     <>
       <Layout title={"Blog"} content={"Consultora Enlazar."}>
-        {/*   {session ? <Blogs blogs={blogs} /> : <SignIn />} */}
-        <Blogs blogs={blogs} />
+       {session ? <Blogs blogs={blogs} /> : <SignIn />} 
+      
       </Layout>
     </>
   );
