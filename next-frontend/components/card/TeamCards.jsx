@@ -17,7 +17,7 @@ const TeamCards = ( props ) => {
 					</h3>
 				</div>
 				<div className="flex justify-center w-screen">
-					<div className='grid gap-5 lg:grid-cols-4 md:grid-cols-2 xsm:grid-cols-1 pb-12'>
+					<div className='flex flex-wrap gap-5 pb-12 justify-center lg:justify-start w-auto'>
 						{!team
 							? Array.from(new Array(6)).map((item, index) => (
 									<Box key={index} sx={{ width: 210, marginRight: 0.5, my: 5 }}>
